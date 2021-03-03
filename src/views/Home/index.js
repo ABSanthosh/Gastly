@@ -4,7 +4,7 @@ function Home() {
   return (
     <div className="Maincontainer">
       <div className="Maincontainer__contentwrapper">
-        <div className="Maincontainer__content">
+        <div className="Maincontainer__backdrop">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
             <path
               fill-opacity="0.5"
@@ -17,13 +17,10 @@ function Home() {
               d="M0,256L48,234.7C96,213,192,171,288,133.3C384,96,480,64,576,96C672,128,768,224,864,229.3C960,235,1056,149,1152,101.3C1248,53,1344,43,1392,37.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
             ></path>
           </svg>
-          {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path
-              fill="#0099ff"
-              fill-opacity="0.5"
-              d="M0,288L34.3,266.7C68.6,245,137,203,206,165.3C274.3,128,343,96,411,96C480,96,549,128,617,149.3C685.7,171,754,181,823,154.7C891.4,128,960,64,1029,48C1097.1,32,1166,64,1234,85.3C1302.9,107,1371,117,1406,122.7L1440,128L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"
-            ></path>
-          </svg> */}
+        </div>
+        <div className="Maincontainer__content">
+          <div className="content__details"></div>
+          <div className="content__image"></div>
         </div>
       </div>
     </div>
