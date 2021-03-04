@@ -1,4 +1,4 @@
-#Gastly
+# Gastly
 
 A simple pokedex webapp. Nothing more. Nothing less.
 
