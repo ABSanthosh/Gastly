@@ -1,41 +1,64 @@
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useState } from "react";
 import ColorThief from "../../../node_modules/colorthief";
-
+import Sprites from "../../Assets/sprites.json";
 import "./Homeindex.scss";
+
+function forifier(pokeId) {
+  pokeId = String(pokeId);
+  while (pokeId.length < 4) {
+    pokeId = "0" + pokeId;
+  }
+  return pokeId;
+}
+
+const rgbToHex = (r, g, b) =>
+  "#" +
+  [r, g, b]
+    .map((x) => {
+      const hex = x.toString(16);
+      return hex.length === 1 ? "0" + hex : hex;
+    })
+    .join("");
 
 function Home() {
   let { id } = useParams();
+  let history = useHistory();
+  if (id > 898) {
+    history.push("/898");
+    id = 898;
+  }
   const colorThief = new ColorThief();
-  let Url =
-    "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0006_001_mf_n_00000000_f_n.png";
+
+  let Url = Sprites[forifier(id)][0];
+
   let googleProxyURL =
     "https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&refresh=2592000&url=";
 
-  const rgbToHex = (r, g, b) =>
-    "#" +
-    [r, g, b]
-      .map((x) => {
-        const hex = x.toString(16);
-        return hex.length === 1 ? "0" + hex : hex;
-      })
-      .join("");
-
   const img = new Image();
+  const img2 = new Image();
   img.crossOrigin = "Anonymous";
-  // img.style = "width:840px; height: 400px;";
   img.src = googleProxyURL + encodeURIComponent(Url);
-  img.addEventListener("load", function () {
-    console.log(colorThief.getColor(img));
-
+  img2.crossOrigin = "Anonymous";
+  img2.src = googleProxyURL + encodeURIComponent(Url);
+  // img.src = (Url);
+  try {
     let color = rgbToHex(
-      colorThief.getColor(img)[0],
-      colorThief.getColor(img)[1],
-      colorThief.getColor(img)[2]
+      colorThief.getColor(img2)[0],
+      colorThief.getColor(img2)[1],
+      colorThief.getColor(img2)[2]
     );
-    console.log(color);
     setColor(color);
-  });
+  } catch (err) {
+    img.addEventListener("load", function () {
+      let color = rgbToHex(
+        colorThief.getColor(img)[0],
+        colorThief.getColor(img)[1],
+        colorThief.getColor(img)[2]
+      );
+      setColor(color);
+    });
+  }
 
   const [backdropcolor, setColor] = useState("white");
   const ImgElement = () => {
