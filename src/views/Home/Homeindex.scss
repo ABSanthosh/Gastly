@@ -30,9 +30,9 @@
       // right: 3rem;
       // left: -3rem;
       border-radius: 0 0 15px 15px;
-      path {
-        fill: #a50bff;
-      }
+      // path {
+      //   fill: #68367A;
+      // }
     }
   }
 
@@ -67,6 +67,9 @@
         border-radius: 15px;
         box-shadow: 0px 0px 6px 6px rgba(0, 0, 0, 0.13);
         background-color: #ffffff;
+      }
+      &__Sprite{
+        height: 80%;
       }
     }
   }
