@@ -1,4 +1,5 @@
 @import "../../styles/mixins";
+@import url("https://use.fontawesome.com/29d5099fb7.js");
 
 .Maincontainer {
   height: 100vh;
@@ -41,13 +42,26 @@
     height: 100%;
     width: 100%;
     @include make-flex(row);
-    .content{
-      &__details{
+    .content {
+      &__details {
         height: 100%;
         margin: auto;
         width: 55%;
+        @include make-flex(row, $just: space-between);
+        .fa {
+          @include make-flex(row);
+          color: #bdbdbd;
+          font-size: 7rem;
+          cursor: pointer;
+          &:hover{
+            color: #626262;
+          }
+          &:active{
+            color: rgb(177, 236, 223);
+          }
+        }
       }
-      &__image{
+      &__image {
         height: 100%;
         width: 40%;
         border-radius: 15px;

@@ -1,8 +1,15 @@
+import { useParams } from "react-router-dom";
 import "./Homeindex.scss";
 
 function Home() {
+  let { id } = useParams();
   return (
     <div className="Maincontainer">
+      <link
+        type="text/css"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css?v=2214135"
+        rel="stylesheet"
+      />
       <div className="Maincontainer__contentwrapper">
         <div className="Maincontainer__backdrop">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -19,7 +26,11 @@ function Home() {
           </svg>
         </div>
         <div className="Maincontainer__content">
-          <div className="content__details"></div>
+          <div className="content__details">
+            <div className="fa fa-caret-left" />
+            <p style={{fontSize:'45px'}}>{id}</p>
+            <div className="fa fa-caret-right" />
+          </div>
           <div className="content__image"></div>
         </div>
       </div>
@@ -28,30 +39,3 @@ function Home() {
 }
 
 export default Home;
-
-/*
- <div classname="contentwrapper__backdrop">
-          <svg
-            classname="svg1"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1440 320"
-          >
-            <path
-              fill="#0099ff"
-              fill-opacity="1"
-              d="M0,32L48,26.7C96,21,192,11,288,32C384,53,480,107,576,133.3C672,160,768,160,864,144C960,128,1056,96,1152,101.3C1248,107,1344,149,1392,170.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-            ></path>
-          </svg>
-          <svg
-            classname="svg2"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1440 320"
-          >
-            <path
-              fill="#0099ff"
-              fill-opacity="1"
-              d="M0,256L48,234.7C96,213,192,171,288,133.3C384,96,480,64,576,69.3C672,75,768,117,864,154.7C960,192,1056,224,1152,240C1248,256,1344,256,1392,256L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-            ></path>
-          </svg>
-        </div>
-*/
