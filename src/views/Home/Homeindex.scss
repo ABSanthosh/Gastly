@@ -48,15 +48,38 @@
         margin: auto;
         width: 55%;
         @include make-flex(row, $just: space-between);
+        .leftChevron,
+        .rightChevron {
+          width: 50px;
+          height: 100px;
+          cursor: pointer;
+          &:hover {
+            background-color: #626262;
+          }
+          &:active {
+            background-color: rgb(177, 236, 223);
+          }
+        }
+        .leftChevron {
+          background-color: #bdbdbd;
+          background-size: cover;
+          clip-path: polygon(100% 0, 0% 50%, 100% 100%);
+        }
+
+        .rightChevron {
+          background-color: #bdbdbd;
+          background-size: cover;
+          clip-path: polygon(0 0, 100% 50%, 0 100%);
+        }
         .fa {
           @include make-flex(row);
           color: #bdbdbd;
           font-size: 7rem;
           cursor: pointer;
-          &:hover{
+          &:hover {
             color: #626262;
           }
-          &:active{
+          &:active {
             color: rgb(177, 236, 223);
           }
         }
@@ -68,7 +91,7 @@
         box-shadow: 0px 0px 6px 6px rgba(0, 0, 0, 0.13);
         background-color: #ffffff;
       }
-      &__Sprite{
+      &__Sprite {
         height: 80%;
       }
     }

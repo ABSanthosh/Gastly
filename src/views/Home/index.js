@@ -91,9 +91,9 @@ function Home() {
         </div>
         <div className="Maincontainer__content">
           <div className="content__details">
-            <div className="fa fa-caret-left" />
+            <div className="leftChevron" />
             {ImgElement()}
-            <div className="fa fa-caret-right" />
+            <div className="rightChevron" />
           </div>
           <div className="content__image"></div>
         </div>
