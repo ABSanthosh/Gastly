@@ -1,0 +1,21 @@
+@import '../../styles/mixins';
+.loader{
+  height: 100%;
+  width: 100%;
+  @include make-flex();
+  border-radius: 15px;
+  img{
+    height: 50%;
+  }
+  background-color: #c5b6f2;
+}
+
+
+#loading-dock {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: 1000;
+}

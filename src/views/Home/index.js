@@ -1,7 +1,9 @@
 import { useParams, useHistory } from "react-router-dom";
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import ColorThief from "../../../node_modules/colorthief";
 import Sprites from "../../Assets/sprites.json";
+import { useLoading } from "../../hooks/useLoading";
+
 import "./Homeindex.scss";
 
 function forifier(pokeId) {
@@ -23,47 +25,39 @@ const rgbToHex = (r, g, b) =>
 
 function Home() {
   let { id } = useParams();
+
   let history = useHistory();
+  const { startLoading, stopLoading } = useLoading();
+  const nextPoke = () => {
+    history.push("/" + String(parseInt(id) + 1));
+    startLoading();
+  };
+  const prevPoke = () => {
+    history.push("/" + String(parseInt(id) - 1));
+    startLoading();
+  };
+
   if (id > 898) {
     history.push("/898");
     id = 898;
+    try {
+      stopLoading();
+    } catch (e) {}
   }
-  const colorThief = new ColorThief();
-
-  let Url = Sprites[forifier(id)][0];
-
+  if (id < 1) {
+    history.push("/1");
+    id = 1;
+    try {
+      stopLoading();
+    } catch (e) {}
+  }
   let googleProxyURL =
     "https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&refresh=2592000&url=";
 
-  const img = new Image();
-  const img2 = new Image();
-  img.crossOrigin = "Anonymous";
-  img.src = googleProxyURL + encodeURIComponent(Url);
-  img2.crossOrigin = "Anonymous";
-  img2.src = googleProxyURL + encodeURIComponent(Url);
-  // img.src = (Url);
-  try {
-    let color = rgbToHex(
-      colorThief.getColor(img2)[0],
-      colorThief.getColor(img2)[1],
-      colorThief.getColor(img2)[2]
-    );
-    setColor(color);
-  } catch (err) {
-    img.addEventListener("load", function () {
-      let color = rgbToHex(
-        colorThief.getColor(img)[0],
-        colorThief.getColor(img)[1],
-        colorThief.getColor(img)[2]
-      );
-      setColor(color);
-    });
-  }
+  let Url = Sprites[forifier(id)][0];
 
+  const imgRef = useRef();
   const [backdropcolor, setColor] = useState("white");
-  const ImgElement = () => {
-    return <img className="content__Sprite" src={Url} />;
-  };
 
   return (
     <div className="Maincontainer">
@@ -91,9 +85,30 @@ function Home() {
         </div>
         <div className="Maincontainer__content">
           <div className="content__details">
-            <div className="leftChevron" />
-            {ImgElement()}
-            <div className="rightChevron" />
+            <div className="leftChevron" onClick={prevPoke} />
+
+            <img
+              crossOrigin={"anonymous"}
+              ref={imgRef}
+              src={googleProxyURL + encodeURIComponent(Url)}
+              alt={"Pokemon"}
+              className={"content__Sprite"}
+              onLoad={() => {
+                const colorThief = new ColorThief();
+                const img = imgRef.current;
+                setColor(
+                  rgbToHex(
+                    colorThief.getColor(img)[0],
+                    colorThief.getColor(img)[1],
+                    colorThief.getColor(img)[2]
+                  )
+                );
+                try {
+                  stopLoading();
+                } catch (e) {}
+              }}
+            />
+            <div className="rightChevron" onClick={nextPoke} />
           </div>
           <div className="content__image"></div>
         </div>
