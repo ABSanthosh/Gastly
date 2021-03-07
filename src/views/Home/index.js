@@ -66,7 +66,7 @@ function Home() {
   const [pokename, setPokename] = useState("");
 
   // useEffect(() => {
-    getName(id).then((data) => setPokename(data["name"]));
+  getName(id).then((data) => setPokename(data["name"]));
   // }, []);
 
   return (
@@ -105,7 +105,8 @@ function Home() {
             <img
               crossOrigin="projectpokemon.org"
               ref={imgRef}
-              src={googleProxyURL + encodeURIComponent(Url)}
+              // src={googleProxyURL + encodeURIComponent(Url)}
+              src={Url}
               alt={"Pokemon"}
               className={"content__Sprite"}
               onLoad={() => {
@@ -149,7 +150,7 @@ function Home() {
 
                     if (suggestionsWithJustNames().includes(e.target.value)) {
                       console.log(e.target.value);
-                      document.getElementById('myText').blur();
+                      document.getElementById("myText").blur();
                       if (e.target.value.includes("#")) {
                         history.push(
                           "/" + String(parseInt(e.target.value.split(" #")[1]))
