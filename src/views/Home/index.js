@@ -2,7 +2,10 @@ import { useParams, useHistory } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import ColorThief from "../../../node_modules/colorthief";
 import Sprites from "../../Assets/sprites.json";
+import { suggestions, suggestionsWithJustNames } from "../../Util/suggestions";
+import { Hint } from "react-autocomplete-hint";
 import { useLoading } from "../../hooks/useLoading";
+import { getName } from "../../Util/pokeapi";
 
 import "./Homeindex.scss";
 
@@ -28,6 +31,7 @@ function Home() {
 
   let history = useHistory();
   const { startLoading, stopLoading } = useLoading();
+
   const nextPoke = () => {
     history.push("/" + String(parseInt(id) + 1));
     startLoading();
@@ -54,10 +58,16 @@ function Home() {
   let googleProxyURL =
     "https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&refresh=2592000&url=";
 
-  let Url = Sprites[forifier(id)][0];
+  let Url = Sprites[forifier(id)]["Sprites"][0];
 
   const imgRef = useRef();
   const [backdropcolor, setColor] = useState("white");
+  const [text, setText] = useState("");
+  const [pokename, setPokename] = useState("");
+
+  // useEffect(() => {
+    getName(id).then((data) => setPokename(data["name"]));
+  // }, []);
 
   return (
     <div className="Maincontainer">
@@ -65,6 +75,12 @@ function Home() {
         type="text/css"
         href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css?v=2214135"
         rel="stylesheet"
+      />
+      <link
+        rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossOrigin="anonymous"
       />
       <div className="Maincontainer__contentwrapper">
         <div className="Maincontainer__backdrop">
@@ -86,9 +102,8 @@ function Home() {
         <div className="Maincontainer__content">
           <div className="content__details">
             <div className="leftChevron" onClick={prevPoke} />
-
             <img
-              crossOrigin={"anonymous"}
+              crossOrigin="projectpokemon.org"
               ref={imgRef}
               src={googleProxyURL + encodeURIComponent(Url)}
               alt={"Pokemon"}
@@ -105,12 +120,54 @@ function Home() {
                 );
                 try {
                   stopLoading();
+                  document.querySelector(".content__inputBox").blur();
                 } catch (e) {}
               }}
             />
             <div className="rightChevron" onClick={nextPoke} />
           </div>
-          <div className="content__image"></div>
+          <div className="content__image">
+            <div className="content__SearchBarBox">
+              <span className="fa fa-search"></span>
+              <div className="content__pokemonName">{pokename}</div>
+              <Hint options={suggestions()} allowTabFill>
+                <input
+                  className="content__inputBox"
+                  id="myText"
+                  value={text}
+                  type="text"
+                  spellCheck="false"
+                  autoCapitalize="off"
+                  autoCorrect="off"
+                  onBlur={() => {
+                    if (text != "") {
+                      setText("");
+                    }
+                  }}
+                  onChange={(e) => {
+                    setText(e.target.value);
+
+                    if (suggestionsWithJustNames().includes(e.target.value)) {
+                      console.log(e.target.value);
+                      document.getElementById('myText').blur();
+                      if (e.target.value.includes("#")) {
+                        history.push(
+                          "/" + String(parseInt(e.target.value.split(" #")[1]))
+                        );
+                      } else {
+                        history.push(
+                          "/" + String(parseInt(e.target.value.split(" ")[0]))
+                        );
+                      }
+
+                      setText("");
+                    }
+                  }}
+                />
+                {/* {addIcon()} */}
+              </Hint>
+            </div>
+          </div>
         </div>
       </div>
     </div>
