@@ -4,7 +4,14 @@ A simple pokedex webapp. Nothing more. Nothing less.
 
 Site is hosted on https://gastly.netlify.app (Still under development)
 
-# Getting Started with Create React App
+
+### Netlify status 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1fbc763f-d545-4021-8e46-a4c13bf3b797/deploy-status)](https://app.netlify.com/sites/gastly/deploys)
+
+
+<hr>
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
