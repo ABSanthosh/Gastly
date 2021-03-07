@@ -105,8 +105,8 @@ function Home() {
             <img
               crossOrigin="projectpokemon.org"
               ref={imgRef}
-              // src={googleProxyURL + encodeURIComponent(Url)}
-              src={Url}
+              src={googleProxyURL + encodeURIComponent(Url)}
+              // src={Url}
               alt={"Pokemon"}
               className={"content__Sprite"}
               onLoad={() => {
