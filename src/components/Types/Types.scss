@@ -1,0 +1,130 @@
+@import "../../styles/mixins";
+$cubic: cubic-bezier(0.64, 0.09, 0.08, 1);
+
+.Type {
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  margin: 0 10px;
+  @include make-flex();
+  img {
+    height: 70%;
+    width: 70%;
+  }
+}
+[class^="tooltip"] {
+  position: relative;
+  &:after {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    content: attr(data-tooltip);
+    padding: 6px 10px;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-2px);
+    background: grey;
+    color: white;
+    white-space: nowrap;
+    z-index: 3;
+    border-radius: 2px;
+    transition: opacity 0.2s $cubic, transform 0.2s $cubic;
+  }
+  &:hover {
+    &:after {
+      display: block;
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(-50%);
+    }
+  }
+}
+.bug {
+  background: #92bc2c;
+  box-shadow: 0 0 13px #92bc2c;
+}
+
+.dark {
+  background: #595761;
+  box-shadow: 0 0 13px #595761;
+}
+
+.dragon {
+  background: #0c69c8;
+  box-shadow: 0 0 13px #0c69c8;
+}
+
+.electric {
+  background: #f2d94e;
+  box-shadow: 0 0 13px #f2d94e;
+}
+
+.fire {
+  background: #fba54c;
+  box-shadow: 0 0 13px #fba54c;
+}
+
+.fairy {
+  background: #ee90e6;
+  box-shadow: 0 0 13px #ee90e6;
+}
+
+.fighting {
+  background: #d3425f;
+  box-shadow: 0 0 13px #d3425f;
+}
+
+.flying {
+  background: #a1bbec;
+  box-shadow: 0 0 13px #a1bbec;
+}
+
+.ghost {
+  background: #5f6dbc;
+  box-shadow: 0 0 13px #5f6dbc;
+}
+
+.grass {
+  background: #5fbd58;
+  box-shadow: 0 0 13px #5fbd58;
+}
+
+.ground {
+  background: #da7c4d;
+  box-shadow: 0 0 13px #da7c4d;
+}
+
+.ice {
+  background: #75d0c1;
+  box-shadow: 0 0 13px #75d0c1;
+}
+
+.normal {
+  background: #a0a29f;
+  box-shadow: 0 0 13px #a0a29f;
+}
+
+.poison {
+  background: #b763cf;
+  box-shadow: 0 0 13px #b763cf;
+}
+
+.psychic {
+  background: #fa8581;
+  box-shadow: 0 0 13px #fa8581;
+}
+
+.rock {
+  background: #c9bb8a;
+  box-shadow: 0 0 13px #c9bb8a;
+}
+
+.steel {
+  background: #5695a3;
+  box-shadow: 0 0 13px #5695a3;
+}
+
+.water {
+  background: #539ddf;
+  box-shadow: 0 0 13px #539ddf;
+}

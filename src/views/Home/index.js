@@ -5,9 +5,13 @@ import Sprites from "../../Assets/sprites.json";
 import { suggestions, suggestionsWithJustNames } from "../../Util/suggestions";
 import { Hint } from "react-autocomplete-hint";
 import { useLoading } from "../../hooks/useLoading";
-import { getName } from "../../Util/pokeapi";
+import { getName, getDesc } from "../../Util/pokeapi";
+import { Backdrop1, Backdrop2 } from "../../components/backdrops/Backdrop";
+import Box from "../../components/iBoxes/iBox";
+import Type from "../../components/Types/Type";
 
 import "./Homeindex.scss";
+import "./HomeindexMobile.scss";
 
 function forifier(pokeId) {
   pokeId = String(pokeId);
@@ -32,25 +36,16 @@ function Home() {
   let history = useHistory();
   const { startLoading, stopLoading } = useLoading();
 
-  const nextPoke = () => {
-    history.push("/" + String(parseInt(id) + 1));
-    startLoading();
-  };
-  const prevPoke = () => {
-    history.push("/" + String(parseInt(id) - 1));
-    startLoading();
-  };
-
   if (id > 898) {
-    history.push("/898");
-    id = 898;
+    history.push("/1");
+    id = 1;
     try {
       stopLoading();
     } catch (e) {}
   }
   if (id < 1) {
-    history.push("/1");
-    id = 1;
+    history.push("/898");
+    id = 898;
     try {
       stopLoading();
     } catch (e) {}
@@ -64,10 +59,26 @@ function Home() {
   const [backdropcolor, setColor] = useState("white");
   const [text, setText] = useState("");
   const [pokename, setPokename] = useState("");
+  const [desc, setDescription] = useState("");
+  const [poketypes, setPoketypes] = useState();
+  let poketype;
 
-  // useEffect(() => {
-  getName(id).then((data) => setPokename(data["name"]));
-  // }, []);
+  useEffect(() => {
+    poketype = [];
+
+    getName(id).then((data) => {
+      setPokename(data["data"]["name"]);
+      data["data"]["types"].forEach((obj, index) => {
+        poketype.push(<Type key={index} type={obj["type"]["name"]} />);
+        // console.log(obj["type"]["name"]);
+      });
+      setPoketypes(poketype);
+    });
+
+    getDesc(id).then((data) => {
+      setDescription(data["data"]["description"]);
+    });
+  }, [id]);
 
   return (
     <div className="Maincontainer">
@@ -84,29 +95,22 @@ function Home() {
       />
       <div className="Maincontainer__contentwrapper">
         <div className="Maincontainer__backdrop">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path
-              fillOpacity="0.5"
-              fill={backdropcolor}
-              d="M0,160L48,144C96,128,192,96,288,74.7C384,53,480,43,576,74.7C672,107,768,181,864,202.7C960,224,1056,192,1152,149.3C1248,107,1344,53,1392,26.7L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-            ></path>
-          </svg>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path
-              fillOpacity="1"
-              fill={backdropcolor}
-              d="M0,256L48,234.7C96,213,192,171,288,133.3C384,96,480,64,576,96C672,128,768,224,864,229.3C960,235,1056,149,1152,101.3C1248,53,1344,43,1392,37.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-            ></path>
-          </svg>
+          <Backdrop1 fill={backdropcolor} />
+          <Backdrop2 fill={backdropcolor} />
         </div>
         <div className="Maincontainer__content">
           <div className="content__details">
-            <div className="leftChevron" onClick={prevPoke} />
+            <div
+              className="leftChevron"
+              onClick={() => {
+                history.push("/" + String(parseInt(id) - 1));
+                startLoading();
+              }}
+            />
             <img
               crossOrigin="projectpokemon.org"
               ref={imgRef}
               src={googleProxyURL + encodeURIComponent(Url)}
-              // src={Url}
               alt={"Pokemon"}
               className={"content__Sprite"}
               onLoad={() => {
@@ -125,7 +129,13 @@ function Home() {
                 } catch (e) {}
               }}
             />
-            <div className="rightChevron" onClick={nextPoke} />
+            <div
+              className="rightChevron"
+              onClick={() => {
+                history.push("/" + String(parseInt(id) + 1));
+                startLoading();
+              }}
+            />
           </div>
           <div className="content__image">
             <div className="content__SearchBarBox">
@@ -165,8 +175,15 @@ function Home() {
                     }
                   }}
                 />
-                {/* {addIcon()} */}
               </Hint>
+            </div>
+            <div className="content__contentwrapper">
+              <Box maxHeight="100px">
+                <p>
+                  {desc}
+                </p>
+              </Box>
+              <Box Width="37%">{poketypes}</Box>
             </div>
           </div>
         </div>

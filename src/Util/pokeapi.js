@@ -6,11 +6,25 @@
  * https://pokeapi.co/api/v2/pokemon/105
  *
  */
+const axios = require("axios");
 
 async function getName(id) {
-  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-  let data = await response.json();
-  return data;
+  try {
+    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
 }
 
-export { getName };
+async function getDesc(id) {
+  try {
+    const response = await axios.get(`https://app.pokemon-api.xyz/pokemon/${id}`);
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export { getName, getDesc };
