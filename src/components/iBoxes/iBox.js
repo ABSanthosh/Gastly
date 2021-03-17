@@ -9,6 +9,8 @@ function Box({
   Height,
   Width,
   style,
+  padding,
+  className,
   children,
 }) {
   const [more, setMore] = useState(true);
@@ -39,12 +41,12 @@ function Box({
   containerStyle["height"] = more ? Height : height;
   containerStyle["width"] = Width;
   containerStyle["minHeight"] = minHeight;
-  // containerStyle["maxHeight"] = maxHeight;
+  containerStyle["padding"] = padding;
   try {
     Object.keys(style).forEach((key) => (containerStyle[key] = style[key]));
   } catch (e) {}
   return (
-    <div ref={node} style={containerStyle} className={"iBox--container"}>
+    <div ref={node} style={containerStyle} className={`iBox--container ${className}`}>
       <p
         className="iBox--heading"
         style={heading != "" ? { "margin-bottom": "10px" } : {}}
@@ -73,14 +75,17 @@ Box.defaultProps = {
   heading: "",
   Height: "",
   Width: "",
-  minHeight:"",
-  maxHeight:""
+  minHeight: "",
+  maxHeight: "",
+  className:"",
+  padding: "20px",
 };
 
 Box.propTypes = {
   heading: PropTypes.string,
   Height: PropTypes.string,
   Width: PropTypes.string,
+  padding: PropTypes.string,
   children: PropTypes.node,
 };
 export default Box;

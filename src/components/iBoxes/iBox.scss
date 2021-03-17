@@ -1,17 +1,23 @@
 @import "../../styles/mixins";
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
 
 .iBox {
   &--container {
-    // width: calc(100% - 40px);
     overflow: hidden;
     background-color: white;
     box-shadow: 0px 0px 4px 4px rgb(0 0 0 / 7%);
     border-radius: 15px;
-    padding: 20px;
-    padding-top: 10px;
+    // padding: 20px;
+    height: fit-content;
+    // padding-top: 5px;
     transition: height 0.5s ease;
     position: relative;
-    margin-bottom: 20px;
+
+    p {
+      font-size: 1em;
+      color: rgb(49, 49, 49);
+      font-family: "Roboto Mono", monospace;
+    }
   }
 
   &--heading {
@@ -20,7 +26,6 @@
     font-size: 1.3em;
   }
   &--contentwrapper {
-    // margin: 0px 20px;
     @include make-flex(row);
   }
 }

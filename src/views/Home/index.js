@@ -61,17 +61,23 @@ function Home() {
   const [pokename, setPokename] = useState("");
   const [desc, setDescription] = useState("");
   const [poketypes, setPoketypes] = useState();
-  let poketype;
+  const [pokeabilities, setPokeabilities] = useState();
+  let poketype, pokeability;
 
   useEffect(() => {
     poketype = [];
-
+    pokeability = [];
     getName(id).then((data) => {
       setPokename(data["data"]["name"]);
       data["data"]["types"].forEach((obj, index) => {
         poketype.push(<Type key={index} type={obj["type"]["name"]} />);
-        // console.log(obj["type"]["name"]);
       });
+      data["data"]["abilities"].forEach((obj, index) => {
+        pokeability.push(<p key={index}>{obj["ability"]["name"]}</p>);
+        pokeability.push(<p key={index}><b>&#183;</b></p>);
+      });
+      pokeability.pop();
+      setPokeabilities(pokeability);
       setPoketypes(poketype);
     });
 
@@ -178,12 +184,17 @@ function Home() {
               </Hint>
             </div>
             <div className="content__contentwrapper">
-              <Box maxHeight="100px">
-                <p>
-                  {desc}
-                </p>
+              <Box maxHeight="100px" className="content__desc">
+                <p>{desc}</p>
               </Box>
-              <Box Width="37%">{poketypes}</Box>
+              <div className="content__row">
+                <Box Width="100%" padding="13px 0px">
+                  {poketypes}
+                </Box>
+                <Box padding="11.5px" heading="Abilities">
+                  {pokeabilities}
+                </Box>
+              </div>
             </div>
           </div>
         </div>

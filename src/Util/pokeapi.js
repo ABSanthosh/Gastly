@@ -20,7 +20,7 @@ async function getName(id) {
 
 async function getDesc(id) {
   try {
-    const response = await axios.get(`https://app.pokemon-api.xyz/pokemon/${id}`);
+    const response = await axios.get(`https://app.pokemon-api.xyz/pokemon/ ${id}`);
     return response;
   } catch (error) {
     console.error(error);
