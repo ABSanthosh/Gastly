@@ -1,14 +1,6 @@
-/**
- * Name
- * Stats
- * type
- * Moves (in an accordian)
- * https://pokeapi.co/api/v2/pokemon/105
- *
- */
 const axios = require("axios");
 
-async function getName(id) {
+async function getData(id) {
   try {
     const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
 
@@ -20,11 +12,13 @@ async function getName(id) {
 
 async function getDesc(id) {
   try {
-    const response = await axios.get(`https://app.pokemon-api.xyz/pokemon/ ${id}`);
+    const response = await axios.get(
+      `https://app.pokemon-api.xyz/pokemon/${id}`
+    );
     return response;
   } catch (error) {
     console.error(error);
   }
 }
 
-export { getName, getDesc };
+export { getData, getDesc };

@@ -1,6 +1,8 @@
-import PropTypes from "prop-types";
-import { useState, useRef, useEffect } from "react";
 import "./iBox.scss";
+
+import { useEffect, useRef, useState } from "react";
+
+import PropTypes from "prop-types";
 
 function Box({
   heading,
@@ -49,7 +51,7 @@ function Box({
     <div ref={node} style={containerStyle} className={`iBox--container ${className}`}>
       <p
         className="iBox--heading"
-        style={heading != "" ? { "margin-bottom": "10px" } : {}}
+        style={heading != "" ? { "marginBottom": "10px" } : {}}
       >
         {heading}
       </p>
