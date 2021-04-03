@@ -15,7 +15,6 @@ function suggestions() {
       label: parseInt(obj) + " " + Sprites[obj]["Name"],
     });
   }
-  // console.log(names)
   return names;
 }
 
@@ -29,8 +28,6 @@ function suggestionsWithJustNames() {
   for (var obj in Sprites) {
     justNames.push(parseInt(obj)+" "+Sprites[obj]["Name"]);
   }
-
-  //   console.log(justNames)
   return justNames;
 }
 

@@ -1,7 +1,6 @@
-import "./Homeindex.scss";
-import "./HomeindexMobile.scss";
+import "./index.scss";
 
-import { getDesc, getName } from "../../Util/pokeapi";
+import { getData, getDesc } from "../../Util/pokeapi";
 import { suggestions, suggestionsWithJustNames } from "../../Util/suggestions";
 import { useEffect, useRef, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
@@ -12,24 +11,9 @@ import ColorThief from "../../../node_modules/colorthief";
 import { Hint } from "react-autocomplete-hint";
 import Sprites from "../../Assets/sprites.json";
 import Type from "../../components/Types/Type";
+import {forifier} from '../../Util/forifier'
+import {rgbToHex} from '../../Util/rgbToHex'
 import { useLoading } from "../../hooks/useLoading";
-
-function forifier(pokeId) {
-  pokeId = String(pokeId);
-  while (pokeId.length < 4) {
-    pokeId = "0" + pokeId;
-  }
-  return pokeId;
-}
-
-const rgbToHex = (r, g, b) =>
-  "#" +
-  [r, g, b]
-    .map((x) => {
-      const hex = x.toString(16);
-      return hex.length === 1 ? "0" + hex : hex;
-    })
-    .join("");
 
 function Home() {
   let { id } = useParams();
@@ -68,7 +52,7 @@ function Home() {
   useEffect(() => {
     poketype = [];
     pokeability = [];
-    getName(id).then((data) => {
+    getData(id).then((data) => {
       setPokename(data["data"]["name"]);
       data["data"]["types"].forEach((obj, index) => {
         poketype.push(<Type key={index} type={obj["type"]["name"]} />);
@@ -76,7 +60,7 @@ function Home() {
       data["data"]["abilities"].forEach((obj, index) => {
         pokeability.push(<p key={index}>{obj["ability"]["name"]}</p>);
         pokeability.push(
-          <p key={index}>
+          <p key={index + data["data"]["abilities"].length}>
             <b>&#183;</b>
           </p>
         );
@@ -93,17 +77,6 @@ function Home() {
 
   return (
     <div className="Maincontainer">
-      <link
-        type="text/css"
-        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css?v=2214135"
-        rel="stylesheet"
-      />
-      <link
-        rel="stylesheet"
-        href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-        crossOrigin="anonymous"
-      />
       <div className="Maincontainer__contentwrapper">
         <div className="Maincontainer__backdrop">
           <Backdrop fill={backdropcolor} />
