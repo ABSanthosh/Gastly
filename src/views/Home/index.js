@@ -1,17 +1,18 @@
-import { useParams, useHistory } from "react-router-dom";
-import { useRef, useState, useEffect } from "react";
-import ColorThief from "../../../node_modules/colorthief";
-import Sprites from "../../Assets/sprites.json";
-import { suggestions, suggestionsWithJustNames } from "../../Util/suggestions";
-import { Hint } from "react-autocomplete-hint";
-import { useLoading } from "../../hooks/useLoading";
-import { getName, getDesc } from "../../Util/pokeapi";
-import { Backdrop1, Backdrop2 } from "../../components/backdrops/Backdrop";
-import Box from "../../components/iBoxes/iBox";
-import Type from "../../components/Types/Type";
-
 import "./Homeindex.scss";
 import "./HomeindexMobile.scss";
+
+import { getDesc, getName } from "../../Util/pokeapi";
+import { suggestions, suggestionsWithJustNames } from "../../Util/suggestions";
+import { useEffect, useRef, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
+
+import Backdrop from "../../components/backdrops/Backdrop";
+import Box from "../../components/iBoxes/iBox";
+import ColorThief from "../../../node_modules/colorthief";
+import { Hint } from "react-autocomplete-hint";
+import Sprites from "../../Assets/sprites.json";
+import Type from "../../components/Types/Type";
+import { useLoading } from "../../hooks/useLoading";
 
 function forifier(pokeId) {
   pokeId = String(pokeId);
@@ -74,7 +75,11 @@ function Home() {
       });
       data["data"]["abilities"].forEach((obj, index) => {
         pokeability.push(<p key={index}>{obj["ability"]["name"]}</p>);
-        pokeability.push(<p key={index}><b>&#183;</b></p>);
+        pokeability.push(
+          <p key={index}>
+            <b>&#183;</b>
+          </p>
+        );
       });
       pokeability.pop();
       setPokeabilities(pokeability);
@@ -101,8 +106,7 @@ function Home() {
       />
       <div className="Maincontainer__contentwrapper">
         <div className="Maincontainer__backdrop">
-          <Backdrop1 fill={backdropcolor} />
-          <Backdrop2 fill={backdropcolor} />
+          <Backdrop fill={backdropcolor} />
         </div>
         <div className="Maincontainer__content">
           <div className="content__details">
