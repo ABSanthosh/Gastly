@@ -1,6 +1,5 @@
 import LoadingBoxes from "../components/LoadingBoxes/LadingBoxes";
 import ReactDOM from "react-dom";
-import { overflow } from "../Util/overflow";
 
 export function useLoading() {
   const startLoading = () => {

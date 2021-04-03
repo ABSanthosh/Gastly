@@ -7,12 +7,11 @@ import { useHistory, useParams } from "react-router-dom";
 
 import Backdrop from "../../components/backdrops/Backdrop";
 import Box from "../../components/iBoxes/iBox";
-import ColorThief from "../../../node_modules/colorthief";
 import { Hint } from "react-autocomplete-hint";
+import PokeSprite from "./components/PokeSprite/PokeSprite";
 import Sprites from "../../Assets/sprites.json";
 import Type from "../../components/Types/Type";
-import {forifier} from '../../Util/forifier'
-import {rgbToHex} from '../../Util/rgbToHex'
+import { forifier } from "../../Util/forifier";
 import { useLoading } from "../../hooks/useLoading";
 
 function Home() {
@@ -73,6 +72,7 @@ function Home() {
     getDesc(id).then((data) => {
       setDescription(data["data"]["description"]);
     });
+    // startLoading();
   }, [id]);
 
   return (
@@ -82,7 +82,7 @@ function Home() {
           <Backdrop fill={backdropcolor} />
         </div>
         <div className="Maincontainer__content">
-          <div className="content__details">
+          <div className="content__image">
             <div
               className="leftChevron"
               onClick={() => {
@@ -90,28 +90,7 @@ function Home() {
                 startLoading();
               }}
             />
-            <img
-              crossOrigin="projectpokemon.org"
-              ref={imgRef}
-              src={googleProxyURL + encodeURIComponent(Url)}
-              alt={"Pokemon"}
-              className={"content__Sprite"}
-              onLoad={() => {
-                const colorThief = new ColorThief();
-                const img = imgRef.current;
-                setColor(
-                  rgbToHex(
-                    colorThief.getColor(img)[0],
-                    colorThief.getColor(img)[1],
-                    colorThief.getColor(img)[2]
-                  )
-                );
-                try {
-                  stopLoading();
-                  document.querySelector(".content__inputBox").blur();
-                } catch (e) {}
-              }}
-            />
+            <PokeSprite imgRef={imgRef} Url={Url} setColor={setColor} />
             <div
               className="rightChevron"
               onClick={() => {
@@ -120,7 +99,7 @@ function Home() {
               }}
             />
           </div>
-          <div className="content__image">
+          <div className="content__details">
             <div className="content__SearchBarBox">
               <span className="fa fa-search"></span>
               <div className="content__pokemonName">{pokename}</div>
