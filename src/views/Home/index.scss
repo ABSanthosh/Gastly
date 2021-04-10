@@ -1,6 +1,7 @@
 @import "../../styles/mixins";
 @import url("https://use.fontawesome.com/29d5099fb7.js");
 @import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
 
 $font: "Arvo", serif;
 
@@ -116,19 +117,78 @@ $font: "Arvo", serif;
       &__contentwrapper {
         position: relative;
         margin: 25px 22px 30px 25px;
-        display: grid;
-        grid-gap: 15px;
+        @include make-flex($align: unset, $just: unset);
+
         overflow-y: scroll;
         padding-top: 5px;
         height: calc(100% - 160px);
-        grid-template-rows: 1fr 1fr 1fr 1fr;
       }
       &__row {
-        display: grid;
-        width: 100%;
-        column-gap: 15px;
-        margin: auto;
-        grid-template-columns: 40% 55%;
+        @include make-flex(row);
+
+        // Below for sprite variations
+        .fa {
+          color: #cacaca;
+          font-size: 2.5em;
+          margin: auto;
+          cursor: pointer;
+
+          &-g {
+            font-family: "Roboto", sans-serif;
+            &:hover,
+            &__OnFocus {
+              color: #e45353;
+            }
+            &__OffFocus {
+              color: #cacaca;
+            }
+          }
+          &-star {
+            font-size: 2.1em;
+            &:hover,
+            &__OnFocus {
+              color: #f0f051;
+            }
+
+            &__OffFocus {
+              color: #cacaca;
+            }
+          }
+          &-mars {
+            &:hover,
+            &__OnFocus {
+              color: #53cee4;
+            }
+            &__OffFocus {
+              color: #cacaca;
+            }
+          }
+          &-venus {
+            &:hover,
+            &__OnFocus {
+              color: #e453d1;
+            }
+            &__OffFocus {
+              color: #cacaca;
+            }
+          }
+        }
+        .disabled {
+          color: #525252;
+          &:hover {
+            color: #525252;
+            cursor: unset;
+          }
+          // &::after {
+          //   content: "X";
+          //   position: absolute;
+          //   color: #e45353;
+          //   font-size: 1.3em;
+          //   left: 25%;
+          //   top: 0;
+          // }
+        }
+        // Sprite variations end
       }
     }
   }
@@ -181,18 +241,21 @@ $font: "Arvo", serif;
           width: 100%;
           border-radius: unset;
         }
+        &__image {
+          .leftChevron,
+          .rightChevron {
+            position: absolute;
+            // height: 100px;
+            // background-color: aqua;
+          }
+          .leftChevron {
+            left: 5px;
+          }
+          .rightChevron {
+            right: 5px;
+          }
+        }
       }
     }
   }
-  // #loading-dock {
-  //   .loader {
-  //     height: 100vh;
-  //     width: 100vw;
-  //     @include make-flex();
-  //     border-radius: unset;
-  //     img {
-  //       height: 50%;
-  //     }
-  //   }
-  // }
 }

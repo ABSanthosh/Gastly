@@ -6,7 +6,6 @@ async function getData(id) {
 
     return response;
   } catch (error) {
-    console.error(error);
   }
 }
 
@@ -17,7 +16,6 @@ async function getDesc(id) {
     );
     return response;
   } catch (error) {
-    console.error(error);
   }
 }
 
