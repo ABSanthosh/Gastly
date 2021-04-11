@@ -39,9 +39,9 @@
             "NormalMale": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0003_000_md_n_00000000_f_n.png",
             "ShinyMale": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0003_000_md_n_00000000_f_r.png",
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0003_000_mf_g_00000000_f_n.png",
-            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0003_000_mf_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0003_000_mf_g_00000000_f_r.png",
-            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0003_000_mf_g_00000000_f_r.png"
+            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0003_001_mf_n_00000000_f_n.png",
+            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0003_001_mf_n_00000000_f_r.png"
         }
     },
     "0004": {
@@ -80,9 +80,9 @@
                 "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0006_002_mf_n_00000000_f_r.png"
             ],
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0006_000_mf_g_00000000_f_n.png",
-            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0006_000_mf_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0006_000_mf_g_00000000_f_r.png",
-            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0006_000_mf_g_00000000_f_r.png"
+            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0006_000_mf_n_00000000_f_n.png",
+            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0006_000_mf_n_00000000_f_r.png"
         }
     },
     "0007": {
@@ -119,9 +119,9 @@
                 "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0009_001_mf_n_00000000_f_r.png"
             ],
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0009_000_mf_g_00000000_f_n.png",
-            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0009_000_mf_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0009_000_mf_g_00000000_f_r.png",
-            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0009_000_mf_g_00000000_f_r.png"
+            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0009_000_mf_n_00000000_f_n.png",
+            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0009_000_mf_n_00000000_f_r.png"
         }
     },
     "0010": {
@@ -162,9 +162,7 @@
             "NormalMale": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0012_000_md_n_00000000_f_n.png",
             "ShinyMale": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0012_000_md_n_00000000_f_r.png",
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0012_000_mf_g_00000000_f_n.png",
-            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0012_000_mf_g_00000000_f_n.png",
-            "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0012_000_mf_g_00000000_f_r.png",
-            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0012_000_mf_g_00000000_f_r.png"
+            "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0012_000_mf_g_00000000_f_r.png"
         }
     },
     "0013": {
@@ -347,9 +345,7 @@
             "NormalMale": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0025_000_md_n_00000000_f_n.png",
             "ShinyMale": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0025_000_md_n_00000000_f_r.png",
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0025_000_mf_g_00000000_f_n.png",
-            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0025_000_mf_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0025_000_mf_g_00000000_f_r.png",
-            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0025_000_mf_g_00000000_f_r.png",
             "MaleOnlyNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0025_001_mo_n_00000000_f_n.png"
         }
     },
@@ -689,9 +685,9 @@
                 "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0052_002_mf_n_00000000_f_r.png"
             ],
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0052_000_mf_g_00000000_f_n.png",
-            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0052_000_mf_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0052_000_mf_g_00000000_f_r.png",
-            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0052_000_mf_g_00000000_f_r.png"
+            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0052_000_mf_n_00000000_f_n.png",
+            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0052_000_mf_n_00000000_f_r.png"
         }
     },
     "0053": {
@@ -883,9 +879,9 @@
                 "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0068_000_mf_n_00000000_f_r.png"
             ],
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0068_000_mf_g_00000000_f_n.png",
-            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0068_000_mf_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0068_000_mf_g_00000000_f_r.png",
-            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0068_000_mf_g_00000000_f_r.png"
+            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0068_000_mf_n_00000000_f_n.png",
+            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0068_000_mf_n_00000000_f_r.png"
         }
     },
     "0069": {
@@ -1203,9 +1199,9 @@
                 "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0094_001_mf_n_00000000_f_r.png"
             ],
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0094_000_mf_g_00000000_f_n.png",
-            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0094_000_mf_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0094_000_mf_g_00000000_f_r.png",
-            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0094_000_mf_g_00000000_f_r.png"
+            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0094_000_mf_n_00000000_f_n.png",
+            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0094_000_mf_n_00000000_f_r.png"
         }
     },
     "0095": {
@@ -1266,9 +1262,9 @@
                 "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0099_000_mf_n_00000000_f_r.png"
             ],
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0099_000_mf_g_00000000_f_n.png",
-            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0099_000_mf_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0099_000_mf_g_00000000_f_r.png",
-            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0099_000_mf_g_00000000_f_r.png"
+            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0099_000_mf_n_00000000_f_n.png",
+            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0099_000_mf_n_00000000_f_r.png"
         }
     },
     "0100": {
@@ -1662,9 +1658,9 @@
                 "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0131_000_mf_n_00000000_f_r.png"
             ],
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0131_000_mf_g_00000000_f_n.png",
-            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0131_000_mf_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0131_000_mf_g_00000000_f_r.png",
-            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0131_000_mf_g_00000000_f_r.png"
+            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0131_000_mf_n_00000000_f_n.png",
+            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0131_000_mf_n_00000000_f_r.png"
         }
     },
     "0132": {
@@ -1693,9 +1689,7 @@
             "NormalMale": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0133_000_md_n_00000000_f_n.png",
             "ShinyMale": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0133_000_md_n_00000000_f_r.png",
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0133_000_mf_g_00000000_f_n.png",
-            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0133_000_mf_g_00000000_f_n.png",
-            "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0133_000_mf_g_00000000_f_r.png",
-            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0133_000_mf_g_00000000_f_r.png"
+            "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0133_000_mf_g_00000000_f_r.png"
         }
     },
     "0134": {
@@ -1808,9 +1802,9 @@
                 "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0143_000_mf_n_00000000_f_r.png"
             ],
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0143_000_mf_g_00000000_f_n.png",
-            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0143_000_mf_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0143_000_mf_g_00000000_f_r.png",
-            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0143_000_mf_g_00000000_f_r.png"
+            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0143_000_mf_n_00000000_f_n.png",
+            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0143_000_mf_n_00000000_f_r.png"
         }
     },
     "0144": {
@@ -6936,9 +6930,9 @@
                 "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0569_000_mf_n_00000000_f_r.png"
             ],
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0569_000_mf_g_00000000_f_n.png",
-            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0569_000_mf_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0569_000_mf_g_00000000_f_r.png",
-            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0569_000_mf_g_00000000_f_r.png"
+            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0569_000_mf_n_00000000_f_n.png",
+            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0569_000_mf_n_00000000_f_r.png"
         }
     },
     "0570": {
@@ -9725,9 +9719,9 @@
                 "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0812_000_mf_n_00000000_f_r.png"
             ],
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0812_000_mf_g_00000000_f_n.png",
-            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0812_000_mf_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0812_000_mf_g_00000000_f_r.png",
-            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0812_000_mf_g_00000000_f_r.png"
+            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0812_000_mf_n_00000000_f_n.png",
+            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0812_000_mf_n_00000000_f_r.png"
         }
     },
     "0813": {
@@ -9762,9 +9756,9 @@
                 "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0815_000_mf_n_00000000_f_r.png"
             ],
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0815_000_mf_g_00000000_f_n.png",
-            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0815_000_mf_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0815_000_mf_g_00000000_f_r.png",
-            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0815_000_mf_g_00000000_f_r.png"
+            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0815_000_mf_n_00000000_f_n.png",
+            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0815_000_mf_n_00000000_f_r.png"
         }
     },
     "0816": {
@@ -9799,9 +9793,9 @@
                 "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0818_000_mf_n_00000000_f_r.png"
             ],
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0818_000_mf_g_00000000_f_n.png",
-            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0818_000_mf_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0818_000_mf_g_00000000_f_r.png",
-            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0818_000_mf_g_00000000_f_r.png"
+            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0818_000_mf_n_00000000_f_n.png",
+            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0818_000_mf_n_00000000_f_r.png"
         }
     },
     "0819": {
@@ -9858,9 +9852,9 @@
                 "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0823_000_mf_n_00000000_f_r.png"
             ],
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0823_000_mf_g_00000000_f_n.png",
-            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0823_000_mf_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0823_000_mf_g_00000000_f_r.png",
-            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0823_000_mf_g_00000000_f_r.png"
+            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0823_000_mf_n_00000000_f_n.png",
+            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0823_000_mf_n_00000000_f_r.png"
         }
     },
     "0824": {
@@ -9895,9 +9889,9 @@
                 "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0826_000_mf_n_00000000_f_r.png"
             ],
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0826_000_mf_g_00000000_f_n.png",
-            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0826_000_mf_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0826_000_mf_g_00000000_f_r.png",
-            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0826_000_mf_g_00000000_f_r.png"
+            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0826_000_mf_n_00000000_f_n.png",
+            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0826_000_mf_n_00000000_f_r.png"
         }
     },
     "0827": {
@@ -9987,9 +9981,9 @@
                 "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0834_000_mf_n_00000000_f_r.png"
             ],
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0834_000_mf_g_00000000_f_n.png",
-            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0834_000_mf_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0834_000_mf_g_00000000_f_r.png",
-            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0834_000_mf_g_00000000_f_r.png"
+            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0834_000_mf_n_00000000_f_n.png",
+            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0834_000_mf_n_00000000_f_r.png"
         }
     },
     "0835": {
@@ -10046,9 +10040,9 @@
                 "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0839_000_mf_n_00000000_f_r.png"
             ],
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0839_000_mf_g_00000000_f_n.png",
-            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0839_000_mf_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0839_000_mf_g_00000000_f_r.png",
-            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0839_000_mf_g_00000000_f_r.png"
+            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0839_000_mf_n_00000000_f_n.png",
+            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0839_000_mf_n_00000000_f_r.png"
         }
     },
     "0840": {
@@ -10072,9 +10066,9 @@
                 "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0841_000_mf_n_00000000_f_r.png"
             ],
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0841_000_mf_g_00000000_f_n.png",
-            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0841_000_mf_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0841_000_mf_g_00000000_f_r.png",
-            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0841_000_mf_g_00000000_f_r.png"
+            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0841_000_mf_n_00000000_f_n.png",
+            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0841_000_mf_n_00000000_f_r.png"
         }
     },
     "0842": {
@@ -10109,9 +10103,9 @@
                 "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0844_000_mf_n_00000000_f_r.png"
             ],
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0844_000_mf_g_00000000_f_n.png",
-            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0844_000_mf_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0844_000_mf_g_00000000_f_r.png",
-            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0844_000_mf_g_00000000_f_r.png"
+            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0844_000_mf_n_00000000_f_n.png",
+            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0844_000_mf_n_00000000_f_r.png"
         }
     },
     "0845": {
@@ -10174,9 +10168,9 @@
                 "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0849_001_mf_n_00000000_f_r.png"
             ],
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0849_000_mf_g_00000000_f_n.png",
-            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0849_000_mf_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0849_000_mf_g_00000000_f_r.png",
-            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0849_000_mf_g_00000000_f_r.png"
+            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0849_000_mf_n_00000000_f_n.png",
+            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0849_000_mf_n_00000000_f_r.png"
         }
     },
     "0850": {
@@ -10200,9 +10194,9 @@
                 "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0851_000_mf_n_00000000_f_r.png"
             ],
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0851_000_mf_g_00000000_f_n.png",
-            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0851_000_mf_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0851_000_mf_g_00000000_f_r.png",
-            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0851_000_mf_g_00000000_f_r.png"
+            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0851_000_mf_n_00000000_f_n.png",
+            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0851_000_mf_n_00000000_f_r.png"
         }
     },
     "0852": {
@@ -10279,9 +10273,9 @@
                 "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0858_000_fo_n_00000000_f_r.png"
             ],
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0858_000_fo_g_00000000_f_n.png",
-            "FemaleOnlyNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0858_000_fo_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0858_000_fo_g_00000000_f_r.png",
-            "FemaleOnlyShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0858_000_fo_g_00000000_f_r.png"
+            "FemaleOnlyNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0858_000_fo_n_00000000_f_n.png",
+            "FemaleOnlyShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0858_000_fo_n_00000000_f_r.png"
         }
     },
     "0859": {
@@ -10316,9 +10310,9 @@
                 "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0861_000_mo_n_00000000_f_r.png"
             ],
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0861_000_mo_g_00000000_f_n.png",
-            "MaleOnlyNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0861_000_mo_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0861_000_mo_g_00000000_f_r.png",
-            "MaleOnlyShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0861_000_mo_g_00000000_f_r.png"
+            "MaleOnlyNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0861_000_mo_n_00000000_f_n.png",
+            "MaleOnlyShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0861_000_mo_n_00000000_f_r.png"
         }
     },
     "0862": {
@@ -10476,9 +10470,9 @@
                 "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0869_008_fo_n_00000006_f_n.png"
             ],
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0869_000_fo_g_00000000_f_n.png",
-            "FemaleOnlyNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0869_000_fo_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0869_000_fo_g_00000000_f_r.png",
-            "FemaleOnlyShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0869_000_fo_g_00000000_f_r.png"
+            "FemaleOnlyNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0869_000_fo_n_00000000_f_n.png",
+            "FemaleOnlyShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0869_000_fo_n_00000000_f_r.png"
         }
     },
     "0870": {
@@ -10597,9 +10591,9 @@
                 "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0879_000_mf_n_00000000_f_r.png"
             ],
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0879_000_mf_g_00000000_f_n.png",
-            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0879_000_mf_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0879_000_mf_g_00000000_f_r.png",
-            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0879_000_mf_g_00000000_f_r.png"
+            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0879_000_mf_n_00000000_f_n.png",
+            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0879_000_mf_n_00000000_f_r.png"
         }
     },
     "0880": {
@@ -10652,9 +10646,9 @@
                 "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0884_000_mf_n_00000000_f_r.png"
             ],
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0884_000_mf_g_00000000_f_n.png",
-            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0884_000_mf_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0884_000_mf_g_00000000_f_r.png",
-            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0884_000_mf_g_00000000_f_r.png"
+            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0884_000_mf_n_00000000_f_n.png",
+            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0884_000_mf_n_00000000_f_r.png"
         }
     },
     "0885": {
@@ -10748,9 +10742,9 @@
                 "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0892_001_mf_n_00000000_f_r.png"
             ],
             "GigaNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0892_000_mf_g_00000000_f_n.png",
-            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0892_000_mf_g_00000000_f_n.png",
             "GigaShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0892_000_mf_g_00000000_f_r.png",
-            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0892_000_mf_g_00000000_f_r.png"
+            "NoGenNormal": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0892_000_mf_n_00000000_f_n.png",
+            "NoGenShiny": "https://projectpokemon.org/images/sprites-models/homeimg/poke_capture_0892_000_mf_n_00000000_f_r.png"
         }
     },
     "0893": {
