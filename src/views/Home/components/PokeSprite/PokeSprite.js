@@ -9,6 +9,7 @@ function PokeSprite({ imgRef, Url, setColor }) {
     "https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&refresh=2592000&url=";
 
   const { stopLoading } = useLoading();
+
   return (
     <img
       crossOrigin="projectpokemon.org"
