@@ -1,4 +1,5 @@
 import "./Types.scss";
+
 import Bug from "./Asset/bug.svg";
 import Dark from "./Asset/dark.svg";
 import Dragon from "./Asset/dragon.svg";
@@ -42,11 +43,10 @@ function Type({ type }) {
 
   return (
     <div
-      className="tooltip--bottom"
       data-tooltip={type.charAt(0).toUpperCase() + type.slice(1)}
-      className={"tooltip--bottom Type " + type}
+      className={"tooltip--bottom Type " + type.toLowerCase()}
     >
-      <img src={pokeImportList[type]} />
+      <img src={pokeImportList[type.toLowerCase()]} />
     </div>
   );
 }

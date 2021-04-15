@@ -1,4 +1,4 @@
-import Sprites from "../Assets/sprites.json";
+import Sprites from "../Assets/FromOldJson.json";
 
 function suggestions() {
   let names = [];

@@ -1,15 +1,14 @@
 import "./index.scss";
 
-import { getData, getDesc } from "../../Util/pokeapi";
 import { useEffect, useRef, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
 import Backdrop from "../../components/backdrops/Backdrop";
 import Box from "../../components/iBoxes/iBox";
 import HintBox from "./components/HintBox/HintBox";
+import { InitialConditions } from "../../Util/SpriteConditions";
 import NewSprites from "../../Assets/FromOldJson.json";
 import PokeSprite from "./components/PokeSprite/PokeSprite";
-import Sprites from "../../Assets/sprites.json";
 import Type from "../../components/Types/Type";
 import { forifier } from "../../Util/forifier";
 import { useLoading } from "../../hooks/useLoading";
@@ -42,122 +41,44 @@ function Home() {
   const [desc, setDescription] = useState("");
   const [Url, setUrl] = useState();
   const [iconFocus, seticonFocus] = useState([
-    "OffFocus",
-    "OffFocus",
-    "OffFocus",
+    "OffFocus disabled",
+    "OffFocus disabled",
+    "OffFocus disabled",
     "OffFocus",
   ]);
   const [poketypes, setPoketypes] = useState();
   const [pokeabilities, setPokeabilities] = useState();
   let poketype, pokeability;
 
-
-// NormalMale
-// ShinyMale
-
-// NormalFemale
-// ShinyFemale
-
-// GigaNormal
-// GigaShiny
-
-// NoGenNormal
-// NoGenShiny
-
-// MaleOnlyNormal
-// MaleOnlyShiny
-
-// FemaleOnlyNormal
-// FemaleOnlyShiny
-
-// UnknownNormal
-// UnknownShiny
-
-
   useEffect(() => {
+    let pokemonDetails = NewSprites[forifier(id)];
     poketype = [];
     pokeability = [];
-    getData(id)
-      .then((data) => {
-        setPokename(data["data"]["name"]);
-        data["data"]["types"].forEach((obj, index) => {
-          poketype.push(<Type key={index} type={obj["type"]["name"]} />);
-        });
-        data["data"]["abilities"].forEach((obj, index) => {
-          pokeability.push(<p key={index}>{obj["ability"]["name"]}</p>);
-          pokeability.push(
-            <p key={index + data["data"]["abilities"].length}>
-              <b>&#183;</b>
-            </p>
-          );
-        });
-        pokeability.pop();
-        setPokeabilities(pokeability);
-        setPoketypes(poketype);
-        getDesc(id).then((data) => {
-          setDescription(data["data"]["description"]);
-        });
-      })
-      .catch((error) => {
-        getDesc(id).then((data) => {
-          setPokename(data["data"]["name"]["english"]);
-          setDescription(data["data"]["description"]);
-          data["data"]["type"].forEach((obj, index) => {
-            poketype.push(<Type key={index} type={obj.toLowerCase()} />);
-          });
-          data["data"]["profile"]["ability"].forEach((obj, index) => {
-            pokeability.push(<p key={index}>{obj[0]}</p>);
-            pokeability.push(
-              <p key={index + data["data"]["profile"]["ability"].length}>
-                <b>&#183;</b>
-              </p>
-            );
-          });
-          pokeability.pop();
-          setPokeabilities(pokeability);
-          setPoketypes(poketype);
-        });
-      });
 
-    // setUrl(Sprites[forifier(id)]["Sprites"][0]);
-    setUrl(
-      NewSprites[forifier(id)]["Sprites"][
-        Object.keys(NewSprites[forifier(id)]["Sprites"])[1]
-      ]
-    );
+    pokemonDetails["Types"].forEach((obj, index) => {
+      poketype.push(<Type key={index} type={obj} />);
+    });
+    pokemonDetails["Ability"].forEach((obj, index) => {
+      pokeability.push(<p key={index}>{obj}</p>);
+      pokeability.push(
+        <p key={index + 500}>
+          <b>&#183;</b>
+        </p>
+      );
+    });
+    pokeability.pop();
 
-    // Make it a new function in seperate Util file
-    // TODO: Reloading removes the "disabled" status from variation symbols because of the "[id]" in use effect
+    setPokename(pokemonDetails["Name"]);
+    setPoketypes(poketype);
+    setPokeabilities(pokeability);
+    setDescription(pokemonDetails["Description"]);
 
-    let SpriteJson = Object.keys(NewSprites[forifier(id)]["Sprites"]);
-    
-    if (
-      (SpriteJson.includes("NoGenNormal") ||
-        SpriteJson.includes("NoGenShiny") ||
-        SpriteJson.includes("UnknownNormal") ||
-        SpriteJson.includes("UnknownShiny")) &&
-      SpriteJson.length === 3
-    ) {
-      seticonFocus([
-        "OffFocus",
-        "OffFocus disabled",
-        "OffFocus disabled",
-        "OffFocus disabled",
-      ]);
-    } else if (
-      SpriteJson.includes("GigaShiny") === false ||
-      SpriteJson.includes("GigaNormal") === false
-    ) {
-      seticonFocus([
-        iconFocus[0],
-        iconFocus[1],
-        iconFocus[2],
-        "OffFocus disabled",
-      ]);
-    }
+    InitialConditions(id, setUrl, seticonFocus, iconFocus);
   }, [id]);
 
   useEffect(() => {
+    let SpriteJson = Object.keys(NewSprites[forifier(id)]["Sprites"]);
+    console.log(iconFocus);
     if (
       iconFocus[0].includes("OnFocus") &&
       iconFocus[1].includes("OnFocus") &&
@@ -210,7 +131,7 @@ function Home() {
     ) {
       if ("NoGenShiny" in NewSprites[forifier(id)]["Sprites"]) {
         setUrl(NewSprites[forifier(id)]["Sprites"]["NoGenShiny"]);
-      }else if ("UnknownShiny" in NewSprites[forifier(id)]["Sprites"]) {
+      } else if ("UnknownShiny" in NewSprites[forifier(id)]["Sprites"]) {
         setUrl(NewSprites[forifier(id)]["Sprites"]["UnknownShiny"]);
       }
     } else if (
@@ -221,10 +142,10 @@ function Home() {
     ) {
       if ("NoGenNormal" in NewSprites[forifier(id)]["Sprites"]) {
         setUrl(NewSprites[forifier(id)]["Sprites"]["NoGenNormal"]);
-      }else if ("UnknownNormal" in NewSprites[forifier(id)]["Sprites"]) {
+      } else if ("UnknownNormal" in NewSprites[forifier(id)]["Sprites"]) {
         setUrl(NewSprites[forifier(id)]["Sprites"]["UnknownNormal"]);
       }
-    }else if (
+    } else if (
       iconFocus[0].includes("OffFocus") &&
       iconFocus[1].includes("OffFocus") &&
       iconFocus[2].includes("OffFocus") &&
@@ -233,7 +154,7 @@ function Home() {
       if ("GigaNormal" in NewSprites[forifier(id)]["Sprites"]) {
         setUrl(NewSprites[forifier(id)]["Sprites"]["GigaNormal"]);
       }
-    }else if (
+    } else if (
       iconFocus[0].includes("OnFocus") &&
       iconFocus[1].includes("OffFocus") &&
       iconFocus[2].includes("OffFocus") &&
@@ -276,7 +197,7 @@ function Home() {
               <HintBox text={text} setText={setText} />
             </div>
             <div className="content__contentwrapper">
-              <Box maxHeight="100px" className="content__desc">
+              <Box Height="100px" className="content__desc">
                 <p>{desc}</p>
               </Box>
               <div className="content__row">
@@ -315,12 +236,45 @@ function Home() {
                       // startLoading();
                       if (!iconFocus[1].includes("disabled")) {
                         if (iconFocus[1].includes("OffFocus")) {
+                          console.log("Fallen in 1");
                           seticonFocus([
                             iconFocus[0],
                             "OnFocus",
                             iconFocus[2],
                             iconFocus[3],
                           ]);
+                          if (!iconFocus[3].includes("disabled")) {
+                            if (
+                              // If Giga is active and Pokemon has _mf_ variation
+                              // turn off giga when Male variation is active
+                              iconFocus[3].includes("OnFocus") &&
+                              NewSprites[forifier(id)]["Sprites"][
+                                "GigaNormal"
+                              ].includes("_mf_")
+                            ) {
+                              seticonFocus([
+                                iconFocus[0],
+                                "OnFocus",
+                                iconFocus[2],
+                                "OffFocus",
+                              ]);
+                            } else {
+                              seticonFocus([
+                                iconFocus[0],
+                                "OnFocus",
+                                iconFocus[2],
+                                "OffFocus",
+                              ]);
+                            }
+                          }
+                          if (iconFocus[2].includes("OnFocus")) {
+                            seticonFocus([
+                              iconFocus[0],
+                              "OnFocus",
+                              "OffFocus",
+                              iconFocus[3],
+                            ]);
+                          }
                         } else {
                           seticonFocus([
                             iconFocus[0],
@@ -340,16 +294,46 @@ function Home() {
                       if (!iconFocus[2].includes("disabled")) {
                         if (iconFocus[2].includes("OffFocus")) {
                           seticonFocus([
-                            iconFocus[0],
-                            iconFocus[1],
-                            "OnFocus",
-                            iconFocus[3],
-                          ]);
+                              iconFocus[0],
+                              iconFocus[1],
+                              "OnFocus",
+                              iconFocus[3],
+                            ]);
+                          if (!iconFocus[3].includes("disabled")) {
+                            if (
+                              iconFocus[3].includes("OnFocus") &&
+                              NewSprites[forifier(id)]["Sprites"][
+                                "GigaNormal"
+                              ].includes("_mf_")
+                            ) {
+                              seticonFocus([
+                                iconFocus[0],
+                                iconFocus[1],
+                                "OnFocus",
+                                "OffFocus",
+                              ]);
+                            } else {
+                              seticonFocus([
+                                iconFocus[0],
+                                iconFocus[1],
+                                "OnFocus",
+                                iconFocus[3],
+                              ]);
+                            }
+                          }
                         } else {
                           seticonFocus([
                             iconFocus[0],
                             iconFocus[1],
                             "OffFocus",
+                            iconFocus[3],
+                          ]);
+                        }
+                        if (iconFocus[1].includes("OnFocus")) {
+                          seticonFocus([
+                            iconFocus[0],
+                            "OffFocus",
+                            "OnFocus",
                             iconFocus[3],
                           ]);
                         }
@@ -363,12 +347,39 @@ function Home() {
                       // startLoading();
                       if (!iconFocus[3].includes("disabled")) {
                         if (iconFocus[3].includes("OffFocus")) {
-                          seticonFocus([
-                            iconFocus[0],
-                            iconFocus[1],
-                            iconFocus[2],
-                            "OnFocus",
-                          ]);
+                          // If Male variation is active and giga is NoGen, Remove avtive state of male
+                          if (
+                            iconFocus[1].includes("OnFocus") &&
+                            NewSprites[forifier(id)]["Sprites"][
+                              "GigaNormal"
+                            ].includes("_mf_")
+                          ) {
+                            seticonFocus([
+                              iconFocus[0],
+                              "OffFocus",
+                              iconFocus[2],
+                              "OnFocus",
+                            ]);
+                          } else if (
+                            iconFocus[2].includes("OnFocus") &&
+                            NewSprites[forifier(id)]["Sprites"][
+                              "GigaNormal"
+                            ].includes("_mf_")
+                          ) {
+                            seticonFocus([
+                              iconFocus[0],
+                              iconFocus[1],
+                              "OffFocus",
+                              "OnFocus",
+                            ]);
+                          } else {
+                            seticonFocus([
+                              iconFocus[0],
+                              iconFocus[1],
+                              iconFocus[2],
+                              "OnFocus",
+                            ]);
+                          }
                         } else {
                           seticonFocus([
                             iconFocus[0],
