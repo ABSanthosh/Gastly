@@ -222,9 +222,11 @@ $font: "Arvo", serif;
       .content {
         &__details {
           width: 90%;
+          border-radius: 0px 0px 15px 15px;
         }
         &__image {
-          height: 80vh;
+          // background-color: #585858;
+          height: 70vh;
           width: 100vw;
           @include make-flex(row, $just: space-evenly);
         }
@@ -242,6 +244,9 @@ $font: "Arvo", serif;
           border-radius: unset;
         }
         &__image {
+          height: 75vh;
+          width: 100vw;
+          // background-color: #585858;
           .leftChevron,
           .rightChevron {
             position: absolute;
