@@ -7,3 +7,39 @@ svg {
   width: 100%;
   left: 0px;
 }
+
+.backdropWrapper {
+  transition: all none;
+}
+
+.DesktopBD {
+  display: block;
+}
+.MobileBD {
+  display: none;
+}
+
+@media only screen and (min-width: 480px) {
+  .backdropWrapper {
+    width: 90% !important;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .DesktopBD {
+    display: none;
+  }
+  .MobileBD {
+    display: block;
+    bottom: 70px;
+    border-radius: unset;
+    z-index: -1;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .backdropWrapper {
+    background-color: unset !important;
+    transition: none;
+  }
+}
