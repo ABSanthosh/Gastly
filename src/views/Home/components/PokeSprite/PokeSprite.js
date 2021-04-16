@@ -3,12 +3,14 @@ import "./PokeSprite.scss";
 import ColorThief from "../../../../../node_modules/colorthief";
 import { rgbToHex } from "../../../../Util/rgbToHex";
 import { useLoading } from "../../../../hooks/useLoading";
+import { useImgLoading } from "../../../../hooks/useImgLoading";
 
 function PokeSprite({ imgRef, Url, setColor }) {
   let googleProxyURL =
     "https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&refresh=2592000&url=";
 
   const { stopLoading } = useLoading();
+  const { stopImgLoading } = useImgLoading();
 
   return (
     <img
@@ -31,6 +33,9 @@ function PokeSprite({ imgRef, Url, setColor }) {
           stopLoading();
           document.querySelector(".content__inputBox").blur();
         } catch (e) {}
+        try {
+          stopImgLoading();
+        } catch (ee) {}
       }}
     />
   );

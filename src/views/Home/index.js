@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
 import Backdrop from "../../components/backdrops/Backdrop";
+import SpriteVariation from "./components/SpriteVariation/SpriteVariation";
 import Box from "../../components/iBoxes/iBox";
 import HintBox from "./components/HintBox/HintBox";
 import { InitialConditions } from "../../Util/SpriteConditions";
@@ -12,12 +13,16 @@ import PokeSprite from "./components/PokeSprite/PokeSprite";
 import Type from "../../components/Types/Type";
 import { forifier } from "../../Util/forifier";
 import { useLoading } from "../../hooks/useLoading";
+import { useImgLoading } from "../../hooks/useImgLoading";
+
+import ImgLoading from "../../components/ImageLoading/ImageLoading";
 
 function Home() {
   let { id } = useParams();
 
   let history = useHistory();
   const { startLoading, stopLoading } = useLoading();
+  const { startImgLoading } = useImgLoading();
 
   if (id > 898) {
     history.push("/1");
@@ -77,6 +82,7 @@ function Home() {
   }, [id]);
 
   useEffect(() => {
+    // startImgLoading()
     let SpriteJson = Object.keys(NewSprites[forifier(id)]["Sprites"]);
     console.log(iconFocus);
     if (
@@ -170,10 +176,11 @@ function Home() {
     <div className="Maincontainer">
       <div className="Maincontainer__contentwrapper">
         <div className="Maincontainer__backdrop">
-          <Backdrop fill={backdropcolor} />
+          <Backdrop isMobile={false} fill={backdropcolor} />
         </div>
         <div className="Maincontainer__content">
           <div className="content__image">
+            <Backdrop isMobile={true} fill={backdropcolor} />
             <div
               className="leftChevron"
               onClick={() => {
@@ -181,7 +188,15 @@ function Home() {
                 startLoading();
               }}
             />
-            <PokeSprite imgRef={imgRef} Url={Url} setColor={setColor} />
+            <PokeSprite
+              imgRef={imgRef}
+              Url={Url}
+              setColor={setColor}
+              NewSprites={NewSprites}
+              forifier={forifier}
+              id={id}
+            />
+            {/* <ImgLoading/> */}
             <div
               className="rightChevron"
               onClick={() => {
@@ -205,194 +220,11 @@ function Home() {
                   {poketypes}
                 </Box>
                 <Box Width="100%" padding="13px 0px">
-                  <span
-                    className={`fa fa-star fa-star__${iconFocus[0]}`}
-                    aria-hidden="true"
-                    onClick={() => {
-                      // startLoading();
-                      if (!iconFocus[0].includes("disabled")) {
-                        if (iconFocus[0].includes("OffFocus")) {
-                          seticonFocus([
-                            "OnFocus",
-                            iconFocus[1],
-                            iconFocus[2],
-                            iconFocus[3],
-                          ]);
-                        } else {
-                          seticonFocus([
-                            "OffFocus",
-                            iconFocus[1],
-                            iconFocus[2],
-                            iconFocus[3],
-                          ]);
-                        }
-                      }
-                    }}
+                  <SpriteVariation
+                    iconFocus={iconFocus}
+                    seticonFocus={seticonFocus}
+                    id={id}
                   />
-                  <span
-                    className={`fa fa-mars fa-mars__${iconFocus[1]}`}
-                    aria-hidden="true"
-                    onClick={() => {
-                      // startLoading();
-                      if (!iconFocus[1].includes("disabled")) {
-                        if (iconFocus[1].includes("OffFocus")) {
-                          console.log("Fallen in 1");
-                          seticonFocus([
-                            iconFocus[0],
-                            "OnFocus",
-                            iconFocus[2],
-                            iconFocus[3],
-                          ]);
-                          if (!iconFocus[3].includes("disabled")) {
-                            if (
-                              // If Giga is active and Pokemon has _mf_ variation
-                              // turn off giga when Male variation is active
-                              iconFocus[3].includes("OnFocus") &&
-                              NewSprites[forifier(id)]["Sprites"][
-                                "GigaNormal"
-                              ].includes("_mf_")
-                            ) {
-                              seticonFocus([
-                                iconFocus[0],
-                                "OnFocus",
-                                iconFocus[2],
-                                "OffFocus",
-                              ]);
-                            } else {
-                              seticonFocus([
-                                iconFocus[0],
-                                "OnFocus",
-                                iconFocus[2],
-                                "OffFocus",
-                              ]);
-                            }
-                          }
-                          if (iconFocus[2].includes("OnFocus")) {
-                            seticonFocus([
-                              iconFocus[0],
-                              "OnFocus",
-                              "OffFocus",
-                              iconFocus[3],
-                            ]);
-                          }
-                        } else {
-                          seticonFocus([
-                            iconFocus[0],
-                            "OffFocus",
-                            iconFocus[2],
-                            iconFocus[3],
-                          ]);
-                        }
-                      }
-                    }}
-                  />
-                  <span
-                    className={`fa fa-venus fa-venus__${iconFocus[2]}`}
-                    aria-hidden="true"
-                    onClick={() => {
-                      // startLoading();
-                      if (!iconFocus[2].includes("disabled")) {
-                        if (iconFocus[2].includes("OffFocus")) {
-                          seticonFocus([
-                              iconFocus[0],
-                              iconFocus[1],
-                              "OnFocus",
-                              iconFocus[3],
-                            ]);
-                          if (!iconFocus[3].includes("disabled")) {
-                            if (
-                              iconFocus[3].includes("OnFocus") &&
-                              NewSprites[forifier(id)]["Sprites"][
-                                "GigaNormal"
-                              ].includes("_mf_")
-                            ) {
-                              seticonFocus([
-                                iconFocus[0],
-                                iconFocus[1],
-                                "OnFocus",
-                                "OffFocus",
-                              ]);
-                            } else {
-                              seticonFocus([
-                                iconFocus[0],
-                                iconFocus[1],
-                                "OnFocus",
-                                iconFocus[3],
-                              ]);
-                            }
-                          }
-                        } else {
-                          seticonFocus([
-                            iconFocus[0],
-                            iconFocus[1],
-                            "OffFocus",
-                            iconFocus[3],
-                          ]);
-                        }
-                        if (iconFocus[1].includes("OnFocus")) {
-                          seticonFocus([
-                            iconFocus[0],
-                            "OffFocus",
-                            "OnFocus",
-                            iconFocus[3],
-                          ]);
-                        }
-                      }
-                    }}
-                  />
-                  <span
-                    className={`fa fa-g fa-g__${iconFocus[3]}`}
-                    aria-hidden="true"
-                    onClick={() => {
-                      // startLoading();
-                      if (!iconFocus[3].includes("disabled")) {
-                        if (iconFocus[3].includes("OffFocus")) {
-                          // If Male variation is active and giga is NoGen, Remove avtive state of male
-                          if (
-                            iconFocus[1].includes("OnFocus") &&
-                            NewSprites[forifier(id)]["Sprites"][
-                              "GigaNormal"
-                            ].includes("_mf_")
-                          ) {
-                            seticonFocus([
-                              iconFocus[0],
-                              "OffFocus",
-                              iconFocus[2],
-                              "OnFocus",
-                            ]);
-                          } else if (
-                            iconFocus[2].includes("OnFocus") &&
-                            NewSprites[forifier(id)]["Sprites"][
-                              "GigaNormal"
-                            ].includes("_mf_")
-                          ) {
-                            seticonFocus([
-                              iconFocus[0],
-                              iconFocus[1],
-                              "OffFocus",
-                              "OnFocus",
-                            ]);
-                          } else {
-                            seticonFocus([
-                              iconFocus[0],
-                              iconFocus[1],
-                              iconFocus[2],
-                              "OnFocus",
-                            ]);
-                          }
-                        } else {
-                          seticonFocus([
-                            iconFocus[0],
-                            iconFocus[1],
-                            iconFocus[2],
-                            "OffFocus",
-                          ]);
-                        }
-                      }
-                    }}
-                  >
-                    G
-                  </span>
                 </Box>
               </div>
               <Box padding="11.5px" heading="Abilities">
