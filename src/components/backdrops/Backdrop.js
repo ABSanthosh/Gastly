@@ -12,7 +12,7 @@ function Backdrop({ fill, isMobile }) {
         position: "absolute",
         width: "100%",
         bottom: "0px",
-        "background-color": fill,
+        backgroundColor: fill,
       }
     : {};
 

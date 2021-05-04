@@ -48,14 +48,18 @@ function Box({
     Object.keys(style).forEach((key) => (containerStyle[key] = style[key]));
   } catch (e) {}
   return (
-    <div ref={node} style={containerStyle} className={`iBox--container ${className}`}>
+    <div
+      ref={node}
+      style={containerStyle}
+      className={`iBox--container ${className}`}
+    >
       <p
         className="iBox--heading"
-        style={heading != "" ? { "marginBottom": "10px" } : {}}
+        style={heading != "" ? { marginBottom: "10px" } : {}}
       >
         {heading}
       </p>
-      <div className="iBox--contentwrapper" ref={inputRef}>
+      <div className="iBox--contentwrapper" style={style} ref={inputRef}>
         {children}
       </div>
       {parseInt(height) > parseInt(Height) && more ? (
@@ -79,7 +83,7 @@ Box.defaultProps = {
   Width: "",
   minHeight: "",
   maxHeight: "",
-  className:"",
+  className: "",
   padding: "20px",
 };
 

@@ -9,87 +9,41 @@ $font: "Arvo", serif;
   min-width: 353px;
   min-height: 575px;
   height: 100vh;
-  width: 100vw;
-  background-color: rgb(231, 255, 255);
-  @include make-flex();
+  width: 100wh;
+  background-color: #e2edff;
+  display: grid;
 
   &__contentwrapper {
-    position: relative;
-    height: 62%;
-    width: 70%;
-    border-radius: 15px;
-    box-shadow: 0px 0px 6px 6px rgba(0, 0, 0, 0.13);
-    background-color: rgb(255, 255, 255);
-    padding: 3rem;
+    height: 77%;
+    width: 75%;
+    background-color: #fff;
+    align-self: center;
+    justify-self: center;
+    border-radius: 14px;
+    z-index: 0;
+
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    grid-template-rows: 0.3fr 1fr;
+    grid-template-areas:
+      "image search"
+      "image details";
   }
-  &__content {
-    position: relative;
-    z-index: 10;
-    height: 100%;
-    width: 100%;
-    @include make-flex(row, $just: space-between);
-    .content {
-      &__image {
-        position: relative;
-        height: 100%;
-        width: 50%;
-        @include make-flex(row, $just: space-between);
-        .leftChevron,
-        .rightChevron {
-          width: 30px;
-          height: 60px;
-          cursor: pointer;
-          &:hover {
-            background-color: #626262;
-          }
-          &:active {
-            background-color: rgb(177, 236, 223);
-          }
-        }
-        .leftChevron {
-          background-color: #bdbdbd;
-          background-size: cover;
-          clip-path: polygon(100% 0, 0% 50%, 100% 100%);
-        }
-        .rightChevron {
-          background-color: #bdbdbd;
-          background-size: cover;
-          clip-path: polygon(0 0, 100% 50%, 0 100%);
-        }
-      }
-      &__details {
-        height: 100%;
-        position: relative;
-        width: 45%;
-        border-radius: 15px;
-        box-shadow: 0px 0px 6px 6px rgba(0, 0, 0, 0.13);
-        background-color: #ffffff;
-      }
+  .content {
+    &__search {
+      grid-area: search;
+      background-color: #ffffff;
+      height: 79%;
+      width: 90%;
+      position: relative;
+      border-radius: 15px 15px 0px 0px;
+      align-self: flex-end;
 
-      &__inputBox {
-        height: 100%;
-        width: 50px;
-        padding: 1px 15px 1px 15px;
-        font-size: 1.3rem;
-        border-radius: 10px;
-        color: #616161;
-
-        border-style: solid;
-        border-width: medium;
-        border-color: rgb(207, 207, 207);
-        transition: width 1s cubic-bezier(0.36, 0.96, 0.57, 0.88);
-        &:focus {
-          outline: none;
-          transition: width 1s cubic-bezier(0.36, 0.96, 0.57, 0.88);
-          padding: 1px 15px 1px 45px;
-          width: 100%;
-        }
-      }
-
-      &__SearchBarBox {
+      .content__SearchBarBox {
         position: relative;
         margin: 30px;
         height: 50px;
+
         .fa-search {
           position: absolute;
           padding: unset;
@@ -100,96 +54,165 @@ $font: "Arvo", serif;
           z-index: 1;
         }
       }
-
-      &__pokemonName {
-        position: absolute;
-        left: 60px;
-        width: 80%;
-        max-width: 90%;
+      &::before {
+        content: "";
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.13);
+        border-radius: 15px 15px 0px 0px;
         height: 100%;
-        font-family: $font;
-        text-transform: capitalize;
-        @include make-flex(row, $just: flex-start);
-        font-size: 2em;
-        color: #585858;
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        z-index: -1;
       }
+    }
+    &__image {
+      grid-area: image;
+      height: 90%;
+      width: 90%;
+      // background-color: #7230ff;
 
-      &__contentwrapper {
-        position: relative;
-        margin: 25px 22px 30px 25px;
-        @include make-flex($align: unset, $just: unset);
-
-        overflow-y: scroll;
-        padding-top: 5px;
-        height: calc(100% - 160px);
+      align-self: center;
+      justify-self: center;
+      .leftChevron,
+      .rightChevron {
+        width: 30px;
+        height: 60px;
+        cursor: pointer;
+        &:hover {
+          background-color: #626262;
+        }
+        &:active {
+          background-color: rgb(177, 236, 223);
+        }
       }
-      &__row {
-        @include make-flex(row);
+      .leftChevron {
+        background-color: #bdbdbd;
+        background-size: cover;
+        clip-path: polygon(100% 0, 0% 50%, 100% 100%);
+      }
+      .rightChevron {
+        background-color: #bdbdbd;
+        background-size: cover;
+        clip-path: polygon(0 0, 100% 50%, 0 100%);
+      }
+    }
+    &__details {
+      border-radius: 0px 0px 15px 15px;
+      background-color: #ffffff;
+      grid-area: details;
+      height: 93.5%;
+      width: 90%;
+      position: relative;
+      align-self: flex-start;
+      &::before {
+        content: "";
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.13);
+        border-radius: 0px 0px 15px 15px;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        bottom: 0px;
+        z-index: -1;
+      }
+    }
+    &__inputBox {
+      height: 100%;
+      width: 50px;
+      padding: 1px 15px 1px 15px;
+      font-size: 1.3rem;
+      border-radius: 10px;
+      color: #616161;
 
-        // Below for sprite variations
-        .fa {
-          color: #cacaca;
-          font-size: 2.5em;
-          margin: auto;
-          cursor: pointer;
+      border-style: solid;
+      border-width: medium;
+      border-color: rgb(207, 207, 207);
+      transition: width 1s cubic-bezier(0.36, 0.96, 0.57, 0.88);
+      &:focus {
+        outline: none;
+        transition: width 1s cubic-bezier(0.36, 0.96, 0.57, 0.88);
+        padding: 1px 15px 1px 45px;
+        width: 100%;
+      }
+    }
+    &__pokemonName {
+      position: absolute;
+      left: 60px;
+      width: 80%;
+      max-width: 90%;
+      height: 100%;
+      font-family: $font;
+      text-transform: capitalize;
+      @include make-flex(row, $just: flex-start);
+      font-size: 2em;
+      color: #585858;
+    }
+    &__contentwrapper {
+      position: relative;
+      margin: 25px 22px 30px 25px;
+      @include make-flex($align: unset, $just: unset);
 
-          &-g {
-            font-family: "Roboto", sans-serif;
-            // &:hover,
-            &__OnFocus {
-              color: #e45353;
-            }
-            &__OffFocus {
-              color: #cacaca;
-            }
-          }
-          &-star {
-            font-size: 2.1em;
-            // &:hover,
-            &__OnFocus {
-              color: #f0f051;
-            }
+      overflow-y: scroll;
+      padding-top: 5px;
+      height: calc(100% - 160px);
+    }
+    &__row {
+      @include make-flex(row);
 
-            &__OffFocus {
-              color: #cacaca;
-            }
+      // Below for sprite variations
+      .fa {
+        color: #cacaca;
+        font-size: 2.5em;
+        margin: auto;
+        cursor: pointer;
+
+        &-g {
+          font-family: "Roboto", sans-serif;
+          // &:hover,
+          &__OnFocus {
+            color: #e45353;
           }
-          &-mars {
-            // &:hover,
-            &__OnFocus {
-              color: #53cee4;
-            }
-            &__OffFocus {
-              color: #cacaca;
-            }
-          }
-          &-venus {
-            // &:hover,
-            &__OnFocus {
-              color: #e453d1;
-            }
-            &__OffFocus {
-              color: #cacaca;
-            }
+          &__OffFocus {
+            color: #cacaca;
           }
         }
-        .disabled {
+        &-star {
+          font-size: 2.1em;
+          // &:hover,
+          &__OnFocus {
+            color: #f0f051;
+          }
+
+          &__OffFocus {
+            color: #cacaca;
+          }
+        }
+        &-mars {
+          // &:hover,
+          &__OnFocus {
+            color: #53cee4;
+          }
+          &__OffFocus {
+            color: #cacaca;
+          }
+        }
+        &-venus {
+          // &:hover,
+          &__OnFocus {
+            color: #e453d1;
+          }
+          &__OffFocus {
+            color: #cacaca;
+          }
+        }
+      }
+      .disabled {
+        color: #525252;
+        &:hover {
           color: #525252;
-          &:hover {
-            color: #525252;
-            cursor: unset;
-          }
-          // &::after {
-          //   content: "X";
-          //   position: absolute;
-          //   color: #e45353;
-          //   font-size: 1.3em;
-          //   left: 25%;
-          //   top: 0;
-          // }
+          cursor: unset;
         }
-        // Sprite variations end
       }
+      // Sprite variations end
     }
   }
 }
@@ -199,37 +222,39 @@ $font: "Arvo", serif;
   height: 100%;
 }
 
-@media only screen and (max-width: 1200px) {
-  html,
-  body {
-    height: 100%;
-  }
-  #root {
-    height: 100%;
-  }
+@media only screen and (max-width: 1050px) {
   .Maincontainer {
-    background-color: rgb(231, 255, 255);
-    height: unset;
-
     &__contentwrapper {
       height: 100%;
-      padding: unset;
       width: 100%;
       border-radius: unset;
+
+      grid-template-columns: 1.3fr;
+      grid-template-rows: 0.3fr 1fr 1fr;
+      align-self: center;
+      justify-self: center;
+      grid-template-areas:
+        "search"
+        "image"
+        "details";
     }
-    &__content {
-      @include make-flex(column);
-      .content {
-        &__details {
-          width: 90%;
-          border-radius: 0px 0px 15px 15px;
+    .content {
+      &__search,
+      &__image,
+      &__details {
+        height: 100%;
+        width: 100%;
+        justify-self: center;
+      }
+      &__search,
+      &__details {
+        &::before {
+          border-radius: unset;
         }
-        &__image {
-          // background-color: #585858;
-          height: 70vh;
-          width: 100vw;
-          @include make-flex(row, $just: space-evenly);
-        }
+      }
+      &__image {
+        width: 100vw;
+        @include make-flex(row, $just: space-evenly);
       }
     }
   }
@@ -239,19 +264,10 @@ $font: "Arvo", serif;
   .Maincontainer {
     &__content {
       .content {
-        &__details {
-          width: 100%;
-          border-radius: unset;
-        }
         &__image {
-          height: 75vh;
-          width: 100vw;
-          // background-color: #585858;
           .leftChevron,
           .rightChevron {
             position: absolute;
-            // height: 100px;
-            // background-color: aqua;
           }
           .leftChevron {
             left: 5px;

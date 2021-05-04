@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap");
+
+.progress-bar-wrapper {
+  position: relative;
+  overflow: hidden;
+
+  width: 320px;
+  height: 8px;
+
+  margin-bottom: 10px;
+
+  border-radius: 20px;
+  background-clip: padding-box;
+  //   border: 1px solid #1189f8;
+  background: rgb(230, 230, 230);
+}
+
+.progress-bar-percent {
+  left: 0;
+  top: 0;
+  height: 100%;
+  background-color: rgba(17, 137, 248, 0.2);
+}
+
+.progress-bar-text {
+  position: absolute;
+  z-index: 2;
+  //   visibility: hidden;
+  left: 10px;
+  top: -3%;
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  color: #00000000;
+  font-size: 0.9em;
+  width: 100%;
+  &:hover {
+    color: #000000;
+  }
+}
+
+.HP {
+  .progress-bar-percent {
+    background-color: #ff5b5b;
+  }
+}
+
+.Attack {
+  .progress-bar-percent {
+    background-color: #ffbc58;
+  }
+}
+
+.Defense {
+  .progress-bar-percent {
+    background-color: #ffef63;
+  }
+}
+
+.SpAttack {
+  .progress-bar-percent {
+    background-color: #9ac8ff;
+  }
+}
+
+.SpDefense {
+  .progress-bar-percent {
+    background-color: #9aff81;
+  }
+}
+
+.Speed {
+  .progress-bar-percent {
+    background-color: #ff81ff;
+  }
+}
