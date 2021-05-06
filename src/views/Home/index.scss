@@ -30,6 +30,14 @@ $font: "Arvo", serif;
       "image details";
   }
   .content {
+    &__backdrop {
+      width: 75%;
+      height: 77%;
+      z-index: -1;
+      position: absolute;
+      border-radius: 14px;
+      // background-color: #53cee4;
+    }
     &__search {
       grid-area: search;
       background-color: #ffffff;
@@ -67,14 +75,12 @@ $font: "Arvo", serif;
     }
     &__image {
       grid-area: image;
-      height: 90%;
-      width: 90%;
-
       align-self: center;
       justify-self: center;
       display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      grid-template-areas: "leftC . rightC";
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto minmax(50px, auto);
+      grid-template-areas: "leftC . rightC" ". ImgLoader .";
 
       .leftChevron,
       .rightChevron {
@@ -106,21 +112,66 @@ $font: "Arvo", serif;
     }
     &__details {
       border-radius: 0px 0px 15px 15px;
+      overflow-y: hidden;
       background-color: #ffffff;
       grid-area: details;
       height: 93.5%;
       width: 90%;
-      position: relative;
       align-self: flex-start;
-      &::before {
+      display: grid;
+      grid-gap: 10px;
+      grid-template-columns: 0.003fr 1fr 2px;
+
+      &::after {
         content: "";
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.13);
         border-radius: 0px 0px 15px 15px;
-        height: 100%;
-        width: 100%;
+        height: 55.45%;
+        width: 29.3%;
         position: absolute;
-        bottom: 0px;
         z-index: -1;
+      }
+      &::-webkit-scrollbar {
+        width: 5px;
+
+        background-color: #ff0f0f00;
+        margin-right: 10px;
+      }
+
+      &::-webkit-scrollbar-corner {
+        background-color: transparent;
+        border-color: transparent;
+      }
+      &::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background-clip: content-box;
+        background-color: rgb(187, 187, 187);
+      }
+      &::-webkit-scrollbar-track {
+        border-radius: 5px;
+        background-color: transparent;
+      }
+    }
+    &__wrapper {
+      height: calc(100% - 30px);
+      max-height: 450px;
+      width: 91%;
+      padding: 10px 10px 20px 10px;
+      padding-left: 15px;
+      align-self: center;
+      justify-self: center;
+      grid-column: 2;
+      @include make-flex($just: unset);
+      overflow-y: scroll;
+      row-gap: 20px;
+
+      .row { 
+        &__forward {
+          width: 100%;
+          @include make-flex($dir:row);
+        }
+        &__reverse {
+        }
       }
     }
     &__inputBox {
@@ -230,15 +281,16 @@ $font: "Arvo", serif;
   height: 100%;
 }
 
-@media only screen and (max-width: 1050px) {
+@media only screen and (max-width: 1200px) {
   .Maincontainer {
+    height: unset;
     &__contentwrapper {
       height: 100%;
-      width: 100%;
+      width: 60%;
       border-radius: unset;
 
-      grid-template-columns: 1.3fr;
-      grid-template-rows: 0.3fr 1fr 1fr;
+      grid-template-columns: auto;
+      grid-template-rows: auto auto 1fr;
       align-self: center;
       justify-self: center;
       grid-template-areas:
@@ -253,16 +305,34 @@ $font: "Arvo", serif;
         height: 100%;
         width: 100%;
         justify-self: center;
+        &::after {
+          box-shadow: unset;
+        }
       }
       &__search,
       &__details {
-        &::before {
-          border-radius: unset;
+        &::after {
+          all: initial;
         }
       }
-      &__image {
-        width: 100vw;
-        @include make-flex(row, $just: space-evenly);
+
+      &__details {
+        padding: 20px 0px 0px 0px;
+        // background-color: #53cee4;
+        border-radius: 15px 15px 0px 0px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.13);
+      }
+
+      &__search {
+        align-self: flex-start;
+        height: 100%;
+      }
+      &__wrapper {
+        max-height: unset;
+        width: 93%;
+        row-gap: 20px;
+        padding: 10px 15px 20px 15px;
+        overflow: hidden;
       }
     }
   }
@@ -270,20 +340,20 @@ $font: "Arvo", serif;
 
 @media only screen and (max-width: 480px) {
   .Maincontainer {
-    &__content {
-      .content {
-        &__image {
-          .leftChevron,
-          .rightChevron {
-            position: absolute;
-          }
-          .leftChevron {
-            left: 5px;
-          }
-          .rightChevron {
-            right: 5px;
-          }
-        }
+    &__contentwrapper {
+      width: 100%;
+    }
+    .content {
+      &__image {
+        grid-template-columns: auto 75px auto;
+        grid-template-rows: 430px auto;
+        grid-template-areas:
+          "imagePNG imagePNG imagePNG"
+          "leftC ImgLoader rightC";
+        margin-bottom: 25px;
+      }
+      &__details {
+        grid-gap: unset;
       }
     }
   }

@@ -1,11 +1,10 @@
-import { useImgLoading } from "../../../../hooks/useImgLoading";
-import { forifier } from "../../../../Util/forifier";
+import "./SpriteVariation.scss";
+
 import NewSprites from "../../../../Assets/FromOldJson.json";
-function SpriteVariation({
-  iconFocus,
-  seticonFocus,
-  id,
-}) {
+import { forifier } from "../../../../Util/forifier";
+import { useImgLoading } from "../../../../hooks/useImgLoading";
+
+function SpriteVariation({ iconFocus, seticonFocus, id }) {
   const { startImgLoading } = useImgLoading();
   return (
     <>
@@ -13,7 +12,7 @@ function SpriteVariation({
         className={`fa fa-star fa-star__${iconFocus[0]}`}
         aria-hidden="true"
         onClick={() => {
-        startImgLoading();
+          startImgLoading();
           if (!iconFocus[0].includes("disabled")) {
             if (iconFocus[0].includes("OffFocus")) {
               seticonFocus([
@@ -37,7 +36,7 @@ function SpriteVariation({
         className={`fa fa-mars fa-mars__${iconFocus[1]}`}
         aria-hidden="true"
         onClick={() => {
-        startImgLoading();
+          startImgLoading();
           if (!iconFocus[1].includes("disabled")) {
             if (iconFocus[1].includes("OffFocus")) {
               seticonFocus([
@@ -93,7 +92,7 @@ function SpriteVariation({
         className={`fa fa-venus fa-venus__${iconFocus[2]}`}
         aria-hidden="true"
         onClick={() => {
-        startImgLoading();
+          startImgLoading();
           if (!iconFocus[2].includes("disabled")) {
             if (iconFocus[2].includes("OffFocus")) {
               seticonFocus([
@@ -142,7 +141,7 @@ function SpriteVariation({
         className={`fa fa-g fa-g__${iconFocus[3]}`}
         aria-hidden="true"
         onClick={() => {
-        startImgLoading();
+          startImgLoading();
           if (!iconFocus[3].includes("disabled")) {
             if (iconFocus[3].includes("OffFocus")) {
               // If Male variation is active and giga is NoGen, Remove avtive state of male

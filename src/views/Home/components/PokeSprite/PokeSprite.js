@@ -2,8 +2,8 @@ import "./PokeSprite.scss";
 
 import ColorThief from "../../../../../node_modules/colorthief";
 import { rgbToHex } from "../../../../Util/rgbToHex";
-import { useLoading } from "../../../../hooks/useLoading";
 import { useImgLoading } from "../../../../hooks/useImgLoading";
+import { useLoading } from "../../../../hooks/useLoading";
 
 function PokeSprite({ imgRef, Url, setColor }) {
   let googleProxyURL =
