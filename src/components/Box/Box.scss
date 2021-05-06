@@ -1,0 +1,19 @@
+$padding: 15px;
+
+.Box {
+  position: relative;
+  width: calc(95% - #{$padding});
+  height: 125px;
+  background-color: #ffffff;
+  grid-column: 2;
+
+  box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.13);
+  border-radius: 15px;
+  padding: $padding;
+
+  justify-self: center;
+}
+
+@media only screen and (max-width: 1200px) {
+
+}
