@@ -1,7 +1,6 @@
 @import "../../styles/mixins";
 
 .load-wrapp {
-  // float: left;
   width: 100px;
   height: 100px;
   margin: 0 10px 10px 0;
@@ -21,10 +20,6 @@
 
 .load-3 {
   width: fit-content;
-  left: 50%;
-  bottom: 0px;
-  position: absolute;
-  transform: translate(-50%, 0px);
 }
 
 .load-3 .line:nth-last-child(1) {
@@ -53,19 +48,18 @@
 }
 
 #loading-img-dock {
-  height: 100%;
-  position: absolute;
+  height: 30px;
   width: 100%;
-  top: 0px;
-  left: 0px;
+  @include make-flex();
+  grid-area: ImgLoader;
 }
 
 @media only screen and (max-width: 1200px) {
+  #loading-img-dock {
+    align-self: center;
+    justify-self: center;
+  }
   .load-3 {
     width: fit-content;
-    left: 50%;
-    bottom: 50px;
-    position: absolute;
-    transform: translate(-50%, 0px);
   }
 }
