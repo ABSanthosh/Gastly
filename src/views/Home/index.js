@@ -5,7 +5,7 @@ import { useHistory, useParams } from "react-router-dom";
 
 import Backdrop from "../../components/backdrops/Backdrop";
 import BaseStats from "../../components/BaseStats/BaseStats";
-import Box from "../../components/iBoxes/iBox";
+import Box from "../../components/Box/Box";
 import HintBox from "./components/HintBox/HintBox";
 import { InitialConditions } from "../../Util/SpriteConditions";
 import NewSprites from "../../Assets/FromOldJson.json";
@@ -14,6 +14,7 @@ import SpriteVariation from "./components/SpriteVariation/SpriteVariation";
 import { SpriteVariationControlPanel } from "../../Util/SpriteVariationCP";
 import Type from "../../components/Types/Type";
 import { forifier } from "../../Util/forifier";
+import { useImgLoading } from "../../hooks/useImgLoading";
 import { useLoading } from "../../hooks/useLoading";
 
 function Home() {
@@ -21,6 +22,7 @@ function Home() {
 
   let history = useHistory();
   const { startLoading, stopLoading } = useLoading();
+  const { startImgLoading } = useImgLoading();
 
   if (id > 898) {
     history.push("/1");
@@ -100,7 +102,9 @@ function Home() {
         <Backdrop isMobile={false} fill={backdropcolor} />
       </div> */}
       <div className="Maincontainer__contentwrapper">
-      
+        <div className="content__backdrop">
+          <Backdrop isMobile={false} fill={backdropcolor} />
+        </div>
         <div className="content__search">
           <div className="content__SearchBarBox">
             <span className="fa fa-search" />
@@ -108,8 +112,86 @@ function Home() {
             <HintBox text={text} setText={setText} />
           </div>
         </div>
-        <div className="content__image"> </div>
-        <div className="content__details"> </div>
+        <div className="content__image">
+          {/* <div className="Maincontainer__backdrop">
+            <Backdrop isMobile={false} fill={backdropcolor} />
+          </div> */}
+          <div
+            className="leftChevron"
+            onClick={() => {
+              history.push("/" + String(parseInt(id) - 1));
+              startLoading();
+            }}
+          />
+          <PokeSprite
+            imgRef={imgRef}
+            Url={Url}
+            setColor={setColor}
+            NewSprites={NewSprites}
+            forifier={forifier}
+            id={id}
+          />
+          <div
+            className="rightChevron"
+            onClick={() => {
+              history.push("/" + String(parseInt(id) + 1));
+              startLoading();
+            }}
+          />
+        </div>
+        <div className="content__details">
+          <div className="content__wrapper">
+            <Box>
+              <p>{desc}</p>
+            </Box>
+            <div className="row__forward">
+              <Box>{poketypes}</Box>
+              <Box Width="100%" padding="13px 0px">
+                <SpriteVariation
+                  iconFocus={iconFocus}
+                  seticonFocus={seticonFocus}
+                  id={id}
+                />
+              </Box>
+            </div>
+
+            <Box padding="11.5px" style={{ flexDirection: "column" }}>
+              <BaseStats
+                className="HP"
+                text={`HP ${stats[0]}`}
+                percent={stats[0]}
+              />
+              <BaseStats
+                className="Attack"
+                text={`Attack ${stats[1]}`}
+                percent={stats[1]}
+              />
+              <BaseStats
+                className="Defense"
+                text={`Defense ${stats[2]}`}
+                percent={stats[2]}
+              />
+              <BaseStats
+                className="SpAttack"
+                text={`Sp. Attack ${stats[3]}`}
+                percent={stats[3]}
+              />
+              <BaseStats
+                className="SpDefense"
+                text={`Sp. Defense ${stats[4]}`}
+                percent={stats[4]}
+              />
+              <BaseStats
+                className="Speed"
+                text={`Speed ${stats[5]}`}
+                percent={stats[5]}
+              />
+            </Box>
+            <Box padding="11.5px" heading="Abilities">
+              {pokeabilities}
+            </Box>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -119,33 +201,33 @@ export default Home;
 
 // <div className="Maincontainer__backdrop">
 //          <Backdrop isMobile={false} fill={backdropcolor} />
-//        </div> 
+//        </div>
 //         <div className="Maincontainer__content">
-          // <div className="content__image">
-          //   <Backdrop isMobile={true} fill={backdropcolor} />
-          //   <div
-//               className="leftChevron"
-//               onClick={() => {
-//                 history.push("/" + String(parseInt(id) - 1));
-//                 startLoading();
-//               }}
-//             />
-//             <PokeSprite
-//               imgRef={imgRef}
-//               Url={Url}
-//               setColor={setColor}
-//               NewSprites={NewSprites}
-//               forifier={forifier}
-//               id={id}
-//             />
-//             {/* <ImgLoading/> */}
-//             <div
-//               className="rightChevron"
-//               onClick={() => {
-//                 history.push("/" + String(parseInt(id) + 1));
-//                 startLoading();
-//               }}
-//             />
+// <div className="content__image">
+// <Backdrop isMobile={true} fill={backdropcolor} />
+// <div
+//   className="leftChevron"
+//   onClick={() => {
+//     history.push("/" + String(parseInt(id) - 1));
+//     startLoading();
+//   }}
+// />
+// <PokeSprite
+//   imgRef={imgRef}
+//   Url={Url}
+//   setColor={setColor}
+//   NewSprites={NewSprites}
+//   forifier={forifier}
+//   id={id}
+// />
+// {/* <ImgLoading/> */}
+// <div
+//   className="rightChevron"
+//   onClick={() => {
+//     history.push("/" + String(parseInt(id) + 1));
+//     startLoading();
+//   }}
+// />
 //           </div>
 //           <div className="content__details">
 // <div className="content__SearchBarBox">
@@ -154,32 +236,32 @@ export default Home;
 //   <HintBox text={text} setText={setText} />
 // </div>
 //             <div className="content__contentwrapper">
-//               <Box Height="100px" className="content__desc">
-//                 <p>{desc}</p>
-//               </Box>
-//               <div className="content__row">
-//                 <Box Width="100%" padding="13px 0px">
-//                   {poketypes}
-//                 </Box>
-//                 <Box Width="100%" padding="13px 0px">
-//                   <SpriteVariation
-//                     iconFocus={iconFocus}
-//                     seticonFocus={seticonFocus}
-//                     id={id}
-//                   />
-//                 </Box>
-//               </div>
-//               {/* <Box padding="11.5px" style={{ "flexDirection": "column" }}>
-//                 <BaseStats className="HP" text={`HP ${stats[0]}`} percent={stats[0]} />
-//                 <BaseStats className="Attack" text={`Attack ${stats[1]}`} percent={stats[1]} />
-//                 <BaseStats className="Defense" text={`Defense ${stats[2]}`} percent={stats[2]} />
-//                 <BaseStats className="SpAttack" text={`Sp. Attack ${stats[3]}`} percent={stats[3]} />
-//                 <BaseStats className="SpDefense" text={`Sp. Defense ${stats[4]}`} percent={stats[4]} />
-//                 <BaseStats className="Speed" text={`Speed ${stats[5]}`} percent={stats[5]} />
-//               </Box> */}
-//               <Box padding="11.5px" heading="Abilities">
-//                 {pokeabilities}
-//               </Box>
+// <Box Height="100px" className="content__desc">
+//   <p>{desc}</p>
+// </Box>
+// <div className="content__row">
+//   <Box Width="100%" padding="13px 0px">
+//     {poketypes}
+//   </Box>
+//   <Box Width="100%" padding="13px 0px">
+//     <SpriteVariation
+//       iconFocus={iconFocus}
+//       seticonFocus={seticonFocus}
+//       id={id}
+//     />
+//   </Box>
+// </div>
+// {/* <Box padding="11.5px" style={{ "flexDirection": "column" }}>
+//   <BaseStats className="HP" text={`HP ${stats[0]}`} percent={stats[0]} />
+//   <BaseStats className="Attack" text={`Attack ${stats[1]}`} percent={stats[1]} />
+//   <BaseStats className="Defense" text={`Defense ${stats[2]}`} percent={stats[2]} />
+//   <BaseStats className="SpAttack" text={`Sp. Attack ${stats[3]}`} percent={stats[3]} />
+//   <BaseStats className="SpDefense" text={`Sp. Defense ${stats[4]}`} percent={stats[4]} />
+//   <BaseStats className="Speed" text={`Speed ${stats[5]}`} percent={stats[5]} />
+// </Box> */}
+// <Box padding="11.5px" heading="Abilities">
+//   {pokeabilities}
+// </Box>
 //             </div>
 //           </div>
 //         </div>
