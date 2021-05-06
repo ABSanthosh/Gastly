@@ -3,12 +3,12 @@ import ReactDOM from "react-dom";
 
 export function useImgLoading() {
   const startImgLoading = () => {
-    // document.getElementById("root").style.overflow = "hidden";
+    try {
+      document.getElementById("loading-img-dock").remove();
+    } catch (e) {}
     document
-      .querySelector(".leftChevron")
+      .querySelector(".rightChevron")
       .insertAdjacentHTML("afterend", '<div id="loading-img-dock"></div>');
-    // document.querySelector(".content__Sprite").style.visibility = "hidden";
-
     ReactDOM.render(
       <ImgLoading />,
       document.getElementById("loading-img-dock")
@@ -16,8 +16,6 @@ export function useImgLoading() {
   };
 
   const stopImgLoading = () => {
-    // document.getElementById("root").style.overflow = "unset";
-    // document.querySelector(".content__Sprite").style.visibility = "unset";
     document.getElementById("loading-img-dock").remove();
   };
 
