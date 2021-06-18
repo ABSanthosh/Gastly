@@ -5,7 +5,7 @@ import { forifier } from "../../../../Util/forifier";
 import { useImgLoading } from "../../../../hooks/useImgLoading";
 
 function SpriteVariation({ iconFocus, seticonFocus, id }) {
-  const { startImgLoading } = useImgLoading();
+  const { startImgLoading, stopImgLoading } = useImgLoading();
   return (
     <>
       <span
@@ -13,6 +13,7 @@ function SpriteVariation({ iconFocus, seticonFocus, id }) {
         aria-hidden="true"
         onClick={() => {
           startImgLoading();
+
           if (!iconFocus[0].includes("disabled")) {
             if (iconFocus[0].includes("OffFocus")) {
               seticonFocus([
@@ -78,12 +79,19 @@ function SpriteVariation({ iconFocus, seticonFocus, id }) {
                 ]);
               }
             } else {
-              seticonFocus([
-                iconFocus[0],
-                "OffFocus",
-                iconFocus[2],
-                iconFocus[3],
-              ]);
+              if (
+                "NoGenNormal" in NewSprites[forifier(id)]["Sprites"] ||
+                "NoGenShiny" in NewSprites[forifier(id)]["Sprites"]
+              ) {
+                seticonFocus([
+                  iconFocus[0],
+                  "OffFocus",
+                  iconFocus[2],
+                  iconFocus[3],
+                ]);
+              } else {
+                stopImgLoading();
+              }
             }
           }
         }}
@@ -124,12 +132,19 @@ function SpriteVariation({ iconFocus, seticonFocus, id }) {
                 }
               }
             } else {
-              seticonFocus([
-                iconFocus[0],
-                iconFocus[1],
-                "OffFocus",
-                iconFocus[3],
-              ]);
+              if (
+                "NoGenNormal" in NewSprites[forifier(id)]["Sprites"] ||
+                "NoGenShiny" in NewSprites[forifier(id)]["Sprites"]
+              ) {
+                seticonFocus([
+                  iconFocus[0],
+                  iconFocus[1],
+                  "OffFocus",
+                  iconFocus[3],
+                ]);
+              } else {
+                stopImgLoading();
+              }
             }
             if (iconFocus[1].includes("OnFocus")) {
               seticonFocus([iconFocus[0], "OffFocus", "OnFocus", iconFocus[3]]);
