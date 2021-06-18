@@ -6,7 +6,6 @@ import {
 } from "../../../../Util/suggestions";
 
 import { Hint } from "react-autocomplete-hint";
-import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
 
 function HintBox({ text, setText }) {
@@ -53,7 +52,7 @@ function HintBox({ text, setText }) {
 export default HintBox;
 
 {
-/* <Hint options={suggestions()} allowTabFill>
+  /* <Hint options={suggestions()} allowTabFill>
 <input
     className="content__inputBox"
     id="myText"
