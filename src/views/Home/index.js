@@ -16,6 +16,8 @@ import Type from "../../components/Types/Type";
 import { forifier } from "../../Util/forifier";
 import { useImgLoading } from "../../hooks/useImgLoading";
 import { useLoading } from "../../hooks/useLoading";
+import AbilityBox from "../../components/AbilityBox/AbilityBox";
+import EvalChainItem from "../../components/EvalChainItem/EvalChainItem";
 
 function Home() {
   let { id } = useParams();
@@ -45,6 +47,7 @@ function Home() {
   const [pokename, setPokename] = useState("");
   const [desc, setDescription] = useState("");
   const [Url, setUrl] = useState();
+  const [evalChain, setEvalChain] = useState([]);
   const [iconFocus, seticonFocus] = useState([
     "OffFocus disabled",
     "OffFocus disabled",
@@ -54,12 +57,13 @@ function Home() {
   const [stats, setStats] = useState([0, 0, 0, 0, 0, 0]);
   const [poketypes, setPoketypes] = useState();
   const [pokeabilities, setPokeabilities] = useState();
-  let poketype, pokeability;
+  let poketype, pokeability, evalChainComponent;
 
   useEffect(() => {
     let pokemonDetails = NewSprites[forifier(id)];
     poketype = [];
     pokeability = [];
+    evalChainComponent = [];
 
     pokemonDetails["Types"].forEach((obj, index) => {
       poketype.push(<Type key={index} type={obj} />);
@@ -69,14 +73,9 @@ function Home() {
     }
 
     pokemonDetails["Ability"].forEach((obj, index) => {
-      pokeability.push(<p key={index}>{obj}</p>);
-      pokeability.push(
-        <p key={index + 500}>
-          <b>&#183;</b>
-        </p>
-      );
+      pokeability.push(<AbilityBox ability={obj} key={index} />);
     });
- 
+
     setStats([
       pokemonDetails["Stats"]["HP"],
       pokemonDetails["Stats"]["Attack"],
@@ -86,12 +85,21 @@ function Home() {
       pokemonDetails["Stats"]["Speed"],
     ]);
 
-    pokeability.pop();
+    NewSprites[forifier(id)]["EvolutionChain"].forEach((obj, index) => {
+      evalChainComponent.push(
+        <EvalChainItem pokeId={obj} className={obj} key={index} />
+      );
+    });
+    if (evalChainComponent.length == 0) {
+      let obj = id;
+      evalChainComponent.push(<EvalChainItem pokeId={obj} className={obj} />);
+    }
 
     setPokename(pokemonDetails["Name"]);
     setPoketypes(poketype);
     setPokeabilities(pokeability);
     setDescription(pokemonDetails["Description"]);
+    setEvalChain(evalChainComponent);
 
     InitialConditions(id, setUrl, seticonFocus, iconFocus);
   }, [id]);
@@ -198,8 +206,29 @@ function Home() {
                 percent={stats[5]}
               />
             </Box>
-            <Box>{pokeabilities}</Box>
-            {/* <span className="content__details__endGate" /> */}
+            <Box
+              className="PokeAbilityHeading"
+              style={{
+                height: "auto",
+              }}
+            >
+              <span>Abilities</span>
+              <div className="abilityList">
+                {pokeabilities == undefined || pokeabilities.length != 0 ? (
+                  pokeabilities
+                ) : (
+                  <AbilityBox ability="Not Available" />
+                )}
+              </div>
+            </Box>
+            <Box className="PokeEvalChainHeading">
+              <span>Evolution Chain</span>
+              <div className="evalList">{evalChain}</div>
+            </Box>
+            <Box className="PokeResHeading">
+              <span>Other Resourses</span>
+              <div className="resList">(Yet to be devloped)</div>
+            </Box>
           </div>
         </div>
       </div>

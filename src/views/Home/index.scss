@@ -192,6 +192,25 @@ $font: "Arvo", serif;
         content: "";
         height: 0.01px;
       }
+
+      .Box.PokeAbilityHeading,
+      .Box.PokeEvalChainHeading,
+      .Box.PokeResHeading {
+        padding-top: 10px;
+        @include make-flex($just: flex-start);
+        .abilityList,
+        .evalList,
+        .resList {
+          column-gap: 10px;
+          row-gap: 10px;
+          @include make-flex($dir: row);
+          flex-wrap: wrap;
+        }
+        span {
+          font-size: 1.4rem;
+          padding: 0px 0px 4px 0px;
+        }
+      }
     }
     &__inputBox {
       height: 100%;
