@@ -1,8 +1,9 @@
 .fa {
-  &-g {
+  &-g { 
     color: #cacaca;
     font-size: 2.5em;
     margin: auto;
+    padding: 0px 9px;
     cursor: pointer;
     font-family: "Roboto", sans-serif;
     &__OnFocus {
@@ -13,6 +14,7 @@
     }
   }
   &-star {
+    padding: 0px 9px;
     color: #cacaca;
     font-size: 2.5em;
     margin: auto;
@@ -27,6 +29,7 @@
     }
   }
   &-mars {
+    padding: 0px 9px;
     color: #cacaca;
     font-size: 2.5em;
     margin: auto;
@@ -39,6 +42,7 @@
     }
   }
   &-venus {
+    padding: 0px 9px;
     color: #cacaca;
     font-size: 2.5em;
     margin: auto;
@@ -56,5 +60,16 @@
   &:hover {
     color: #525252;
     cursor: unset;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .fa {
+    &-g,
+    &-star,
+    &-mars,
+    &-venus {
+      font-size: 250%;
+    }
   }
 }

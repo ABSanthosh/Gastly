@@ -64,6 +64,10 @@ function Home() {
     pokemonDetails["Types"].forEach((obj, index) => {
       poketype.push(<Type key={index} type={obj} />);
     });
+    if (poketype.length === 1) {
+      poketype.push(<Type key="12031" type="placeholder" />);
+    }
+
     pokemonDetails["Ability"].forEach((obj, index) => {
       pokeability.push(<p key={index}>{obj}</p>);
       pokeability.push(
@@ -72,7 +76,7 @@ function Home() {
         </p>
       );
     });
-
+ 
     setStats([
       pokemonDetails["Stats"]["HP"],
       pokemonDetails["Stats"]["Attack"],
@@ -98,9 +102,6 @@ function Home() {
 
   return (
     <div className="Maincontainer">
-      {/* <div className="Maincontainer__backdrop">
-        <Backdrop isMobile={false} fill={backdropcolor} />
-      </div> */}
       <div className="Maincontainer__contentwrapper">
         <div className="content__backdrop">
           <Backdrop isMobile={false} fill={backdropcolor} />
@@ -113,9 +114,6 @@ function Home() {
           </div>
         </div>
         <div className="content__image">
-          {/* <div className="Maincontainer__backdrop">
-            <Backdrop isMobile={false} fill={backdropcolor} />
-          </div> */}
           <div
             className="leftChevron"
             onClick={() => {
@@ -145,8 +143,16 @@ function Home() {
               <p>{desc}</p>
             </Box>
             <div className="row__forward">
-              <Box>{poketypes}</Box>
-              <Box Width="100%" padding="13px 0px">
+              <Box className="type2">{poketypes}</Box>
+              <Box
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  width: "auto",
+                  height: "50px",
+                }}
+                className="SpriteVariationBox"
+              >
                 <SpriteVariation
                   iconFocus={iconFocus}
                   seticonFocus={seticonFocus}
@@ -155,7 +161,12 @@ function Home() {
               </Box>
             </div>
 
-            <Box padding="11.5px" style={{ flexDirection: "column" }}>
+            <Box
+              style={{
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
               <BaseStats
                 className="HP"
                 text={`HP ${stats[0]}`}
@@ -187,9 +198,8 @@ function Home() {
                 percent={stats[5]}
               />
             </Box>
-            <Box padding="11.5px" heading="Abilities">
-              {pokeabilities}
-            </Box>
+            <Box>{pokeabilities}</Box>
+            {/* <span className="content__details__endGate" /> */}
           </div>
         </div>
       </div>

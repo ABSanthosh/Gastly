@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from "react";
 
 import PropTypes from "prop-types";
 
-function Box({ children }) {
+function Box({ children, style, className }) {
   return (
-    <div className="Box">
+    <div style={style} className={`Box ${className}`}>
       {children}
     </div>
   );
@@ -14,6 +14,7 @@ function Box({ children }) {
 
 Box.defaultProps = {
   children: null,
+  className: ""
 };
 
 Box.propTypes = {

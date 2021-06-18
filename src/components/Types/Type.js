@@ -39,15 +39,22 @@ function Type({ type }) {
     rock: Rock,
     steel: Steel,
     water: Water,
-  };
+    placeholder: Water,
+  }; 
 
   return (
-    <div
-      data-tooltip={type.charAt(0).toUpperCase() + type.slice(1)}
-      className={"tooltip--bottom Type " + type.toLowerCase()}
-    >
-      <img src={pokeImportList[type.toLowerCase()]} />
-    </div>
+    <>
+      {type != "placeholder" ? (
+        <div
+          data-tooltip={type.charAt(0).toUpperCase() + type.slice(1)}
+          className={"tooltip--bottom Type " + type.toLowerCase()}
+        >
+          <img src={pokeImportList[type.toLowerCase()]} />
+        </div>
+      ) : (
+        <div className={"Type " + type.toLowerCase()}></div>
+      )}
+    </>
   );
 }
 

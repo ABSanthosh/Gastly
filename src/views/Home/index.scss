@@ -6,7 +6,7 @@
 $font: "Arvo", serif;
 
 .Maincontainer {
-  min-width: 353px;
+  min-width: 425px;
   min-height: 575px;
   height: 100vh;
   width: 100vw;
@@ -28,15 +28,27 @@ $font: "Arvo", serif;
     grid-template-areas:
       "image search"
       "image details";
+
+    transition: width 0.5s ease-in-out;
   }
   .content {
+    &__search,
+    &__details {
+      max-width: 450.78px;
+      justify-self: center;
+      &::before,
+      &::after {
+        max-width: 450.78px;
+      }
+    }
+
     &__backdrop {
       width: 75%;
       height: 77%;
       z-index: -1;
       position: absolute;
       border-radius: 14px;
-      // background-color: #53cee4;
+      min-height: 480px;
     }
     &__search {
       grid-area: search;
@@ -115,12 +127,12 @@ $font: "Arvo", serif;
       overflow-y: hidden;
       background-color: #ffffff;
       grid-area: details;
-      height: 93.5%;
       width: 90%;
       align-self: flex-start;
       display: grid;
-      grid-gap: 10px;
-      grid-template-columns: 0.003fr 1fr 2px;
+      grid-template-rows: auto;
+      padding-bottom: 9px;
+      height: calc(93.5% - 9px);
 
       &::after {
         content: "";
@@ -133,11 +145,11 @@ $font: "Arvo", serif;
       }
       &::-webkit-scrollbar {
         width: 5px;
+        display: none;
 
         background-color: #ff0f0f00;
         margin-right: 10px;
       }
-
       &::-webkit-scrollbar-corner {
         background-color: transparent;
         border-color: transparent;
@@ -153,25 +165,32 @@ $font: "Arvo", serif;
       }
     }
     &__wrapper {
-      height: calc(100% - 30px);
+      height: calc(100% - 20px);
       max-height: 450px;
-      width: 91%;
-      padding: 10px 10px 20px 10px;
-      padding-left: 15px;
+      width: 90%;
+
+      padding: 17px 10px 20px 10px;
       align-self: center;
       justify-self: center;
       grid-column: 2;
-      @include make-flex($just: unset);
+      display: grid;
+      grid-template-rows: auto;
       overflow-y: scroll;
       row-gap: 20px;
-
-      .row { 
+      .row {
+        $padding: 15px;
         &__forward {
-          width: 100%;
-          @include make-flex($dir:row);
+          position: relative;
+          height: 100%;
+          column-gap: 17px;
+          justify-content: space-between;
+          display: grid;
+          grid-template-columns: auto auto;
         }
-        &__reverse {
-        }
+      }
+      &::after {
+        content: "";
+        height: 0.01px;
       }
     }
     &__inputBox {
@@ -216,62 +235,6 @@ $font: "Arvo", serif;
     }
     &__row {
       @include make-flex(row);
-
-      // Below for sprite variations
-      .fa {
-        color: #cacaca;
-        font-size: 2.5em;
-        margin: auto;
-        cursor: pointer;
-
-        &-g {
-          font-family: "Roboto", sans-serif;
-          // &:hover,
-          &__OnFocus {
-            color: #e45353;
-          }
-          &__OffFocus {
-            color: #cacaca;
-          }
-        }
-        &-star {
-          font-size: 2.1em;
-          // &:hover,
-          &__OnFocus {
-            color: #f0f051;
-          }
-
-          &__OffFocus {
-            color: #cacaca;
-          }
-        }
-        &-mars {
-          // &:hover,
-          &__OnFocus {
-            color: #53cee4;
-          }
-          &__OffFocus {
-            color: #cacaca;
-          }
-        }
-        &-venus {
-          // &:hover,
-          &__OnFocus {
-            color: #e453d1;
-          }
-          &__OffFocus {
-            color: #cacaca;
-          }
-        }
-      }
-      .disabled {
-        color: #525252;
-        &:hover {
-          color: #525252;
-          cursor: unset;
-        }
-      }
-      // Sprite variations end
     }
   }
 }
@@ -281,12 +244,42 @@ $font: "Arvo", serif;
   height: 100%;
 }
 
+@media only screen and (min-width: 1201px) and (max-width: 1465px) {
+  .Maincontainer {
+    .content {
+      &__wrapper {
+        row-gap: 17px;
+        .row {
+          &__forward {
+            column-gap: 15px;
+            .Box.type2,
+            .Box.SpriteVariationBox {
+              padding: 5% 3%;
+              width: 95% !important;
+            }
+            .Box.SpriteVariationBox {
+              .fa {
+                &-g,
+                &-star,
+                &-mars,
+                &-venus {
+                  padding: 5px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 1200px) {
   .Maincontainer {
     height: unset;
     &__contentwrapper {
       height: 100%;
-      width: 60%;
+      width: 420px;
       border-radius: unset;
 
       grid-template-columns: auto;
@@ -299,6 +292,9 @@ $font: "Arvo", serif;
         "details";
     }
     .content {
+      &__backdrop {
+        display: none;
+      }
       &__search,
       &__image,
       &__details {
@@ -317,22 +313,50 @@ $font: "Arvo", serif;
       }
 
       &__details {
-        padding: 20px 0px 0px 0px;
-        // background-color: #53cee4;
+        max-width: unset;
+        min-width: unset;
         border-radius: 15px 15px 0px 0px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.13);
+
+        grid-template-columns: 1fr;
+        grid-gap: unset;
       }
 
       &__search {
+        max-width: unset;
+        min-width: unset;
         align-self: flex-start;
         height: 100%;
+        &::before {
+          max-width: unset;
+          min-width: unset;
+        }
       }
       &__wrapper {
         max-height: unset;
-        width: 93%;
-        row-gap: 20px;
-        padding: 10px 15px 20px 15px;
+        height: unset;
+        max-width: unset;
+        min-width: unset;
+        width: calc(100% - 28px);
+        grid-template-columns: minmax(0, 1fr);
+
+        row-gap: 15px;
+        padding: 20px 15px 20px 15px;
         overflow: hidden;
+
+        .row {
+          $padding: 15px;
+          &__forward {
+            position: relative;
+            width: unset;
+            column-gap: 15px;
+            display: grid;
+            grid-template-columns: 0.5fr 1.5fr;
+            .Box.type2 {
+              height: 50px;
+            }
+          }
+        }
       }
     }
   }
@@ -354,6 +378,31 @@ $font: "Arvo", serif;
       }
       &__details {
         grid-gap: unset;
+      }
+
+      &__wrapper {
+        max-height: unset;
+        max-width: unset;
+        min-width: unset;
+        width: calc(100% - 28px);
+        grid-template-columns: minmax(0, 1fr);
+
+        .row {
+          $padding: 15px;
+          &__forward {
+            position: relative;
+            width: unset;
+            column-gap: 20px;
+            display: grid;
+            grid-template-columns: 0.5fr 1.5fr;
+            .Box.type2 {
+              height: 50px;
+            }
+            .Box.SpriteVariationBox {
+              width: calc(100% - 30px) !important;
+            }
+          }
+        }
       }
     }
   }

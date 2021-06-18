@@ -5,7 +5,7 @@ $cubic: cubic-bezier(0.64, 0.09, 0.08, 1);
   height: 50px;
   width: 50px;
   border-radius: 100%;
-  margin: 0 5px;
+  margin: auto 5px;
   @include make-flex();
   img {
     height: 70%;
@@ -127,4 +127,10 @@ $cubic: cubic-bezier(0.64, 0.09, 0.08, 1);
 .water {
   background: #539ddf;
   box-shadow: 0 0 13px #539ddf;
+}
+.placeholder {
+  background: #539edf00;
+  box-shadow: 0 0 13px #539edf00;
+  height: 50px;
+  width: 50px;
 }
