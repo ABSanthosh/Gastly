@@ -206,21 +206,35 @@ function Home() {
                 percent={stats[5]}
               />
             </Box>
-            <Box
-              className="PokeAbilityHeading"
-              style={{
-                height: "auto",
-              }}
-            >
-              <span>Abilities</span>
-              <div className="abilityList">
-                {pokeabilities == undefined || pokeabilities.length != 0 ? (
-                  pokeabilities
-                ) : (
-                  <AbilityBox ability="Not Available" />
-                )}
+
+            <div className="row__forward row__forward--ability">
+              <Box
+                className="PokeAbilityHeading"
+                style={{
+                  width: "155px",
+                  height: "171px",
+                }}
+              >
+                <span>Abilities</span>
+                <div className="abilityList">
+                  {pokeabilities == undefined || pokeabilities.length != 0 ? (
+                    pokeabilities
+                  ) : (
+                    <AbilityBox ability="Not Available" />
+                  )}
+                </div>
+              </Box>
+              <div className="row__forward__abilitySubContainer">
+                <div className="abilitySubContainer--one">
+                  <Box className="cries"></Box>
+                  <Box className="footprint"></Box>
+                </div>
+                <div className="abilitySubContainer--two">
+                  <Box className="gender"></Box>
+                </div>
               </div>
-            </Box>
+            </div>
+
             <Box className="PokeEvalChainHeading">
               <span>Evolution Chain</span>
               <div className="evalList">{evalChain}</div>

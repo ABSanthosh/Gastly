@@ -183,16 +183,48 @@ $font: "Arvo", serif;
           position: relative;
           height: 100%;
           column-gap: 17px;
-          justify-content: space-between;
           display: grid;
           grid-template-columns: auto auto;
+
+          &--ability {
+            grid-template-columns: auto 1fr;
+          }
+          &__abilitySubContainer {
+            @include make-flex();
+            row-gap: 20px;
+            .abilitySubContainer {
+              &--one {
+                @include make-flex($dir: row);
+                width: 100%;
+                column-gap: 20px;
+                .Box.cries,
+                .Box.footprint {
+                  // width: calc(100% - 30px);
+                  width: 60px;
+                  height: 60px;
+                }
+                
+              }
+              &--two {
+                @include make-flex();
+                height: calc(100% - 100px);
+                width: 100%;
+                .Box.gender{
+                  width: calc(100% - 30px);
+                  height: calc(100% - 30px);
+                }
+              }
+            }
+          }
         }
       }
       &::after {
         content: "";
         height: 0.01px;
       }
-
+      .Box.type2 {
+        width: calc(100% - 30px);
+      }
       .Box.PokeAbilityHeading,
       .Box.PokeEvalChainHeading,
       .Box.PokeResHeading {
@@ -205,6 +237,10 @@ $font: "Arvo", serif;
           row-gap: 10px;
           @include make-flex($dir: row);
           flex-wrap: wrap;
+        }
+        .abilityList {
+          height: 100%;
+          align-content: center;
         }
         span {
           font-size: 1.4rem;
