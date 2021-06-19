@@ -67,6 +67,10 @@ function Home() {
     pokeability = [];
     evalChainComponent = [];
 
+    try{
+      document.body.scrollTop = document.documentElement.scrollTop = 0;
+    }catch(err){}
+
     pokemonDetails["Types"].forEach((obj, index) => {
       poketype.push(<Type key={index} type={obj} />);
     });

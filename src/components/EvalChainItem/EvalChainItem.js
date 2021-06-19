@@ -24,6 +24,8 @@ function EvalChainItem({ pokeId, className }) {
     evalSprite = NewSprites[pokeId]["Sprites"]["FemaleOnlyNormal"];
   } else if (SpriteJson.includes("NormalMale")) {
     evalSprite = NewSprites[pokeId]["Sprites"]["NormalMale"];
+  } else if (SpriteJson.includes("NormalFemale")) {
+    evalSprite = NewSprites[pokeId]["Sprites"]["NormalFemale"];
   }
 
   return (
@@ -31,7 +33,6 @@ function EvalChainItem({ pokeId, className }) {
       data-tooltip={CapitalizeChar(NewSprites[pokeId]["Name"])}
       className={`EvalChainItem ${className} EvalChainItem__tooltips`}
     >
-
       <img
         crossOrigin="projectpokemon.org"
         src={googleProxyURL + encodeURIComponent(evalSprite)}

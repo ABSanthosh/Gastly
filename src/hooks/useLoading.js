@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 
 export function useLoading() {
   const startLoading = () => {
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
     document.getElementById("root").style.overflow = "hidden";
     document.querySelector("html").style.overflow = "hidden";
     document

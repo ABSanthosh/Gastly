@@ -86,5 +86,23 @@ export function SpriteVariationControlPanel(iconFocus, id, setUrl) {
     if ("GigaShiny" in NewSprites[forifier(id)]["Sprites"]) {
       setUrl(NewSprites[forifier(id)]["Sprites"]["GigaShiny"]);
     }
+  } else if (
+    iconFocus[0].includes("OffFocus") &&
+    iconFocus[1].includes("OffFocus") &&
+    iconFocus[2].includes("OnFocus") &&
+    iconFocus[3].includes("OffFocus")
+  ) {
+    if ("NormalFemale" in NewSprites[forifier(id)]["Sprites"]) {
+      setUrl(NewSprites[forifier(id)]["Sprites"]["NormalFemale"]);
+    }
+  } else if (
+    iconFocus[0].includes("OnFocus") &&
+    iconFocus[1].includes("OffFocus") &&
+    iconFocus[2].includes("OnFocus") &&
+    iconFocus[3].includes("OffFocus")
+  ) {
+    if ("ShinyFemale" in NewSprites[forifier(id)]["Sprites"]) {
+      setUrl(NewSprites[forifier(id)]["Sprites"]["ShinyFemale"]);
+    }
   }
 }
