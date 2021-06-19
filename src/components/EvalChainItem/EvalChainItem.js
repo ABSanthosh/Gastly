@@ -30,6 +30,7 @@ function EvalChainItem({ pokeId, className }) {
 
   return (
     <div
+      tabIndex={0}
       data-tooltip={CapitalizeChar(NewSprites[pokeId]["Name"])}
       className={`EvalChainItem ${className} EvalChainItem__tooltips`}
     >

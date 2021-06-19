@@ -30,7 +30,7 @@ $cubic: cubic-bezier(0.64, 0.09, 0.08, 1);
     border-radius: 2px;
     transition: opacity 0.2s $cubic, transform 0.2s $cubic;
   }
-  &:hover {
+  &:hover,&:focus {
     &:after {
       display: block;
       opacity: 1;

@@ -13,16 +13,37 @@ function Cries({ pokeId }) {
         )}.mp3`}
         onError={() => {
           document.getElementById("audioBoxImg").style.opacity = 0.5;
-          document.getElementById("audioBoxImg").style.cursor = "unset"
+          document.getElementById("audioBoxImg").style.cursor = "unset";
         }}
-        onLoad={()=>{
+        onLoad={() => {
           document.getElementById("audioBoxImg").style.opacity = 1;
-          document.getElementById("audioBoxImg").style.cursor = "pointer"
+          document.getElementById("audioBoxImg").style.cursor = "pointer";
         }}
       />
       <img
+        tabIndex={0}
         className="audioBoxImg"
         id="audioBoxImg"
+        onFocus={() => {
+          document.onkeyup = (e) => {
+            if (e.key == "Enter") {
+              const audioElement = document.getElementById("PokemonCry");
+              if (
+                document.getElementById("audioBoxImg").src == Play &&
+                document.getElementById("audioBoxImg").style.opacity != 0.5
+              ) {
+                document.getElementById("audioBoxImg").src = Pause;
+                audioElement.play();
+                setTimeout(() => {
+                  document.getElementById("audioBoxImg").src = Play;
+                }, audioElement.duration * 1000 - audioElement.currentTime * 1000);
+              } else {
+                document.getElementById("audioBoxImg").src = Play;
+                audioElement.pause();
+              }
+            }
+          };
+        }}
         onClick={() => {
           const audioElement = document.getElementById("PokemonCry");
           if (

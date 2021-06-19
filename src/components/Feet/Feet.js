@@ -15,6 +15,7 @@ function Feet({ pokeId }) {
   return (
     <>
       <img
+        tabIndex={0}
         className="pokemonFeet"
         src={URL}
         onError={() => {

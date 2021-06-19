@@ -238,15 +238,15 @@ function Home() {
                 </div>
                 <div className="abilitySubContainer--two">
                   <Box className="dimensions">
-                    <div className="dimensions__height">
+                    <div tabIndex={0} className="dimensions__height">
                       {Dimensions[forifier(id)]["Height"]}
                       <span>Height</span>
                     </div>
-                    <div className="dimensions__weight">
+                    <div tabIndex={0} className="dimensions__weight">
                       {Dimensions[forifier(id)]["Weight"]}
                       <span>Weight</span>
                     </div>
-                    <div className="dimensions__male">
+                    <div tabIndex={0} className="dimensions__male">
                       {GenderRatio[forifier(id)]["Male"]}:{GenderRatio[forifier(id)]["Female"]}
                       <span>Male:Female</span>
                     </div>

@@ -40,12 +40,13 @@ function Type({ type }) {
     steel: Steel,
     water: Water,
     placeholder: Water,
-  }; 
+  };
 
   return (
     <>
       {type != "placeholder" ? (
         <div
+          tabIndex={0}
           data-tooltip={type.charAt(0).toUpperCase() + type.slice(1)}
           className={"tooltip--bottom Type " + type.toLowerCase()}
         >

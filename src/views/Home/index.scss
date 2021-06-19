@@ -1,7 +1,6 @@
 @import "../../styles/mixins";
 @import url("https://use.fontawesome.com/29d5099fb7.js");
-@import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
+
 
 $font: "Arvo", serif;
 
@@ -242,12 +241,7 @@ $font: "Arvo", serif;
                         transform: translateX(-50%);
                         font-size: 1rem;
                       }
-                      &:hover {
-                        span {
-                          visibility: unset;
-                        }
-                      }
-                      &:focus {
+                      &:hover,&:focus {
                         span {
                           visibility: unset;
                         }
