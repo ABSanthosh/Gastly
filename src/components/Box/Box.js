@@ -1,7 +1,5 @@
 import "./Box.scss";
 
-import { useEffect, useRef, useState } from "react";
-
 import PropTypes from "prop-types";
 
 function Box({ children, style, className }) {
