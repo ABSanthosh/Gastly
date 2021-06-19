@@ -199,19 +199,60 @@ $font: "Arvo", serif;
                 column-gap: 20px;
                 .Box.cries,
                 .Box.footprint {
+                  @include make-flex($dir: row);
                   // width: calc(100% - 30px);
                   width: 60px;
                   height: 60px;
                 }
-                
               }
               &--two {
                 @include make-flex();
                 height: calc(100% - 100px);
                 width: 100%;
-                .Box.gender{
+                .Box.dimensions {
+                  @include make-flex($dir: row);
+                  position: relative;
                   width: calc(100% - 30px);
                   height: calc(100% - 30px);
+                  .dimensions {
+                    &__height,
+                    &__weight,
+                    &__male,
+                    &__female {
+                      flex-basis: 100%;
+                      @include make-flex();
+                      height: 75%;
+                      flex: 1 1 0;
+                      font-size: 1.15rem;
+
+                      span {
+                        height: auto;
+                        width: 100px;
+                        padding: 5px;
+                        border-radius: 4px;
+                        background-color: #d4d4d4;
+                        position: absolute;
+                        visibility: hidden;
+                        text-align: center;
+                        bottom: 0px;
+                        left: 50%;
+                        -webkit-transform: translateX(-50%);
+                        -moz-transform: translateX(-50%);
+                        transform: translateX(-50%);
+                        font-size: 1rem;
+                      }
+                      &:hover {
+                        span {
+                          visibility: unset;
+                        }
+                      }
+                      &:focus {
+                        span {
+                          visibility: unset;
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -224,6 +265,10 @@ $font: "Arvo", serif;
       }
       .Box.type2 {
         width: calc(100% - 30px);
+      }
+      .Box.PokeAbilityHeading {
+        width: 155px;
+        height: 171px;
       }
       .Box.PokeAbilityHeading,
       .Box.PokeEvalChainHeading,
@@ -298,7 +343,17 @@ $font: "Arvo", serif;
   width: 100%;
   height: 100%;
 }
-
+@media only screen and (max-width: 1510px) {
+  .Maincontainer {
+    .content {
+      &__wrapper {
+        .Box.PokeAbilityHeading {
+          width: auto;
+        }
+      }
+    }
+  }
+}
 @media only screen and (min-width: 1201px) and (max-width: 1465px) {
   .Maincontainer {
     .content {
@@ -411,6 +466,9 @@ $font: "Arvo", serif;
               height: 50px;
             }
           }
+        }
+        .Box.PokeAbilityHeading {
+          width: 155px;
         }
       }
     }

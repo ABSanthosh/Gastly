@@ -9,22 +9,24 @@ import Box from "../../components/Box/Box";
 import HintBox from "./components/HintBox/HintBox";
 import { InitialConditions } from "../../Util/SpriteConditions";
 import NewSprites from "../../Assets/FromOldJson.json";
+import Dimensions from "../../Assets/JSON/PokemonDimensions.json";
+import GenderRatio from "../../Assets/JSON/PokemonGenderRatio.json";
 import PokeSprite from "./components/PokeSprite/PokeSprite";
 import SpriteVariation from "./components/SpriteVariation/SpriteVariation";
 import { SpriteVariationControlPanel } from "../../Util/SpriteVariationCP";
 import Type from "../../components/Types/Type";
 import { forifier } from "../../Util/forifier";
-import { useImgLoading } from "../../hooks/useImgLoading";
 import { useLoading } from "../../hooks/useLoading";
 import AbilityBox from "../../components/AbilityBox/AbilityBox";
 import EvalChainItem from "../../components/EvalChainItem/EvalChainItem";
+import Cries from "../../components/Cries/Cries";
+import Feet from "../../components/Feet/Feet";
 
 function Home() {
   let { id } = useParams();
 
   let history = useHistory();
   const { startLoading, stopLoading } = useLoading();
-  const { startImgLoading } = useImgLoading();
 
   if (id > 898) {
     history.push("/1");
@@ -210,10 +212,7 @@ function Home() {
             <div className="row__forward row__forward--ability">
               <Box
                 className="PokeAbilityHeading"
-                style={{
-                  width: "155px",
-                  height: "171px",
-                }}
+                
               >
                 <span>Abilities</span>
                 <div className="abilityList">
@@ -226,11 +225,32 @@ function Home() {
               </Box>
               <div className="row__forward__abilitySubContainer">
                 <div className="abilitySubContainer--one">
-                  <Box className="cries"></Box>
-                  <Box className="footprint"></Box>
+                  <Box className="cries">
+                    <Cries pokeId={id} />
+                  </Box>
+                  <Box className="footprint">
+                    <Feet pokeId={id} />
+                  </Box>
                 </div>
                 <div className="abilitySubContainer--two">
-                  <Box className="gender"></Box>
+                  <Box className="dimensions">
+                    <div className="dimensions__height">
+                      {Dimensions[forifier(id)]["Height"]}
+                      <span>Height</span>
+                    </div>
+                    <div className="dimensions__weight">
+                      {Dimensions[forifier(id)]["Weight"]}
+                      <span>Weight</span>
+                    </div>
+                    <div className="dimensions__male">
+                      {GenderRatio[forifier(id)]["Male"]}:{GenderRatio[forifier(id)]["Female"]}
+                      <span>Male:Female</span>
+                    </div>
+                    {/* <div className="dimensions__female">
+                      {GenderRatio[forifier(id)]["Female"]}
+                      <span>Female</span>
+                    </div> */}
+                  </Box>
                 </div>
               </div>
             </div>
