@@ -3,23 +3,77 @@
 
 $font: "Arvo", serif;
 
+// Light Mode colors
+.LightMode {
+  --MainBackground: #e2edff;
+  --ContainerBackground: #fff;
+  --DetailsBoxBackground: #fff;
+  --DetailsBoxShadow: 0 0 10px rgba(0, 0, 0, 0.13);
+
+  --InputBoxBorderColor: #cfcfcf;
+  --InputBoxBGColor: #fff;
+  --InputBoxTextColor: #464646;
+  --InputBoxSuggestionColor: #0000004d;
+  --InputBoxSearchIconColor: unset;
+
+  --BoxComponentBackground: #ffffff;
+  --BoxComponentParaColor: #4e4e4e;
+  --PokemonNameColor: #585858;
+  --BoxHeadingColor: #000;
+
+  --PNGImageInvertion: unset;
+
+  --DimensionsGenderTextColor: #585858;
+  --DimensionsGenderTabActive: #ffffff;
+  --DimensionsGenderTabNotActive: #00000015;
+
+  --AbilityBoxColor: #f0f0f0;
+}
+// @media (prefers-color-scheme: dark) {
+// Dark Mode Colors
+.DarkMode {
+  --MainBackground: #383838;
+  --ContainerBackground: #242424;
+  --DetailsBoxBackground: #242424;
+  --DetailsBoxShadow: 0 0 10px rgb(0 0 0 / 53%);
+
+  --InputBoxBorderColor: #bebebe;
+  --InputBoxBGColor: #242424;
+  --InputBoxTextColor: #fff;
+  --InputBoxSuggestionColor: #ffffff4d;
+  --InputBoxSearchIconColor: #afafaf;
+
+  --BoxComponentBackground: #3c3c3c;
+  --BoxComponentParaColor: #dcdcdc;
+  --PokemonNameColor: #dcdcdc;
+  --BoxHeadingColor: #dcdcdc;
+
+  --PNGImageInvertion: grayscale(1) invert(1);
+
+  --DimensionsGenderTextColor: #ffffff;
+  --DimensionsGenderTabActive: #3c3c3c;
+  --DimensionsGenderTabNotActive: #00000048;
+
+  --AbilityBoxColor: #909090;
+}
+// }
+
 .Maincontainer {
   min-width: 425px;
   min-height: 575px;
   height: 100vh;
   width: 100vw;
-  background-color: #e2edff;
+  background-color: var(--MainBackground);
   display: grid;
 
   &__contentwrapper {
     height: 77%;
     width: 75%;
-    background-color: #fff;
+    background-color: var(--ContainerBackground);
     align-self: center;
     justify-self: center;
     border-radius: 14px;
     z-index: 0;
-
     display: grid;
     grid-template-columns: 1.3fr 1fr;
     grid-template-rows: 0.3fr 1fr;
@@ -50,7 +104,7 @@ $font: "Arvo", serif;
     }
     &__search {
       grid-area: search;
-      background-color: #ffffff;
+      background-color: var(--DetailsBoxBackground);
       height: 79%;
       width: 90%;
       position: relative;
@@ -59,7 +113,7 @@ $font: "Arvo", serif;
 
       .content__SearchBarBox {
         position: relative;
-        margin: 30px;
+        margin: 25px;
         height: 50px;
 
         .fa-search {
@@ -68,13 +122,14 @@ $font: "Arvo", serif;
           pointer-events: none;
           top: 17px;
           left: 16px;
+          color: var(--InputBoxSearchIconColor);
 
           z-index: 1;
         }
       }
       &::before {
         content: "";
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.13);
+        box-shadow: var(--DetailsBoxShadow);
         border-radius: 15px 15px 0px 0px;
         height: 100%;
         width: 100%;
@@ -121,9 +176,10 @@ $font: "Arvo", serif;
       }
     }
     &__details {
+      scroll-behavior: smooth;
       border-radius: 0px 0px 15px 15px;
       overflow-y: hidden;
-      background-color: #ffffff;
+      background-color: var(--DetailsBoxBackground);
       grid-area: details;
       width: 90%;
       align-self: flex-start;
@@ -134,7 +190,7 @@ $font: "Arvo", serif;
 
       &::after {
         content: "";
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.13);
+        box-shadow: var(--DetailsBoxShadow);
         border-radius: 0px 0px 15px 15px;
         height: 55.45%;
         width: 29.3%;
@@ -175,6 +231,15 @@ $font: "Arvo", serif;
       grid-template-rows: auto;
       overflow-y: scroll;
       row-gap: 20px;
+
+      .Box {
+        background-color: var(--BoxComponentBackground);
+
+        p {
+          color: var(--BoxComponentParaColor);
+        }
+      }
+
       .row {
         $padding: 15px;
         &__forward {
@@ -202,6 +267,10 @@ $font: "Arvo", serif;
                   width: 100%;
                   min-width: 60px;
                   height: 60px;
+                  img {
+                    -webkit-filter: var(--PNGImageInvertion);
+                    filter: var(--PNGImageInvertion);
+                  }
                 }
               }
               &--two {
@@ -248,9 +317,13 @@ $font: "Arvo", serif;
           min-width: 80%;
           max-width: 100%;
           align-content: center;
+          .AbilityBox {
+            background-color: var(--AbilityBoxColor);
+          }
         }
         span {
           font-size: 1.4rem;
+          color: var(--BoxHeadingColor);
           padding: 0px 0px 4px 0px;
         }
       }
@@ -261,7 +334,8 @@ $font: "Arvo", serif;
       padding: 1px 15px 1px 15px;
       font-size: 1.3rem;
       border-radius: 10px;
-      color: #616161;
+      color: var(--InputBoxTextColor);
+      background-color: var(--InputBoxBGColor);
 
       border-style: solid;
       border-width: medium;
@@ -274,6 +348,10 @@ $font: "Arvo", serif;
         width: 100%;
       }
     }
+    &__themeToggle {
+      z-index: 1;
+      height: 50px;
+    }
     &__pokemonName {
       position: absolute;
       left: 60px;
@@ -282,9 +360,9 @@ $font: "Arvo", serif;
       height: 100%;
       font-family: $font;
       text-transform: capitalize;
-      @include make-flex(row, $just: flex-start);
+      @include make-flex(row, $just: space-between);
       font-size: 2em;
-      color: #585858;
+      color: var(--PokemonNameColor);
     }
     &__contentwrapper {
       position: relative;
@@ -305,6 +383,11 @@ $font: "Arvo", serif;
   width: 100%;
   height: 100%;
 }
+
+.rah-hint {
+  color: var(--InputBoxSuggestionColor) !important;
+}
+
 @media only screen and (max-width: 1510px) {
   .Maincontainer {
     .content {
@@ -345,7 +428,6 @@ $font: "Arvo", serif;
     }
   }
 }
-
 @media only screen and (max-width: 1200px) {
   .Maincontainer {
     height: unset;
@@ -365,7 +447,20 @@ $font: "Arvo", serif;
     }
     .content {
       &__backdrop {
-        display: none;
+        width: 420px;
+        overflow: hidden;
+        height: unset;
+        border-radius: unset;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -40%);
+        svg {
+          width: 520%;
+          transform: translateY(10%) translateX(-20%);
+        }
+        // display: none;
+        //     width: 335%;
+        // transform: translateX(-15%) translateY(10px);
       }
       &__search,
       &__image,
@@ -399,6 +494,7 @@ $font: "Arvo", serif;
         min-width: unset;
         align-self: flex-start;
         height: 100%;
+        border-radius: 0px;
         &::before {
           max-width: unset;
           min-width: unset;
@@ -436,13 +532,16 @@ $font: "Arvo", serif;
     }
   }
 }
-
 @media only screen and (max-width: 480px) {
   .Maincontainer {
     &__contentwrapper {
       width: 100%;
     }
     .content {
+      &__backdrop {
+        width: 100%;
+      }
+
       &__image {
         grid-template-columns: auto 75px auto;
         grid-template-rows: 430px auto;
