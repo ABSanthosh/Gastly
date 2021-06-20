@@ -36,7 +36,7 @@ function EvalChainItem({ pokeId, className }) {
     >
       <img
         crossOrigin="projectpokemon.org"
-        src={googleProxyURL + encodeURIComponent(evalSprite)}
+        src={evalSprite}
         alt={"Pokemon"}
         className={"EvalChainItem__Sprite"}
         onClick={() => {
