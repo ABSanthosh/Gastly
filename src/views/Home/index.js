@@ -43,6 +43,10 @@ function Home() {
       stopLoading();
     } catch (e) {}
   }
+  if(isNaN(id)){
+    //TODO: Make a 404 site and redirect there
+    history.push(`/${Math.floor(Math.random() * 898 + 1)}`);
+  }
 
   const imgRef = useRef();
   const [backdropcolor, setColor] = useState("white");
@@ -172,8 +176,8 @@ function Home() {
         </div>
         <div className="content__details">
           <div className="content__wrapper">
-            <Box>
-              <p>{desc}</p>
+            <Box id="PokeDesc" className="PokeDesc">
+              <p id="pokeDescPara">{desc}</p>
             </Box>
             <div className="row__forward">
               <Box className="type2">{poketypes}</Box>
