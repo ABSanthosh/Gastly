@@ -1,5 +1,5 @@
 import "./Backdrop.scss";
-
+ 
 function Backdrop({ fill, isMobile }) {
   let viewBox = isMobile ? "30 0 820 280" : "0 0 1440 320";
   let ClassName = isMobile ? "MobileBD" : "DesktopBD";
