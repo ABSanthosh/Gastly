@@ -1,12 +1,9 @@
-
-
 $padding: 15px;
 
-.Box { 
+.Box {
   position: relative;
   width: calc(96% - #{$padding});
   height: 100px;
-  background-color: #ffffff;
 
   box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.13);
   border-radius: 15px;
@@ -15,7 +12,6 @@ $padding: 15px;
   justify-self: center;
   p {
     font-family: "Lora", serif;
-    color: #4e4e4e;
   }
 }
 

@@ -5,9 +5,13 @@
     @include make-flex();
     height: 100%;
     width: 30%;
+    img{
+      webkit-filter: var(--PNGImageInvertion);
+      filter: var(--PNGImageInvertion);      
+    }
     .tabs {
       &__activeTab {
-        background-color: rgb(255, 255, 255) !important;
+        background-color: var(--DimensionsGenderTabActive) !important;
       }
       &__heightweight {
         border-radius: 15px 0px 0px 0px;
@@ -18,7 +22,7 @@
       &__heightweight,
       &__gender {
         @include make-flex();
-        background-color: #00000015;
+        background-color: var(--DimensionsGenderTabNotActive);
         height: 50%;
         width: 100%;
         img {
@@ -39,7 +43,7 @@
       // height: 50%;
       font-family: "Arvo", serif;
       font-size: 0.85rem;
-      color: #585858;
+      color: var(--DimensionsGenderTextColor);
       @include make-flex($dir: row, $just: space-between);
       width: 100%;
     }
