@@ -9,8 +9,7 @@ import Box from "../../components/Box/Box";
 import HintBox from "./components/HintBox/HintBox";
 import { InitialConditions } from "../../Util/SpriteConditions";
 import NewSprites from "../../Assets/FromOldJson.json";
-import Dimensions from "../../Assets/JSON/PokemonDimensions.json";
-import GenderRatio from "../../Assets/JSON/PokemonGenderRatio.json";
+
 import PokeSprite from "./components/PokeSprite/PokeSprite";
 import SpriteVariation from "./components/SpriteVariation/SpriteVariation";
 import { SpriteVariationControlPanel } from "../../Util/SpriteVariationCP";
@@ -21,6 +20,7 @@ import AbilityBox from "../../components/AbilityBox/AbilityBox";
 import EvalChainItem from "../../components/EvalChainItem/EvalChainItem";
 import Cries from "../../components/Cries/Cries";
 import Feet from "../../components/Feet/Feet";
+import Tabs from "./components/Tabs/Tabs";
 
 function Home() {
   let { id } = useParams();
@@ -67,9 +67,9 @@ function Home() {
     pokeability = [];
     evalChainComponent = [];
 
-    try{
+    try {
       document.body.scrollTop = document.documentElement.scrollTop = 0;
-    }catch(err){}
+    } catch (err) {}
 
     pokemonDetails["Types"].forEach((obj, index) => {
       poketype.push(<Type key={index} type={obj} />);
@@ -214,10 +214,7 @@ function Home() {
             </Box>
 
             <div className="row__forward row__forward--ability">
-              <Box
-                className="PokeAbilityHeading"
-                
-              >
+              <Box className="PokeAbilityHeading">
                 <span>Abilities</span>
                 <div className="abilityList">
                   {pokeabilities == undefined || pokeabilities.length != 0 ? (
@@ -238,22 +235,7 @@ function Home() {
                 </div>
                 <div className="abilitySubContainer--two">
                   <Box className="dimensions">
-                    <div tabIndex={0} className="dimensions__height">
-                      {Dimensions[forifier(id)]["Height"]}
-                      <span>Height</span>
-                    </div>
-                    <div tabIndex={0} className="dimensions__weight">
-                      {Dimensions[forifier(id)]["Weight"]}
-                      <span>Weight</span>
-                    </div>
-                    <div tabIndex={0} className="dimensions__male">
-                      {GenderRatio[forifier(id)]["Male"]}:{GenderRatio[forifier(id)]["Female"]}
-                      <span>Male:Female</span>
-                    </div>
-                    {/* <div className="dimensions__female">
-                      {GenderRatio[forifier(id)]["Female"]}
-                      <span>Female</span>
-                    </div> */}
+                    <Tabs id={id} />
                   </Box>
                 </div>
               </div>

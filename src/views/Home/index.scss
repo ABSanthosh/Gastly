@@ -1,7 +1,6 @@
 @import "../../styles/mixins";
 @import url("https://use.fontawesome.com/29d5099fb7.js");
 
-
 $font: "Arvo", serif;
 
 .Maincontainer {
@@ -210,44 +209,10 @@ $font: "Arvo", serif;
                 height: calc(100% - 100px);
                 width: 100%;
                 .Box.dimensions {
-                  @include make-flex($dir: row);
-                  position: relative;
-                  width: calc(100% - 30px);
-                  height: calc(100% - 30px);
-                  .dimensions {
-                    &__height,
-                    &__weight,
-                    &__male,
-                    &__female {
-                      flex-basis: 100%;
-                      @include make-flex();
-                      height: 75%;
-                      flex: 1 1 0;
-                      font-size: 1.15rem;
-
-                      span {
-                        height: auto;
-                        width: 100px;
-                        padding: 5px;
-                        border-radius: 4px;
-                        background-color: #d4d4d4;
-                        position: absolute;
-                        visibility: hidden;
-                        text-align: center;
-                        bottom: 0px;
-                        left: 50%;
-                        -webkit-transform: translateX(-50%);
-                        -moz-transform: translateX(-50%);
-                        transform: translateX(-50%);
-                        font-size: 1rem;
-                      }
-                      &:hover,&:focus {
-                        span {
-                          visibility: unset;
-                        }
-                      }
-                    }
-                  }
+                  @include make-flex($dir: row, $just: unset);
+                  height: 100%;
+                  width: 100%;
+                  padding: unset;
                 }
               }
             }
@@ -280,6 +245,8 @@ $font: "Arvo", serif;
         }
         .abilityList {
           height: 100%;
+          min-width: 80%;
+          max-width: 100%;
           align-content: center;
         }
         span {
@@ -463,7 +430,7 @@ $font: "Arvo", serif;
           }
         }
         .Box.PokeAbilityHeading {
-          width: 155px;
+          width: 145px;
         }
       }
     }
@@ -485,6 +452,7 @@ $font: "Arvo", serif;
         margin-bottom: 25px;
       }
       &__details {
+        overflow-x: hidden;
         grid-gap: unset;
       }
 
