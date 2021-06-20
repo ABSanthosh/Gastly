@@ -7,7 +7,7 @@ function Router() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/:id"  component={views.Home} />
+        <Route exact path="/:id(\d+)"  component={views.Home} />
         <Redirect from="/" to={"/" + String(randomPokemon)} />
       </Switch>
     </BrowserRouter>
