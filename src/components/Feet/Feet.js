@@ -18,6 +18,7 @@ function Feet({ pokeId }) {
         tabIndex={0}
         className="pokemonFeet"
         src={URL}
+        alt="Pokemon Footprint"
         onError={() => {
           document.querySelector(".pokemonFeet").src = FourOFour;
         }}

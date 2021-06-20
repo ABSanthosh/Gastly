@@ -11,7 +11,6 @@ function SpriteVariation({ iconFocus, seticonFocus, id }) {
       <span
         tabIndex={0}
         className={`fa fa-star fa-star__${iconFocus[0]}`}
-        aria-hidden="true"
         onClick={() => {
           startImgLoading();
 
@@ -39,7 +38,6 @@ function SpriteVariation({ iconFocus, seticonFocus, id }) {
       <span
         tabIndex={0}
         className={`fa fa-mars fa-mars__${iconFocus[1]}`}
-        aria-hidden="true"
         onClick={() => {
           startImgLoading();
           if (!iconFocus[1].includes("disabled")) {
@@ -105,7 +103,6 @@ function SpriteVariation({ iconFocus, seticonFocus, id }) {
       <span
         tabIndex={0}
         className={`fa fa-venus fa-venus__${iconFocus[2]}`}
-        aria-hidden="true"
         onClick={() => {
           startImgLoading();
           if (!iconFocus[2].includes("disabled")) {
@@ -164,7 +161,6 @@ function SpriteVariation({ iconFocus, seticonFocus, id }) {
       <span
         tabIndex={0}
         className={`fa fa-g fa-g__${iconFocus[3]}`}
-        aria-hidden="true"
         onClick={() => {
           startImgLoading();
           if (!iconFocus[3].includes("disabled")) {

@@ -6,6 +6,13 @@ import { forifier } from "../../Util/forifier";
 function Cries({ pokeId }) {
   return (
     <>
+      <link
+        rel="preload"
+        as="audio"
+        href={`https://gastly-dex.github.io/PokedexData/PokemonCries/${forifier(
+          pokeId
+        )}.mp3`}
+      />
       <audio
         id="PokemonCry"
         src={`https://gastly-dex.github.io/PokedexData/PokemonCries/${forifier(
@@ -24,6 +31,7 @@ function Cries({ pokeId }) {
         tabIndex={0}
         className="audioBoxImg"
         id="audioBoxImg"
+        alt="Pokemon cry play button"
         onFocus={() => {
           document.onkeyup = (e) => {
             if (e.key == "Enter") {
@@ -61,7 +69,7 @@ function Cries({ pokeId }) {
           }
         }}
         src={Play}
-      ></img>
+      />
     </>
   );
 }

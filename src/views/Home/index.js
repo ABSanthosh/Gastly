@@ -3,29 +3,53 @@ import "./index.scss";
 import { useEffect, useRef, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
-import Backdrop from "../../components/backdrops/Backdrop";
-import BaseStats from "../../components/BaseStats/BaseStats";
-import Box from "../../components/Box/Box";
-import HintBox from "./components/HintBox/HintBox";
-import { InitialConditions } from "../../Util/SpriteConditions";
-import NewSprites from "../../Assets/FromOldJson.json";
-import PokeSprite from "./components/PokeSprite/PokeSprite";
-import SpriteVariation from "./components/SpriteVariation/SpriteVariation";
-import { SpriteVariationControlPanel } from "../../Util/SpriteVariationCP";
-import Type from "../../components/Types/Type";
+import loadable from "@loadable/component";
+const BaseStats = loadable(() =>
+import("../../components/BaseStats/BaseStats")
+);
+const AbilityBox = loadable(() =>
+import("../../components/AbilityBox/AbilityBox")
+);
+const SpriteVariation = loadable(() =>
+import("./components/SpriteVariation/SpriteVariation")
+);
+const EvalChainItem = loadable(() =>
+import("../../components/EvalChainItem/EvalChainItem")
+);
+const Tabs = loadable(() => import("./components/Tabs/Tabs"));
+const Box = loadable(() => import("../../components/Box/Box"));
+const Feet = loadable(() => import("../../components/Feet/Feet"));
+const Type = loadable(() => import("../../components/Types/Type"));
+const Cries = loadable(() => import("../../components/Cries/Cries"));
+const HintBox = loadable(() => import("./components/HintBox/HintBox"));
+const Backdrop = loadable(() => import("../../components/backdrops/Backdrop"));
+const PokeSprite = loadable(() => import("./components/PokeSprite/PokeSprite"));
+
 import { forifier } from "../../Util/forifier";
 import { useLoading } from "../../hooks/useLoading";
-import AbilityBox from "../../components/AbilityBox/AbilityBox";
-import EvalChainItem from "../../components/EvalChainItem/EvalChainItem";
-import Cries from "../../components/Cries/Cries";
-import Feet from "../../components/Feet/Feet";
-import Tabs from "./components/Tabs/Tabs";
+import NewSprites from "../../Assets/FromOldJson.json";
 import DarkMode from "../../Assets/Images/DarkMode.gif";
 import LightMode from "../../Assets/Images/LightMode.gif";
+import { InitialConditions } from "../../Util/SpriteConditions";
+import { SpriteVariationControlPanel } from "../../Util/SpriteVariationCP";
+
+// import Tabs from "./components/Tabs/Tabs";
+// import Box from "../../components/Box/Box";
+// import Feet from "../../components/Feet/Feet";
+// import Type from "../../components/Types/Type";
+// import Cries from "../../components/Cries/Cries";
+// import HintBox from "./components/HintBox/HintBox";
+// import Backdrop from "../../components/backdrops/Backdrop";
+// import PokeSprite from "./components/PokeSprite/PokeSprite";
+// import BaseStats from "../../components/BaseStats/BaseStats";
+// import AbilityBox from "../../components/AbilityBox/AbilityBox";
+// import EvalChainItem from "../../components/EvalChainItem/EvalChainItem";
+// import SpriteVariation from "./components/SpriteVariation/SpriteVariation";
+
 
 function Home() {
   let { id } = useParams();
-
+  
   let history = useHistory();
   const { startLoading, stopLoading } = useLoading();
 
@@ -43,7 +67,7 @@ function Home() {
       stopLoading();
     } catch (e) {}
   }
-  if(isNaN(id)){
+  if (isNaN(id)) {
     //TODO: Make a 404 site and redirect there
     history.push(`/${Math.floor(Math.random() * 898 + 1)}`);
   }
@@ -137,6 +161,7 @@ function Home() {
             <div className="content__pokemonName">
               {pokename}
               <img
+                alt={theme}
                 className="content__themeToggle"
                 onClick={() => {
                   console.log("Hi");

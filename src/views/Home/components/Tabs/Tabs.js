@@ -24,7 +24,7 @@ function Tabs({ id }) {
           id="tabs__heightweight"
           className="tabs__heightweight tabs__activeTab"
         >
-          <img src={HeightWeight} />
+          <img alt="Height and weight" src={HeightWeight} />
         </div>
         <div
           onClick={() => {
@@ -41,7 +41,7 @@ function Tabs({ id }) {
           id="tabs__gender"
           className="tabs__gender"
         >
-          <img src={Gender} />
+          <img alt="Gender" src={Gender} />
         </div>
       </div>
 
