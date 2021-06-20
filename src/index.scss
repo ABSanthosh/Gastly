@@ -39,3 +39,9 @@
 #root {
   min-width: 353px;
 }
+
+@media only screen and (max-width: 1200px) {
+  * {
+    outline: none;
+  }
+}
