@@ -155,6 +155,7 @@ $font: "Arvo", serif;
 
         align-self: center;
         justify-self: center;
+        mix-blend-mode: difference;
         &:hover {
           background-color: #626262;
         }
@@ -237,6 +238,10 @@ $font: "Arvo", serif;
 
         p {
           color: var(--BoxComponentParaColor);
+          height: 100%;
+          max-height: 100px;
+          text-overflow: ellipsis;
+          overflow: hidden;
         }
       }
 
@@ -340,10 +345,10 @@ $font: "Arvo", serif;
       border-style: solid;
       border-width: medium;
       border-color: rgb(207, 207, 207);
-      transition: width 1s cubic-bezier(0.36, 0.96, 0.57, 0.88);
+      transition: width 1s ease-out;
       &:focus {
         outline: none;
-        transition: width 1s cubic-bezier(0.36, 0.96, 0.57, 0.88);
+        transition: width 1s ease-out;
         padding: 1px 15px 1px 45px;
         width: 100%;
       }
