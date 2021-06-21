@@ -1,11 +1,8 @@
 import "./Feet.scss";
 import FourOFour from "../../Assets/Images/404.png";
 import { forifier } from "../../Util/forifier";
-import NewSprites from "../../Assets/FromOldJson.json";
-
-function CapitalizeChar(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
+import NewSprites from "../../Assets/JSON/PokemonData.json";
+import { CapitalizeChar } from "../../Util/Capitalize";
 
 function Feet({ pokeId }) {
   const URL = `https://gastly-dex.github.io/PokedexData/PokemonFootprints/${forifier(

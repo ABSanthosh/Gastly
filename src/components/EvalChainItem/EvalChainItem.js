@@ -1,10 +1,7 @@
 import "./EvalChainItem.scss";
-import NewSprites from "../../Assets/FromOldJson.json";
+import NewSprites from "../../Assets/JSON/PokemonData.json";
 import { useHistory } from "react-router-dom";
-
-function CapitalizeChar(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
+import { CapitalizeChar } from "../../Util/Capitalize";
 
 function EvalChainItem({ pokeId, className }) {
   let googleProxyURL =
