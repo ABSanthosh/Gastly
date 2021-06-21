@@ -8,26 +8,17 @@ svg {
   left: 0px;
 }
 
-.backdropWrapper {
-  transition: all none;
-}
 
 .DesktopBD {
   display: block;
 }
-.MobileBD {
-  display: none;
-}
 
-@media only screen and (min-width: 480px) {
-  .backdropWrapper {
-    width: 90% !important;
-  }
-}
 
 @media only screen and (max-width: 1200px) {
-  .DesktopBD {
-    display: none;
+  .backdropWrapper {
+    width: 90% !important;
+    height: 100%;
+    margin: unset;
   }
   .MobileBD {
     display: block;

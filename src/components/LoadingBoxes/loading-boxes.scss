@@ -1,11 +1,9 @@
 @import "../../styles/mixins";
 
 #loading-dock {
-  height: 100%;
+  width: 75%;
+  height: 77%;
   position: absolute;
-  width: 100%;
-  top: 0px;
-  left: 0px;
   z-index: 1000;
   .loader {
     height: 100%;
@@ -13,38 +11,38 @@
     @include make-flex();
     border-radius: 15px;
     img {
-      height: 50%;
+      height: 47%;
     }
     background-color: #c5b6f2;
   }
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 1200px) {
   #loading-dock {
-    height: unset;
-    width: unset;
+    height: 100%;
+    width: 100%;
+    min-width: 390px;
+    top: 0px;
+    left: 0px;
+
     .loader {
-      height: 100vh;
-      width: 100vw;
-      @include make-flex();
       border-radius: unset;
       img {
-        height: 40%;
+        height: 39%;
       }
     }
   }
 }
-@media only screen and (max-width: 1200px) {
+
+@media only screen and (max-width: 480px) {
   #loading-dock {
-    height: unset;
-    width: unset;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
     .loader {
-      height: 100vh;
-      width: 100vw;
-      @include make-flex();
-      border-radius: unset;
       img {
-        height: 40%;
+        height: 39%;
       }
     }
   }

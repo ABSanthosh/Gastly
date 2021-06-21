@@ -1,0 +1,54 @@
+@import "../../../../styles/mixins";
+
+.dimensions {
+  &__tabs {
+    @include make-flex();
+    height: 100%;
+    width: 30%;
+    img{
+      webkit-filter: var(--PNGImageInvertion);
+      filter: var(--PNGImageInvertion);      
+    }
+    .tabs {
+      &__activeTab {
+        background-color: var(--DimensionsGenderTabActive) !important;
+      }
+      &__heightweight {
+        border-radius: 15px 0px 0px 0px;
+      }
+      &__gender {
+        border-radius: 0px 0px 0px 15px;
+      }
+      &__heightweight,
+      &__gender {
+        @include make-flex();
+        background-color: var(--DimensionsGenderTabNotActive);
+        height: 50%;
+        width: 100%;
+        img {
+          height: 25px;
+        }
+      }
+    }
+  }
+  .tabs__content {
+    @include make-flex($just: space-around);
+    display: none;
+    width: calc(70% - 30px);
+    height: calc(100% - 30px);
+    border-radius: 0 15px 15px 0;
+    padding: 15px;
+    .topTabContent,
+    .bottomTabContent {
+      // height: 50%;
+      font-family: "Arvo", serif;
+      font-size: 0.85rem;
+      color: var(--DimensionsGenderTextColor);
+      @include make-flex($dir: row, $just: space-between);
+      width: 100%;
+    }
+  }
+  #heightWeight {
+    display: flex;
+  }
+}

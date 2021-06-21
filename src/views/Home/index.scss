@@ -1,195 +1,383 @@
 @import "../../styles/mixins";
 @import url("https://use.fontawesome.com/29d5099fb7.js");
-@import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
 
 $font: "Arvo", serif;
 
+// Light Mode colors
+.LightMode {
+  --MainBackground: #e2edff;
+  --ContainerBackground: #fff;
+  --DetailsBoxBackground: #fff;
+  --DetailsBoxShadow: 0 0 10px rgba(0, 0, 0, 0.13);
+
+  --InputBoxBorderColor: #cfcfcf;
+  --InputBoxBGColor: #fff;
+  --InputBoxTextColor: #464646;
+  --InputBoxSuggestionColor: #0000004d;
+  --InputBoxSearchIconColor: unset;
+
+  --BoxComponentBackground: #ffffff;
+  --BoxComponentParaColor: #4e4e4e;
+  --PokemonNameColor: #585858;
+  --BoxHeadingColor: #000;
+
+  --PNGImageInvertion: unset;
+
+  --DimensionsGenderTextColor: #585858;
+  --DimensionsGenderTabActive: #ffffff;
+  --DimensionsGenderTabNotActive: #00000015;
+
+  --AbilityBoxColor: #f0f0f0;
+}
+// Dark Mode Colors
+.DarkMode {
+  --MainBackground: #383838;
+  --ContainerBackground: #242424;
+  --DetailsBoxBackground: #242424;
+  --DetailsBoxShadow: 0 0 10px rgb(0 0 0 / 53%);
+
+  --InputBoxBorderColor: #bebebe;
+  --InputBoxBGColor: #242424;
+  --InputBoxTextColor: #fff;
+  --InputBoxSuggestionColor: #ffffff4d;
+  --InputBoxSearchIconColor: #afafaf;
+
+  --BoxComponentBackground: #3c3c3c;
+  --BoxComponentParaColor: #dcdcdc;
+  --PokemonNameColor: #dcdcdc;
+  --BoxHeadingColor: #dcdcdc;
+
+  --PNGImageInvertion: grayscale(1) invert(1);
+
+  --DimensionsGenderTextColor: #ffffff;
+  --DimensionsGenderTabActive: #3c3c3c;
+  --DimensionsGenderTabNotActive: #00000048;
+
+  --AbilityBoxColor: #909090;
+}
+
 .Maincontainer {
-  min-width: 353px;
+  min-width: 425px;
   min-height: 575px;
   height: 100vh;
   width: 100vw;
-  background-color: rgb(231, 255, 255);
-  @include make-flex();
+  background-color: var(--MainBackground);
+  display: grid;
 
   &__contentwrapper {
-    position: relative;
-    height: 62%;
-    width: 70%;
-    border-radius: 15px;
-    box-shadow: 0px 0px 6px 6px rgba(0, 0, 0, 0.13);
-    background-color: rgb(255, 255, 255);
-    padding: 3rem;
+    height: 77%;
+    width: 75%;
+    background-color: var(--ContainerBackground);
+    align-self: center;
+    justify-self: center;
+    border-radius: 14px;
+    z-index: 0;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    grid-template-rows: 0.3fr 1fr;
+    grid-template-areas:
+      "image search"
+      "image details";
+
+    transition: width 0.5s ease-in-out;
   }
-  &__content {
-    position: relative;
-    z-index: 10;
-    height: 100%;
-    width: 100%;
-    @include make-flex(row, $just: space-between);
-    .content {
-      &__image {
-        position: relative;
-        height: 100%;
-        width: 50%;
-        @include make-flex(row, $just: space-between);
-        .leftChevron,
-        .rightChevron {
-          width: 30px;
-          height: 60px;
-          cursor: pointer;
-          &:hover {
-            background-color: #626262;
-          }
-          &:active {
-            background-color: rgb(177, 236, 223);
-          }
-        }
-        .leftChevron {
-          background-color: #bdbdbd;
-          background-size: cover;
-          clip-path: polygon(100% 0, 0% 50%, 100% 100%);
-        }
-        .rightChevron {
-          background-color: #bdbdbd;
-          background-size: cover;
-          clip-path: polygon(0 0, 100% 50%, 0 100%);
-        }
+  .content {
+    &__search,
+    &__details {
+      max-width: 450.78px;
+      justify-self: center;
+      &::before,
+      &::after {
+        max-width: 450.78px;
       }
-      &__details {
-        height: 100%;
+    }
+
+    &__backdrop {
+      width: 75%;
+      height: 77%;
+      z-index: -1;
+      position: absolute;
+      border-radius: 14px;
+      min-height: 480px;
+    }
+    &__search {
+      grid-area: search;
+      background-color: var(--DetailsBoxBackground);
+      height: 79%;
+      width: 90%;
+      position: relative;
+      border-radius: 15px 15px 0px 0px;
+      align-self: flex-end;
+
+      .content__SearchBarBox {
         position: relative;
-        width: 45%;
-        border-radius: 15px;
-        box-shadow: 0px 0px 6px 6px rgba(0, 0, 0, 0.13);
-        background-color: #ffffff;
-      }
-
-      &__inputBox {
-        height: 100%;
-        width: 50px;
-        padding: 1px 15px 1px 15px;
-        font-size: 1.3rem;
-        border-radius: 10px;
-        color: #616161;
-
-        border-style: solid;
-        border-width: medium;
-        border-color: rgb(207, 207, 207);
-        transition: width 1s cubic-bezier(0.36, 0.96, 0.57, 0.88);
-        &:focus {
-          outline: none;
-          transition: width 1s cubic-bezier(0.36, 0.96, 0.57, 0.88);
-          padding: 1px 15px 1px 45px;
-          width: 100%;
-        }
-      }
-
-      &__SearchBarBox {
-        position: relative;
-        margin: 30px;
+        margin: 25px;
         height: 50px;
+
         .fa-search {
           position: absolute;
           padding: unset;
           pointer-events: none;
           top: 17px;
           left: 16px;
+          color: var(--InputBoxSearchIconColor);
 
           z-index: 1;
         }
       }
-
-      &__pokemonName {
-        position: absolute;
-        left: 60px;
-        width: 80%;
-        max-width: 90%;
+      &::before {
+        content: "";
+        box-shadow: var(--DetailsBoxShadow);
+        border-radius: 15px 15px 0px 0px;
         height: 100%;
-        font-family: $font;
-        text-transform: capitalize;
-        @include make-flex(row, $just: flex-start);
-        font-size: 2em;
-        color: #585858;
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        z-index: -1;
+      }
+    }
+    &__image {
+      grid-area: image;
+      align-self: center;
+      justify-self: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto minmax(50px, auto);
+      grid-template-areas: "leftC . rightC" ". ImgLoader .";
+
+      .leftChevron,
+      .rightChevron {
+        width: 30px;
+        height: 60px;
+        cursor: pointer;
+
+        align-self: center;
+        justify-self: center;
+        mix-blend-mode: difference;
+        &:hover {
+          background-color: #626262;
+        }
+        &:active {
+          background-color: rgb(177, 236, 223);
+        }
+      }
+      .leftChevron {
+        grid-area: leftC;
+        background-color: #bdbdbd;
+        background-size: cover;
+        clip-path: polygon(100% 0, 0% 50%, 100% 100%);
+      }
+      .rightChevron {
+        grid-area: rightC;
+        background-color: #bdbdbd;
+        background-size: cover;
+        clip-path: polygon(0 0, 100% 50%, 0 100%);
+      }
+    }
+    &__details {
+      scroll-behavior: smooth;
+      border-radius: 0px 0px 15px 15px;
+      overflow-y: hidden;
+      background-color: var(--DetailsBoxBackground);
+      grid-area: details;
+      width: 90%;
+      align-self: flex-start;
+      display: grid;
+      grid-template-rows: auto;
+      padding-bottom: 9px;
+      height: calc(93.5% - 9px);
+
+      &::after {
+        content: "";
+        box-shadow: var(--DetailsBoxShadow);
+        border-radius: 0px 0px 15px 15px;
+        height: 55.45%;
+        width: 29.3%;
+        position: absolute;
+        z-index: -1;
+      }
+      &::-webkit-scrollbar {
+        width: 5px;
+        display: none;
+
+        background-color: #ff0f0f00;
+        margin-right: 10px;
+      }
+      &::-webkit-scrollbar-corner {
+        background-color: transparent;
+        border-color: transparent;
+      }
+      &::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background-clip: content-box;
+        background-color: rgb(187, 187, 187);
+      }
+      &::-webkit-scrollbar-track {
+        border-radius: 5px;
+        background-color: transparent;
+      }
+    }
+    &__wrapper {
+      height: calc(100% - 20px);
+      max-height: 450px;
+      width: 90%;
+
+      padding: 17px 10px 20px 10px;
+      align-self: center;
+      justify-self: center;
+      grid-column: 2;
+      display: grid;
+      grid-template-rows: auto;
+      overflow-y: scroll;
+      row-gap: 20px;
+
+      .Box {
+        background-color: var(--BoxComponentBackground);
+
+        p {
+          color: var(--BoxComponentParaColor);
+          height: 100%;
+          max-height: 100px;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
       }
 
-      &__contentwrapper {
-        position: relative;
-        margin: 25px 22px 30px 25px;
-        @include make-flex($align: unset, $just: unset);
+      .row {
+        $padding: 15px;
+        &__forward {
+          position: relative;
+          height: 100%;
+          column-gap: 17px;
+          display: grid;
+          grid-template-columns: auto auto;
 
-        overflow-y: scroll;
-        padding-top: 5px;
-        height: calc(100% - 160px);
-      }
-      &__row {
-        @include make-flex(row);
-
-        // Below for sprite variations
-        .fa {
-          color: #cacaca;
-          font-size: 2.5em;
-          margin: auto;
-          cursor: pointer;
-
-          &-g {
-            font-family: "Roboto", sans-serif;
-            // &:hover,
-            &__OnFocus {
-              color: #e45353;
-            }
-            &__OffFocus {
-              color: #cacaca;
-            }
+          &--ability {
+            grid-template-columns: auto 1fr;
           }
-          &-star {
-            font-size: 2.1em;
-            // &:hover,
-            &__OnFocus {
-              color: #f0f051;
-            }
-
-            &__OffFocus {
-              color: #cacaca;
-            }
-          }
-          &-mars {
-            // &:hover,
-            &__OnFocus {
-              color: #53cee4;
-            }
-            &__OffFocus {
-              color: #cacaca;
-            }
-          }
-          &-venus {
-            // &:hover,
-            &__OnFocus {
-              color: #e453d1;
-            }
-            &__OffFocus {
-              color: #cacaca;
+          &__abilitySubContainer {
+            @include make-flex();
+            row-gap: 20px;
+            .abilitySubContainer {
+              &--one {
+                @include make-flex($dir: row);
+                width: 100%;
+                column-gap: 20px;
+                .Box.cries,
+                .Box.footprint {
+                  @include make-flex($dir: row);
+                  // width: calc(100% - 30px);
+                  width: 100%;
+                  min-width: 60px;
+                  height: 60px;
+                  img {
+                    -webkit-filter: var(--PNGImageInvertion);
+                    filter: var(--PNGImageInvertion);
+                  }
+                }
+              }
+              &--two {
+                @include make-flex();
+                height: calc(100% - 100px);
+                width: 100%;
+                .Box.dimensions {
+                  @include make-flex($dir: row, $just: unset);
+                  height: 100%;
+                  width: 100%;
+                  padding: unset;
+                }
+              }
             }
           }
         }
-        .disabled {
-          color: #525252;
-          &:hover {
-            color: #525252;
-            cursor: unset;
-          }
-          // &::after {
-          //   content: "X";
-          //   position: absolute;
-          //   color: #e45353;
-          //   font-size: 1.3em;
-          //   left: 25%;
-          //   top: 0;
-          // }
-        }
-        // Sprite variations end
       }
+      &::after {
+        content: "";
+        height: 0.01px;
+      }
+      .Box.type2 {
+        width: calc(100% - 30px);
+      }
+      .Box.PokeAbilityHeading {
+        width: 155px;
+        height: 171px;
+      }
+      .Box.PokeAbilityHeading,
+      .Box.PokeEvalChainHeading,
+      .Box.PokeResHeading {
+        padding-top: 10px;
+        @include make-flex($just: flex-start);
+        .abilityList,
+        .evalList,
+        .resList {
+          column-gap: 10px;
+          row-gap: 10px;
+          @include make-flex($dir: row);
+          flex-wrap: wrap;
+        }
+        .abilityList {
+          height: 100%;
+          min-width: 80%;
+          max-width: 100%;
+          align-content: center;
+          .AbilityBox {
+            background-color: var(--AbilityBoxColor);
+          }
+        }
+        span {
+          font-size: 1.4rem;
+          color: var(--BoxHeadingColor);
+          padding: 0px 0px 4px 0px;
+        }
+      }
+    }
+    &__inputBox {
+      height: 100%;
+      width: 50px;
+      padding: 1px 15px 1px 15px;
+      font-size: 1.3rem;
+      border-radius: 10px;
+      color: var(--InputBoxTextColor);
+      background-color: var(--InputBoxBGColor);
+
+      border-style: solid;
+      border-width: medium;
+      border-color: rgb(207, 207, 207);
+      transition: width 1s ease-out;
+      &:focus {
+        outline: none;
+        transition: width 1s ease-out;
+        padding: 1px 15px 1px 45px;
+        width: 100%;
+      }
+    }
+    &__themeToggle {
+      z-index: 1;
+      height: 50px;
+    }
+    &__pokemonName {
+      position: absolute;
+      left: 60px;
+      width: 80%;
+      max-width: 90%;
+      height: 100%;
+      font-family: $font;
+      text-transform: capitalize;
+      @include make-flex(row, $just: space-between);
+      font-size: 2em;
+      color: var(--PokemonNameColor);
+    }
+    &__contentwrapper {
+      position: relative;
+      margin: 25px 22px 30px 25px;
+      @include make-flex($align: unset, $just: unset);
+
+      overflow-y: scroll;
+      padding-top: 5px;
+      height: calc(100% - 160px);
+    }
+    &__row {
+      @include make-flex(row);
     }
   }
 }
@@ -199,65 +387,198 @@ $font: "Arvo", serif;
   height: 100%;
 }
 
-@media only screen and (max-width: 1200px) {
-  html,
-  body {
-    height: 100%;
-  }
-  #root {
-    height: 100%;
-  }
-  .Maincontainer {
-    background-color: rgb(231, 255, 255);
-    height: unset;
+.rah-hint {
+  color: var(--InputBoxSuggestionColor) !important;
+}
 
-    &__contentwrapper {
-      height: 100%;
-      padding: unset;
-      width: 100%;
-      border-radius: unset;
-    }
-    &__content {
-      @include make-flex(column);
-      .content {
-        &__details {
-          width: 90%;
-          border-radius: 0px 0px 15px 15px;
-        }
-        &__image {
-          // background-color: #585858;
-          height: 70vh;
-          width: 100vw;
-          @include make-flex(row, $just: space-evenly);
+@media only screen and (max-width: 1510px) {
+  .Maincontainer {
+    .content {
+      &__wrapper {
+        .Box.PokeAbilityHeading {
+          width: auto;
         }
       }
     }
   }
 }
+@media only screen and (min-width: 1201px) and (max-width: 1465px) {
+  .Maincontainer {
+    .content {
+      &__wrapper {
+        row-gap: 17px;
+        .row {
+          &__forward {
+            column-gap: 15px;
+            .Box.type2,
+            .Box.SpriteVariationBox {
+              padding: 5% 3%;
+              width: 95% !important;
+            }
+            .Box.SpriteVariationBox {
+              .fa {
+                &-g,
+                &-star,
+                &-mars,
+                &-venus {
+                  padding: 5px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .Maincontainer {
+    height: unset;
+    &__contentwrapper {
+      height: 100%;
+      width: 420px;
+      border-radius: unset;
 
+      grid-template-columns: auto;
+      grid-template-rows: auto auto 1fr;
+      align-self: center;
+      justify-self: center;
+      grid-template-areas:
+        "search"
+        "image"
+        "details";
+    }
+    .content {
+      &__backdrop {
+        width: 420px;
+        overflow: hidden;
+        height: unset;
+        border-radius: unset;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -40%);
+        svg {
+          width: 520%;
+          transform: translateY(10%) translateX(-20%);
+        }
+        // display: none;
+        //     width: 335%;
+        // transform: translateX(-15%) translateY(10px);
+      }
+      &__search,
+      &__image,
+      &__details {
+        height: 100%;
+        width: 100%;
+        justify-self: center;
+        &::after {
+          box-shadow: unset;
+        }
+      }
+      &__search,
+      &__details {
+        &::after {
+          all: initial;
+        }
+      }
+
+      &__details {
+        max-width: unset;
+        min-width: unset;
+        border-radius: 15px 15px 0px 0px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.13);
+
+        grid-template-columns: 1fr;
+        grid-gap: unset;
+      }
+
+      &__search {
+        max-width: unset;
+        min-width: unset;
+        align-self: flex-start;
+        height: 100%;
+        border-radius: 0px;
+        &::before {
+          max-width: unset;
+          min-width: unset;
+        }
+      }
+      &__wrapper {
+        max-height: unset;
+        height: unset;
+        max-width: unset;
+        min-width: unset;
+        width: calc(100% - 28px);
+        grid-template-columns: minmax(0, 1fr);
+
+        row-gap: 15px;
+        padding: 20px 15px 20px 15px;
+        overflow: hidden;
+
+        .row {
+          $padding: 15px;
+          &__forward {
+            position: relative;
+            width: unset;
+            column-gap: 15px;
+            display: grid;
+            grid-template-columns: 0.5fr 1.5fr;
+            .Box.type2 {
+              height: 50px;
+            }
+          }
+        }
+        .Box.PokeAbilityHeading {
+          width: 145px;
+        }
+      }
+    }
+  }
+}
 @media only screen and (max-width: 480px) {
   .Maincontainer {
-    &__content {
-      .content {
-        &__details {
-          width: 100%;
-          border-radius: unset;
-        }
-        &__image {
-          height: 75vh;
-          width: 100vw;
-          // background-color: #585858;
-          .leftChevron,
-          .rightChevron {
-            position: absolute;
-            // height: 100px;
-            // background-color: aqua;
-          }
-          .leftChevron {
-            left: 5px;
-          }
-          .rightChevron {
-            right: 5px;
+    &__contentwrapper {
+      width: 100%;
+    }
+    .content {
+      &__backdrop {
+        width: 100%;
+      }
+
+      &__image {
+        grid-template-columns: auto 75px auto;
+        grid-template-rows: 430px auto;
+        grid-template-areas:
+          "imagePNG imagePNG imagePNG"
+          "leftC ImgLoader rightC";
+        margin-bottom: 25px;
+      }
+      &__details {
+        overflow-x: hidden;
+        grid-gap: unset;
+      }
+
+      &__wrapper {
+        max-height: unset;
+        max-width: unset;
+        min-width: unset;
+        width: calc(100% - 28px);
+        grid-template-columns: minmax(0, 1fr);
+
+        .row {
+          $padding: 15px;
+          &__forward {
+            position: relative;
+            width: unset;
+            column-gap: 20px;
+            display: grid;
+            grid-template-columns: 0.5fr 1.5fr;
+            .Box.type2 {
+              height: 50px;
+            }
+            .Box.SpriteVariationBox {
+              width: calc(100% - 30px) !important;
+            }
           }
         }
       }

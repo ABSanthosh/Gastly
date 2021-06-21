@@ -1,19 +1,19 @@
-import { useImgLoading } from "../../../../hooks/useImgLoading";
+import "./SpriteVariation.scss";
+
+import NewSprites from "../../../../Assets/JSON/PokemonData.json";
 import { forifier } from "../../../../Util/forifier";
-import NewSprites from "../../../../Assets/FromOldJson.json";
-function SpriteVariation({
-  iconFocus,
-  seticonFocus,
-  id,
-}) {
-  const { startImgLoading } = useImgLoading();
+import { useImgLoading } from "../../../../hooks/useImgLoading";
+
+function SpriteVariation({ iconFocus, seticonFocus, id }) {
+  const { startImgLoading, stopImgLoading } = useImgLoading();
   return (
     <>
       <span
+        tabIndex={0}
         className={`fa fa-star fa-star__${iconFocus[0]}`}
-        aria-hidden="true"
         onClick={() => {
-        startImgLoading();
+          startImgLoading();
+
           if (!iconFocus[0].includes("disabled")) {
             if (iconFocus[0].includes("OffFocus")) {
               seticonFocus([
@@ -30,14 +30,16 @@ function SpriteVariation({
                 iconFocus[3],
               ]);
             }
+          } else {
+            stopImgLoading();
           }
         }}
       />
       <span
+        tabIndex={0}
         className={`fa fa-mars fa-mars__${iconFocus[1]}`}
-        aria-hidden="true"
         onClick={() => {
-        startImgLoading();
+          startImgLoading();
           if (!iconFocus[1].includes("disabled")) {
             if (iconFocus[1].includes("OffFocus")) {
               seticonFocus([
@@ -79,21 +81,30 @@ function SpriteVariation({
                 ]);
               }
             } else {
-              seticonFocus([
-                iconFocus[0],
-                "OffFocus",
-                iconFocus[2],
-                iconFocus[3],
-              ]);
+              if (
+                "NoGenNormal" in NewSprites[forifier(id)]["Sprites"] ||
+                "NoGenShiny" in NewSprites[forifier(id)]["Sprites"]
+              ) {
+                seticonFocus([
+                  iconFocus[0],
+                  "OffFocus",
+                  iconFocus[2],
+                  iconFocus[3],
+                ]);
+              } else {
+                stopImgLoading();
+              }
             }
+          } else {
+            stopImgLoading();
           }
         }}
       />
       <span
+        tabIndex={0}
         className={`fa fa-venus fa-venus__${iconFocus[2]}`}
-        aria-hidden="true"
         onClick={() => {
-        startImgLoading();
+          startImgLoading();
           if (!iconFocus[2].includes("disabled")) {
             if (iconFocus[2].includes("OffFocus")) {
               seticonFocus([
@@ -125,24 +136,33 @@ function SpriteVariation({
                 }
               }
             } else {
-              seticonFocus([
-                iconFocus[0],
-                iconFocus[1],
-                "OffFocus",
-                iconFocus[3],
-              ]);
+              if (
+                "NoGenNormal" in NewSprites[forifier(id)]["Sprites"] ||
+                "NoGenShiny" in NewSprites[forifier(id)]["Sprites"]
+              ) {
+                seticonFocus([
+                  iconFocus[0],
+                  iconFocus[1],
+                  "OffFocus",
+                  iconFocus[3],
+                ]);
+              } else {
+                stopImgLoading();
+              }
             }
             if (iconFocus[1].includes("OnFocus")) {
               seticonFocus([iconFocus[0], "OffFocus", "OnFocus", iconFocus[3]]);
             }
+          } else {
+            stopImgLoading();
           }
         }}
       />
       <span
+        tabIndex={0}
         className={`fa fa-g fa-g__${iconFocus[3]}`}
-        aria-hidden="true"
         onClick={() => {
-        startImgLoading();
+          startImgLoading();
           if (!iconFocus[3].includes("disabled")) {
             if (iconFocus[3].includes("OffFocus")) {
               // If Male variation is active and giga is NoGen, Remove avtive state of male
@@ -186,6 +206,8 @@ function SpriteVariation({
                 "OffFocus",
               ]);
             }
+          } else {
+            stopImgLoading();
           }
         }}
       >

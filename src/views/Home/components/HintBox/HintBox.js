@@ -6,7 +6,6 @@ import {
 } from "../../../../Util/suggestions";
 
 import { Hint } from "react-autocomplete-hint";
-import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
 
 function HintBox({ text, setText }) {
@@ -51,41 +50,3 @@ function HintBox({ text, setText }) {
 }
 
 export default HintBox;
-
-{
-/* <Hint options={suggestions()} allowTabFill>
-<input
-    className="content__inputBox"
-    id="myText"
-    value={text}
-    type="text"
-    spellCheck="false"
-    autoCapitalize="off"
-    autoCorrect="off"
-    onBlur={() => {
-    if (text != "") {
-        setText("");
-    }
-    }}
-    onChange={(e) => {
-    setText(e.target.value);
-
-    if (suggestionsWithJustNames().includes(e.target.value)) {
-        console.log(e.target.value);
-        document.getElementById("myText").blur();
-        if (e.target.value.includes("#")) {
-        history.push(
-            "/" + String(parseInt(e.target.value.split(" #")[1]))
-        );
-        } else {
-        history.push(
-            "/" + String(parseInt(e.target.value.split(" ")[0]))
-        );
-        }
-
-        setText("");
-    }
-    }}
-/>
-</Hint> */
-}

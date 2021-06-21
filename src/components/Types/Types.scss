@@ -5,7 +5,7 @@ $cubic: cubic-bezier(0.64, 0.09, 0.08, 1);
   height: 50px;
   width: 50px;
   border-radius: 100%;
-  margin: 0 5px;
+  margin: auto 5px;
   @include make-flex();
   img {
     height: 70%;
@@ -30,7 +30,7 @@ $cubic: cubic-bezier(0.64, 0.09, 0.08, 1);
     border-radius: 2px;
     transition: opacity 0.2s $cubic, transform 0.2s $cubic;
   }
-  &:hover {
+  &:hover,&:focus {
     &:after {
       display: block;
       opacity: 1;
@@ -41,90 +41,96 @@ $cubic: cubic-bezier(0.64, 0.09, 0.08, 1);
 }
 .bug {
   background: #92bc2c;
-  box-shadow: 0 0 13px #92bc2c;
+  box-shadow: 0 0 8px #92bc2c;
 }
 
 .dark {
   background: #595761;
-  box-shadow: 0 0 13px #595761;
+  box-shadow: 0 0 8px #595761;
 }
 
 .dragon {
   background: #0c69c8;
-  box-shadow: 0 0 13px #0c69c8;
+  box-shadow: 0 0 8px #0c69c8;
 }
 
 .electric {
   background: #f2d94e;
-  box-shadow: 0 0 13px #f2d94e;
+  box-shadow: 0 0 8px #f2d94e;
 }
 
 .fire {
   background: #fba54c;
-  box-shadow: 0 0 13px #fba54c;
+  box-shadow: 0 0 8px #fba54c;
 }
 
 .fairy {
   background: #ee90e6;
-  box-shadow: 0 0 13px #ee90e6;
+  box-shadow: 0 0 8px #ee90e6;
 }
 
 .fighting {
   background: #d3425f;
-  box-shadow: 0 0 13px #d3425f;
+  box-shadow: 0 0 8px #d3425f;
 }
 
 .flying {
   background: #a1bbec;
-  box-shadow: 0 0 13px #a1bbec;
+  box-shadow: 0 0 8px #a1bbec;
 }
 
 .ghost {
   background: #5f6dbc;
-  box-shadow: 0 0 13px #5f6dbc;
+  box-shadow: 0 0 8px #5f6dbc;
 }
 
 .grass {
   background: #5fbd58;
-  box-shadow: 0 0 13px #5fbd58;
+  box-shadow: 0 0 8px #5fbd58;
 }
 
 .ground {
   background: #da7c4d;
-  box-shadow: 0 0 13px #da7c4d;
+  box-shadow: 0 0 8px #da7c4d;
 }
 
 .ice {
   background: #75d0c1;
-  box-shadow: 0 0 13px #75d0c1;
+  box-shadow: 0 0 8px #75d0c1;
 }
 
 .normal {
   background: #a0a29f;
-  box-shadow: 0 0 13px #a0a29f;
+  box-shadow: 0 0 8px #a0a29f;
 }
 
 .poison {
   background: #b763cf;
-  box-shadow: 0 0 13px #b763cf;
+  box-shadow: 0 0 8px #b763cf;
 }
 
 .psychic {
   background: #fa8581;
-  box-shadow: 0 0 13px #fa8581;
+  box-shadow: 0 0 8px #fa8581;
 }
 
 .rock {
   background: #c9bb8a;
-  box-shadow: 0 0 13px #c9bb8a;
+  box-shadow: 0 0 8px #c9bb8a;
 }
 
 .steel {
   background: #5695a3;
-  box-shadow: 0 0 13px #5695a3;
+  box-shadow: 0 0 8px #5695a3;
 }
 
 .water {
   background: #539ddf;
-  box-shadow: 0 0 13px #539ddf;
+  box-shadow: 0 0 8px #539ddf;
+}
+.placeholder {
+  background: #539edf00;
+  box-shadow: 0 0 13px #539edf00;
+  height: 50px;
+  width: 50px;
 }
