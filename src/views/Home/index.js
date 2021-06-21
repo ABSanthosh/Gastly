@@ -3,7 +3,7 @@ import "./index.scss";
 import { useEffect, useRef, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 import loadable from "@loadable/component";
 const BaseStats = loadable(() =>
   import("../../components/BaseStats/BaseStats")
@@ -152,7 +152,13 @@ function Home() {
 
   return (
     <div className={`Maincontainer ${theme}`}>
-      <Helmet>
+      <Helmet
+        meta={[
+          { name: "description", content: `${desc.substring(0, 350)}...` },
+        ]}
+        title={`Gastly | ${CapitalizeChar(pokename)} (${id})`}
+      />
+      {/* <Helmet>
         <title>
           Gastly | {CapitalizeChar(pokename)} ({id})
         </title>
@@ -168,7 +174,7 @@ function Home() {
           property="og:title"
           content={`Gastly | {CapitalizeChar(pokename)} #{id}`}
         />
-      </Helmet>
+      </Helmet> */}
       <div className="Maincontainer__contentwrapper">
         <div className="content__backdrop">
           <Backdrop isMobile={false} fill={backdropcolor} />
