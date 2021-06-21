@@ -14,7 +14,7 @@ function PokeSprite({ imgRef, Url, setColor }) {
 
   return (
     <>
-      <link rel="preload" as="image" href={Url} />
+      <link rel="prefetch" as="image" href={Url} crossOrigin="anonymous" />
       <img
         crossOrigin="projectpokemon.org"
         ref={imgRef}

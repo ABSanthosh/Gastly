@@ -1,7 +1,7 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable react/no-unknown-property */
 import './loading-boxes.scss';
-import logo from '../../Assets/gastly.gif'
+import logo from '../../Assets/Images/gastly.gif'
 
 function LoadingBoxes() {
   return (

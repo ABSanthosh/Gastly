@@ -1,4 +1,4 @@
-import Sprites from "../Assets/FromOldJson.json";
+import Sprites from "../Assets/JSON/PokemonData.json";
 
 function suggestions() {
   let names = [];
@@ -26,7 +26,7 @@ function suggestionsWithJustNames() {
   }
 
   for (var obj in Sprites) {
-    justNames.push(parseInt(obj)+" "+Sprites[obj]["Name"]);
+    justNames.push(parseInt(obj) + " " + Sprites[obj]["Name"]);
   }
   return justNames;
 }

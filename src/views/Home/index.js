@@ -3,18 +3,19 @@ import "./index.scss";
 import { useEffect, useRef, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
+import { Helmet } from 'react-helmet-async';
 import loadable from "@loadable/component";
 const BaseStats = loadable(() =>
-import("../../components/BaseStats/BaseStats")
+  import("../../components/BaseStats/BaseStats")
 );
 const AbilityBox = loadable(() =>
-import("../../components/AbilityBox/AbilityBox")
+  import("../../components/AbilityBox/AbilityBox")
 );
 const SpriteVariation = loadable(() =>
-import("./components/SpriteVariation/SpriteVariation")
+  import("./components/SpriteVariation/SpriteVariation")
 );
 const EvalChainItem = loadable(() =>
-import("../../components/EvalChainItem/EvalChainItem")
+  import("../../components/EvalChainItem/EvalChainItem")
 );
 const Tabs = loadable(() => import("./components/Tabs/Tabs"));
 const Box = loadable(() => import("../../components/Box/Box"));
@@ -27,9 +28,10 @@ const PokeSprite = loadable(() => import("./components/PokeSprite/PokeSprite"));
 
 import { forifier } from "../../Util/forifier";
 import { useLoading } from "../../hooks/useLoading";
-import NewSprites from "../../Assets/FromOldJson.json";
+import { CapitalizeChar } from "../../Util/Capitalize";
 import DarkMode from "../../Assets/Images/DarkMode.gif";
 import LightMode from "../../Assets/Images/LightMode.gif";
+import NewSprites from "../../Assets/JSON/PokemonData.json";
 import { InitialConditions } from "../../Util/SpriteConditions";
 import { SpriteVariationControlPanel } from "../../Util/SpriteVariationCP";
 
@@ -46,10 +48,9 @@ import { SpriteVariationControlPanel } from "../../Util/SpriteVariationCP";
 // import EvalChainItem from "../../components/EvalChainItem/EvalChainItem";
 // import SpriteVariation from "./components/SpriteVariation/SpriteVariation";
 
-
 function Home() {
   let { id } = useParams();
-  
+
   let history = useHistory();
   const { startLoading, stopLoading } = useLoading();
 
@@ -151,6 +152,23 @@ function Home() {
 
   return (
     <div className={`Maincontainer ${theme}`}>
+      <Helmet>
+        <title>
+          Gastly | {CapitalizeChar(pokename)} ({id})
+        </title>
+        <meta property="og:image" content={Url} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={window.location.href} />
+        <meta name="description" content={`${desc.substring(0, 300)}...`} />
+        <meta
+          property="og:description"
+          content={`${desc.substring(0, 300)}...`}
+        />
+        <meta
+          property="og:title"
+          content={`Gastly | {CapitalizeChar(pokename)} #{id}`}
+        />
+      </Helmet>
       <div className="Maincontainer__contentwrapper">
         <div className="content__backdrop">
           <Backdrop isMobile={false} fill={backdropcolor} />

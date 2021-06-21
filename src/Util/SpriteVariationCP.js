@@ -1,4 +1,4 @@
-import NewSprites from "../Assets/FromOldJson.json";
+import NewSprites from "../Assets/JSON/PokemonData.json";
 import { forifier } from "./forifier";
 
 export function SpriteVariationControlPanel(iconFocus, id, setUrl) {

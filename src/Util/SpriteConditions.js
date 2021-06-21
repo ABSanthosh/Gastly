@@ -1,4 +1,4 @@
-import NewSprites from "../Assets/FromOldJson.json";
+import NewSprites from "../Assets/JSON/PokemonData.json";
 import { forifier } from "../Util/forifier";
 
 let DefaultFocus = [
@@ -143,7 +143,12 @@ export function InitialConditions(id, setUrl, seticonFocus, iconFocus) {
       SpriteJson.includes("ShinyFemale")
     ) {
       // console.log("2+")
-      setDefaultFocus(["OffFocus", DefaultFocus[1], "OnFocus", DefaultFocus[3]]);
+      setDefaultFocus([
+        "OffFocus",
+        DefaultFocus[1],
+        "OnFocus",
+        DefaultFocus[3],
+      ]);
     }
   } else if (
     SpriteJson.includes("MaleOnlyNormal") ||
