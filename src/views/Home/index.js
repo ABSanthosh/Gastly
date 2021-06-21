@@ -157,24 +157,8 @@ function Home() {
           { name: "description", content: `${desc.substring(0, 350)}...` },
         ]}
         title={`Gastly | ${CapitalizeChar(pokename)} (${id})`}
+        
       />
-      {/* <Helmet>
-        <title>
-          Gastly | {CapitalizeChar(pokename)} ({id})
-        </title>
-        <meta property="og:image" content={Url} />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={window.location.href} />
-        <meta name="description" content={`${desc.substring(0, 300)}...`} />
-        <meta
-          property="og:description"
-          content={`${desc.substring(0, 300)}...`}
-        />
-        <meta
-          property="og:title"
-          content={`Gastly | {CapitalizeChar(pokename)} #{id}`}
-        />
-      </Helmet> */}
       <div className="Maincontainer__contentwrapper">
         <div className="content__backdrop">
           <Backdrop isMobile={false} fill={backdropcolor} />
