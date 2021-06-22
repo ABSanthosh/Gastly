@@ -2,9 +2,9 @@ import "./Box.scss";
 
 import PropTypes from "prop-types";
 
-function Box({ children, style, className }) {
+function Box({ children, style, className, onClick,ref }) {
   return (
-    <div style={style} className={`Box ${className}`}>
+    <div style={style} onClick={onClick} className={`Box ${className}`}>
       {children}
     </div>
   );
@@ -12,7 +12,8 @@ function Box({ children, style, className }) {
 
 Box.defaultProps = {
   children: null,
-  className: ""
+  className: "",
+  onClick: () => {},
 };
 
 Box.propTypes = {
