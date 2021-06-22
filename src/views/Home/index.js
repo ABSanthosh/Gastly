@@ -35,6 +35,8 @@ import NewSprites from "../../Assets/JSON/PokemonData.json";
 import { InitialConditions } from "../../Util/SpriteConditions";
 import { SpriteVariationControlPanel } from "../../Util/SpriteVariationCP";
 
+import { useEmblaCarousel } from "embla-carousel/react";
+
 // import Tabs from "./components/Tabs/Tabs";
 // import Box from "../../components/Box/Box";
 // import Feet from "../../components/Feet/Feet";
@@ -74,12 +76,15 @@ function Home() {
   }
 
   const imgRef = useRef();
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
   const [backdropcolor, setColor] = useState("white");
   const [text, setText] = useState("");
   const [pokename, setPokename] = useState("");
   const [desc, setDescription] = useState("");
   const [Url, setUrl] = useState();
+  const [galleryUrl, setGalleryUrl] = useState(0);
   const [evalChain, setEvalChain] = useState([]);
+  const [galleryImages, setGalleyImages] = useState([]);
   const [iconFocus, seticonFocus] = useState([
     "OffFocus disabled",
     "OffFocus disabled",
@@ -95,13 +100,31 @@ function Home() {
       : JSON.parse(localStorage.getItem("Theme"))
   );
 
-  let poketype, pokeability, evalChainComponent;
+  let poketype, pokeability, evalChainComponent, galleryItems;
+
+  useEffect(() => {
+    if (emblaApi) {
+      emblaApi.on("scroll", () => {
+        if (galleryUrl != emblaApi.selectedScrollSnap()) {
+          setGalleryUrl(emblaApi.selectedScrollSnap());
+        }
+        if (!emblaApi.canScrollPrev()) {
+          setGalleryUrl(0);
+        }
+      });
+    }
+  }, [emblaApi]);
+
+  // useEffect(() => {
+  //   console.log(galleryUrl);
+  // }, [galleryUrl]);
 
   useEffect(() => {
     let pokemonDetails = NewSprites[forifier(id)];
     poketype = [];
     pokeability = [];
     evalChainComponent = [];
+    galleryItems = [];
 
     try {
       document.body.scrollTop = document.documentElement.scrollTop = 0;
@@ -137,11 +160,21 @@ function Home() {
       evalChainComponent.push(<EvalChainItem pokeId={obj} className={obj} />);
     }
 
+    NewSprites[forifier(id)]["Sprites"]["Misc"].forEach((obj, index) => {
+      galleryItems.push(
+        <div key={index + 1} className="embla__slide">
+          <img className="galleryItems" src={obj} />
+        </div>
+      );
+    });
+
     setPokename(pokemonDetails["Name"]);
     setPoketypes(poketype);
     setPokeabilities(pokeability);
     setDescription(pokemonDetails["Description"]);
     setEvalChain(evalChainComponent);
+    setGalleyImages(galleryItems);
+    // setGalleryUrl(galleryItems[0]);
 
     InitialConditions(id, setUrl, seticonFocus, iconFocus);
   }, [id]);
@@ -304,10 +337,47 @@ function Home() {
               <span>Evolution Chain</span>
               <div className="evalList">{evalChain}</div>
             </Box>
-            <Box className="PokeResHeading">
-              <span>Other Resourses</span>
-              <div className="resList">(Yet to be devloped)</div>
-            </Box>
+            <div className="row__forward row__forward--gallery">
+              <div className="row__forward--gallerySubcontainer">
+                <Box
+                  className="idkWhat"
+                  style={{ width: "110px", height: "110px" }}
+                ></Box>
+                <Box
+                  className="idkWhat"
+                  style={{ width: "110px", height: "110px" }}
+                ></Box>
+              </div>
+              <Box className="PokeGalleryHeading">
+                <span>Miscellaneous Image Gallery</span>
+                <div className="gallerySelector ">
+                  <div className="gallerySelector__image embla__container">
+                    <span className="gallerySelector__counter">
+                      {galleryUrl + 1}/{galleryImages.length}
+                    </span>
+
+                    <div className="embla" ref={emblaRef}>
+                      <div className="embla__container">{galleryImages}</div>
+                    </div>
+                  </div>
+                  <div className="gallerySelector__dotsContainer">
+                    <div
+                      className="leftChevron"
+                      onClick={() => {
+                        emblaApi.scrollPrev();
+                      }}
+                    />
+
+                    <div
+                      className="rightChevron"
+                      onClick={() => {
+                        emblaApi.scrollNext();
+                      }}
+                    />
+                  </div>
+                </div>
+              </Box>
+            </div>
           </div>
         </div>
       </div>
