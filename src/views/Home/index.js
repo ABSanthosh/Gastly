@@ -89,7 +89,11 @@ function Home() {
   const [stats, setStats] = useState([0, 0, 0, 0, 0, 0]);
   const [poketypes, setPoketypes] = useState();
   const [pokeabilities, setPokeabilities] = useState();
-  const [theme, setTheme] = useState(JSON.parse(localStorage.getItem("Theme")));
+  const [theme, setTheme] = useState(
+    JSON.parse(localStorage.getItem("Theme")) == null
+      ? "LightMode"
+      : JSON.parse(localStorage.getItem("Theme"))
+  );
 
   let poketype, pokeability, evalChainComponent;
 
@@ -157,7 +161,6 @@ function Home() {
           { name: "description", content: `${desc.substring(0, 350)}...` },
         ]}
         title={`Gastly | ${CapitalizeChar(pokename)} (${id})`}
-        
       />
       <div className="Maincontainer__contentwrapper">
         <div className="content__backdrop">
