@@ -189,8 +189,8 @@ $font: "Arvo", serif;
       align-self: flex-start;
       display: grid;
       grid-template-rows: auto;
-      height: calc(93.5% - 25px);
-      padding-bottom: 25px;
+      height: calc(93.5% - 12px);
+      padding-bottom: 12px;
 
       &::after {
         content: "";
@@ -312,7 +312,10 @@ $font: "Arvo", serif;
           }
         }
       }
-
+      &::after {
+        content: "";
+        height: 0.01px;
+      }
       .Box.type2 {
         width: calc(100% - 30px);
       }
@@ -351,7 +354,7 @@ $font: "Arvo", serif;
       }
 
       .Box.PokeEvalChainHeading {
-        min-height: 100px;
+        // min-height: 100px;
         height: unset !important;
       }
 
@@ -571,7 +574,7 @@ $font: "Arvo", serif;
         border-radius: unset;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -40%);
+        transform: translate(-50%, -35%);
         svg {
           width: 520%;
           transform: translateY(10%) translateX(-20%);

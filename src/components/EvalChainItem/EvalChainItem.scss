@@ -2,8 +2,8 @@
 
 .EvalChainItem {
   @include make-flex();
-  height: 71px;
-  width: 71px;
+  height: 75px;
+  width: 75px;
   cursor: pointer;
   &__Sprite {
     height: 100%;
@@ -20,7 +20,8 @@
     border-radius: 4px;
     background-color: rgb(238, 238, 238);
   }
-  &:hover,&:focus {
+  &:hover,
+  &:focus {
     &:after {
       display: block;
       opacity: 1;
@@ -28,7 +29,7 @@
       transform: translateY(180%);
     }
     .EvalChainItem__Sprite {
-        transition: all .2s ease-in-out;
+      transition: all 0.2s ease-in-out;
       transform: scale(1.1);
     }
   }
