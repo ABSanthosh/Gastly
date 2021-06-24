@@ -32,6 +32,7 @@ import { CapitalizeChar } from "../../Util/Capitalize";
 import DarkMode from "../../Assets/Images/DarkMode.gif";
 import LightMode from "../../Assets/Images/LightMode.gif";
 import NewSprites from "../../Assets/JSON/PokemonData.json";
+import Generation from "../../Assets/JSON/PokemonGeneration.json";
 import { InitialConditions } from "../../Util/SpriteConditions";
 import { SpriteVariationControlPanel } from "../../Util/SpriteVariationCP";
 
@@ -340,13 +341,25 @@ function Home() {
             <div className="row__forward row__forward--gallery">
               <div className="row__forward--gallerySubcontainer">
                 <Box
-                  className="idkWhat"
+                  className="EggSprite"
                   style={{ width: "110px", height: "110px" }}
-                ></Box>
+                >
+                  <img
+                    alt="Egg Sprite"
+                    src={`https://gastly-dex.github.io/PokedexData/PokemonEggSprites/${forifier(
+                      id
+                    )}.png`}
+                  ></img>
+                </Box>
                 <Box
-                  className="idkWhat"
+                  className="generationNumber"
                   style={{ width: "110px", height: "110px" }}
-                ></Box>
+                >
+                  <span>Generation</span>
+                  <div>
+                    <p>{Generation[forifier(id)]}</p>
+                  </div>
+                </Box>
               </div>
               <Box className="PokeGalleryHeading">
                 <span>Miscellaneous Image Gallery</span>

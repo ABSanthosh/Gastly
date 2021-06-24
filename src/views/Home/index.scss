@@ -325,7 +325,8 @@ $font: "Arvo", serif;
       }
       .Box.PokeAbilityHeading,
       .Box.PokeEvalChainHeading,
-      .Box.PokeGalleryHeading {
+      .Box.PokeGalleryHeading,
+      .Box.generationNumber {
         // padding-top: 10px;
         @include make-flex($just: flex-start);
         .abilityList,
@@ -352,6 +353,23 @@ $font: "Arvo", serif;
           // padding: 4px 0px 4px 0px;
         }
       }
+      .Box.EggSprite{
+        @include make-flex();
+        img{
+          height: 65%;
+        }
+      }
+      .Box.generationNumber {
+        div{
+          height: 100%;
+          width: 100%;
+          @include make-flex();
+        }
+        p {
+          height: auto;
+          font-size: 3.5rem;
+        }
+      }
 
       .Box.PokeEvalChainHeading {
         // min-height: 100px;
@@ -362,19 +380,19 @@ $font: "Arvo", serif;
         overflow: hidden;
         height: 100%;
         width: 100%;
-      }
-      .embla__container {
-        display: flex;
-        height: 100%;
-        width: 100%;
-      }
-      .embla__slide {
-        position: relative;
-        flex: 0 0 100%;
-        @include make-flex();
-        // height: 80%;
-        // width: 80%;
-        // margin-bottom: 20px;
+        &__container {
+          display: flex;
+          height: 100%;
+          width: 100%;
+        }
+        &__slide {
+          position: relative;
+          flex: 0 0 100%;
+          @include make-flex();
+          // height: 80%;
+          // width: 80%;
+          // margin-bottom: 20px;
+        }
       }
       .Box.PokeGalleryHeading {
         transition: height 0.5s ease-in-out;
@@ -712,27 +730,6 @@ $font: "Arvo", serif;
               width: calc(100% - 30px) !important;
             }
           }
-        }
-
-        .Box.PokeGalleryHeading.galleryActive {
-          // position: fixed;
-          // width: 369px;
-          // height: 520px;
-          // // height: calc(57.5% - 30px);
-          // // transform: translateY(-87.5%);
-          // top: 50%;
-          // left: 50%;
-          // transform: translate(-50%, -50%);
-          // &::after {
-          //   position: fixed;
-          //   content: "";
-          //   background-color: rgb(255, 0, 255);
-          //   height: 100vh;
-          //   width: 100vw;
-          //   top: 50%;
-          //   left: 50%;
-          //   transform: translateZ(-1px) translate(-50%, -50%);
-          // }
         }
       }
     }
