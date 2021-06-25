@@ -1,5 +1,6 @@
 @import "../../styles/mixins";
 @import url("https://use.fontawesome.com/29d5099fb7.js");
+@import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@800&display=swap");
 
 $font: "Arvo", serif;
 
@@ -28,6 +29,9 @@ $font: "Arvo", serif;
   --DimensionsGenderTabNotActive: #00000015;
 
   --AbilityBoxColor: #f0f0f0;
+
+  --ImageGalleryBG: #e8e8e8;
+  --ImageGalleryChevron: #cbcbcb;
 }
 // Dark Mode Colors
 .DarkMode {
@@ -54,6 +58,8 @@ $font: "Arvo", serif;
   --DimensionsGenderTabNotActive: #00000048;
 
   --AbilityBoxColor: #909090;
+  --ImageGalleryBG: #585858;
+  --ImageGalleryChevron: #b2b2b2;
 }
 
 .Maincontainer {
@@ -74,7 +80,7 @@ $font: "Arvo", serif;
     z-index: 0;
     display: grid;
     grid-template-columns: 1.3fr 1fr;
-    grid-template-rows: 0.3fr 1fr;
+    grid-template-rows: 0.298fr 1fr;
     grid-template-areas:
       "image search"
       "image details";
@@ -92,6 +98,20 @@ $font: "Arvo", serif;
       }
     }
 
+    &__japaneseName {
+      position: absolute;
+      width: 44%;
+      height: 77%;
+      @include make-flex();
+      p {
+        font-family: "Shippori Mincho B1", serif;
+        font-size: 6.5rem;
+        height: 90%;
+        color: #797979;
+        z-index: -1;
+        text-align: center;
+      }
+    }
     &__backdrop {
       width: 75%;
       height: 77%;
@@ -103,7 +123,7 @@ $font: "Arvo", serif;
     &__search {
       grid-area: search;
       background-color: var(--DetailsBoxBackground);
-      height: 79%;
+      height: 70%;
       width: 90%;
       position: relative;
       border-radius: 15px 15px 0px 0px;
@@ -184,8 +204,8 @@ $font: "Arvo", serif;
       align-self: flex-start;
       display: grid;
       grid-template-rows: auto;
-      padding-bottom: 9px;
-      height: calc(93.5% - 9px);
+      height: calc(93.5% - 12px);
+      padding-bottom: 12px;
 
       &::after {
         content: "";
@@ -217,6 +237,14 @@ $font: "Arvo", serif;
         background-color: transparent;
       }
     }
+    &__galleryWrapper {
+      &::after {
+        content: "";
+        height: 115px !important;
+        padding: 15px;
+        width: calc(100% - 30px);
+      }
+    }
     &__wrapper {
       height: calc(100% - 20px);
       max-height: 450px;
@@ -233,7 +261,6 @@ $font: "Arvo", serif;
 
       .Box {
         background-color: var(--BoxComponentBackground);
-
         p {
           color: var(--BoxComponentParaColor);
           height: 100%;
@@ -254,6 +281,15 @@ $font: "Arvo", serif;
 
           &--ability {
             grid-template-columns: auto 1fr;
+          }
+
+          &--gallery {
+            grid-template-columns: 0.5fr 1.5fr;
+          }
+
+          &--gallerySubcontainer {
+            display: grid;
+            row-gap: 15px;
           }
           &__abilitySubContainer {
             @include make-flex();
@@ -304,12 +340,13 @@ $font: "Arvo", serif;
       }
       .Box.PokeAbilityHeading,
       .Box.PokeEvalChainHeading,
-      .Box.PokeResHeading {
-        padding-top: 10px;
+      .Box.PokeGalleryHeading,
+      .Box.generationNumber {
+        // padding-top: 10px;
         @include make-flex($just: flex-start);
         .abilityList,
         .evalList,
-        .resList {
+        .gallerySelector {
           column-gap: 10px;
           row-gap: 10px;
           @include make-flex($dir: row);
@@ -319,6 +356,7 @@ $font: "Arvo", serif;
           height: 100%;
           min-width: 80%;
           max-width: 100%;
+          width: 100%;
           align-content: center;
           .AbilityBox {
             background-color: var(--AbilityBoxColor);
@@ -327,7 +365,120 @@ $font: "Arvo", serif;
         span {
           font-size: 1.4rem;
           color: var(--BoxHeadingColor);
-          padding: 0px 0px 4px 0px;
+          // padding: 4px 0px 4px 0px;
+        }
+      }
+      .Box.EggSprite {
+        @include make-flex();
+        img {
+          height: 65%;
+        }
+      }
+      .Box.generationNumber {
+        div {
+          height: 100%;
+          width: 100%;
+          @include make-flex();
+        }
+        p {
+          height: auto;
+          font-size: 3.5rem;
+        }
+      }
+
+      .Box.PokeEvalChainHeading {
+        // min-height: 100px;
+        height: unset !important;
+      }
+
+      .embla {
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+        &__container {
+          display: flex;
+          height: 100%;
+          width: 100%;
+        }
+        &__slide {
+          position: relative;
+          flex: 0 0 100%;
+          @include make-flex();
+          // height: 80%;
+          // width: 80%;
+          // margin-bottom: 20px;
+        }
+      }
+      .Box.PokeGalleryHeading {
+        transition: height 0.5s ease-in-out;
+        justify-content: center;
+        width: calc(100% - 30px);
+        justify-self: end;
+        height: 265px;
+        span {
+          text-align: center;
+          margin-bottom: 10px;
+        }
+
+        .gallerySelector {
+          align-items: center;
+          flex-direction: row;
+          height: 100%;
+          width: 100%;
+          &__dotsContainer {
+            position: absolute;
+            height: 26px;
+            padding: 0 15px 0 15px;
+            width: calc(100% - 60px);
+            bottom: 20px;
+            @include make-flex($dir: row, $just: space-between);
+
+            .leftChevron,
+            .rightChevron {
+              width: 15px;
+              height: 25px;
+              cursor: pointer;
+
+              align-self: center;
+              justify-self: center;
+
+              background-color: var(--ImageGalleryChevron);
+            }
+            .leftChevron {
+              clip-path: polygon(100% 0, 0% 50%, 100% 100%);
+            }
+            .rightChevron {
+              clip-path: polygon(0 0, 100% 50%, 0 100%);
+            }
+          }
+          &__counter {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+          }
+          &__image {
+            @include make-flex();
+            position: relative;
+            height: 205px;
+            width: 100%;
+
+            border-radius: 15px;
+            background-color: var(--ImageGalleryBG);
+            .galleryItems {
+              height: 80%;
+              width: 80%;
+              margin-bottom: 20px;
+            }
+          }
+        }
+      }
+
+      .Box.PokeGalleryHeading.galleryActive {
+        .gallerySelector {
+          display: flex;
+        }
+        span {
+          margin-bottom: 10px;
         }
       }
     }
@@ -449,6 +600,14 @@ $font: "Arvo", serif;
         "details";
     }
     .content {
+      &__japaneseName {
+        height: 100%;
+        width: 420px;
+        p {
+          font-size: 5rem;
+          height: 70%;
+        }
+      }
       &__backdrop {
         width: 420px;
         overflow: hidden;
@@ -456,7 +615,7 @@ $font: "Arvo", serif;
         border-radius: unset;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -40%);
+        transform: translate(-50%, -35%);
         svg {
           width: 520%;
           transform: translateY(10%) translateX(-20%);
@@ -468,8 +627,9 @@ $font: "Arvo", serif;
       &__search,
       &__image,
       &__details {
-        height: 100%;
-        width: 100%;
+        height: calc(100% - 10px);
+        padding-bottom: 10px;
+        width: 100.1%;
         justify-self: center;
         &::after {
           box-shadow: unset;
@@ -485,6 +645,7 @@ $font: "Arvo", serif;
       &__details {
         max-width: unset;
         min-width: unset;
+        overflow-x: hidden;
         border-radius: 15px 15px 0px 0px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.13);
 
@@ -512,7 +673,7 @@ $font: "Arvo", serif;
         grid-template-columns: minmax(0, 1fr);
 
         row-gap: 15px;
-        padding: 20px 15px 20px 15px;
+        padding: 20px 15px 5px 15px;
         overflow: hidden;
 
         .row {
@@ -531,6 +692,18 @@ $font: "Arvo", serif;
         .Box.PokeAbilityHeading {
           width: 145px;
         }
+
+        .Box.PokeGalleryHeading {
+          .gallerySelector {
+            &__dotsContainer {
+              display: none;
+            }
+            &__image {
+              height: 100%;
+              width: 100%;
+            }
+          }
+        }
       }
     }
   }
@@ -541,6 +714,14 @@ $font: "Arvo", serif;
       width: 100%;
     }
     .content {
+      &__japaneseName {
+        width: 100%;
+        min-width: 420px;
+        p {
+          font-size: 5rem;
+          height: 70%;
+        }
+      }
       &__backdrop {
         width: 100%;
       }
