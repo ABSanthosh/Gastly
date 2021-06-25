@@ -33,6 +33,7 @@ import DarkMode from "../../Assets/Images/DarkMode.gif";
 import LightMode from "../../Assets/Images/LightMode.gif";
 import NewSprites from "../../Assets/JSON/PokemonData.json";
 import Generation from "../../Assets/JSON/PokemonGeneration.json";
+import JapaneseName from "../../Assets/JSON/PokemonJapaneseName.json";
 import { InitialConditions } from "../../Util/SpriteConditions";
 import { SpriteVariationControlPanel } from "../../Util/SpriteVariationCP";
 
@@ -116,10 +117,6 @@ function Home() {
     }
   }, [emblaApi]);
 
-  // useEffect(() => {
-  //   console.log(galleryUrl);
-  // }, [galleryUrl]);
-
   useEffect(() => {
     let pokemonDetails = NewSprites[forifier(id)];
     poketype = [];
@@ -178,6 +175,10 @@ function Home() {
     // setGalleryUrl(galleryItems[0]);
 
     InitialConditions(id, setUrl, seticonFocus, iconFocus);
+
+    if (emblaApi) {
+      emblaApi.reInit()
+    }
   }, [id]);
 
   useEffect(() => {
@@ -197,6 +198,9 @@ function Home() {
         title={`Gastly | ${CapitalizeChar(pokename)} (${id})`}
       />
       <div className="Maincontainer__contentwrapper">
+        <div className="content__japaneseName">
+          <p>{JapaneseName[forifier(id)]}</p>
+        </div>
         <div className="content__backdrop">
           <Backdrop isMobile={false} fill={backdropcolor} />
         </div>

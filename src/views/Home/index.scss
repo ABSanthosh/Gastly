@@ -1,5 +1,6 @@
 @import "../../styles/mixins";
 @import url("https://use.fontawesome.com/29d5099fb7.js");
+@import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@800&display=swap");
 
 $font: "Arvo", serif;
 
@@ -97,6 +98,20 @@ $font: "Arvo", serif;
       }
     }
 
+    &__japaneseName {
+      position: absolute;
+      width: 44%;
+      height: 77%;
+      @include make-flex();
+      p {
+        font-family: "Shippori Mincho B1", serif;
+        font-size: 6.5rem;
+        height: 90%;
+        color: #797979;
+        z-index: -1;
+        text-align: center;
+      }
+    }
     &__backdrop {
       width: 75%;
       height: 77%;
@@ -353,14 +368,14 @@ $font: "Arvo", serif;
           // padding: 4px 0px 4px 0px;
         }
       }
-      .Box.EggSprite{
+      .Box.EggSprite {
         @include make-flex();
-        img{
+        img {
           height: 65%;
         }
       }
       .Box.generationNumber {
-        div{
+        div {
           height: 100%;
           width: 100%;
           @include make-flex();
@@ -585,6 +600,14 @@ $font: "Arvo", serif;
         "details";
     }
     .content {
+      &__japaneseName {
+        height: 100%;
+        width: 420px;
+        p {
+          font-size: 5rem;
+          height: 70%;
+        }
+      }
       &__backdrop {
         width: 420px;
         overflow: hidden;
@@ -691,6 +714,14 @@ $font: "Arvo", serif;
       width: 100%;
     }
     .content {
+      &__japaneseName {
+        width: 100%;
+        min-width: 420px;
+        p {
+          font-size: 5rem;
+          height: 70%;
+        }
+      }
       &__backdrop {
         width: 100%;
       }
