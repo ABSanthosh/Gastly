@@ -172,14 +172,20 @@ function Home() {
     setDescription(pokemonDetails["Description"]);
     setEvalChain(evalChainComponent);
     setGalleyImages(galleryItems);
-    // setGalleryUrl(galleryItems[0]);
+    setGalleryUrl(0);
 
     InitialConditions(id, setUrl, seticonFocus, iconFocus);
 
     if (emblaApi) {
-      emblaApi.reInit()
+      emblaApi.reInit();
     }
   }, [id]);
+
+  useEffect(() => {
+    if (emblaApi) {
+      emblaApi.reInit();
+    }
+  }, [galleryImages]);
 
   useEffect(() => {
     SpriteVariationControlPanel(iconFocus, id, setUrl);
