@@ -356,7 +356,7 @@ function Home() {
                 >
                   <img
                     alt="Egg Sprite"
-                    src={`https://gastly-dex.github.io/PokedexData/PokemonEggSprites/${forifier(
+                    src={`https://absanthosh.github.io/PokedexData/PokemonEggSprites/${forifier(
                       id
                     )}.png`}
                   ></img>

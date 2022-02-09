@@ -5,7 +5,7 @@ import NewSprites from "../../Assets/JSON/PokemonData.json";
 import { CapitalizeChar } from "../../Util/Capitalize";
 
 function Feet({ pokeId }) {
-  const URL = `https://gastly-dex.github.io/PokedexData/PokemonFootprints/${forifier(
+  const URL = `https://absanthosh.github.io/PokedexData/PokemonFootprints/${forifier(
     pokeId
   )}.png`;
 

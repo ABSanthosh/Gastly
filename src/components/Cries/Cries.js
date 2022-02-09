@@ -9,14 +9,14 @@ function Cries({ pokeId }) {
       <link
         rel="prefetch"
         as="audio"
-        href={`https://gastly-dex.github.io/PokedexData/PokemonCries/${forifier(
+        href={`https://absanthosh.github.io/PokedexData/PokemonCries/${forifier(
           pokeId
         )}.mp3`}
         crossOrigin="anonymous"
       />
       <audio
         id="PokemonCry"
-        src={`https://gastly-dex.github.io/PokedexData/PokemonCries/${forifier(
+        src={`https://absanthosh.github.io/PokedexData/PokemonCries/${forifier(
           pokeId
         )}.mp3`}
         onError={() => {
