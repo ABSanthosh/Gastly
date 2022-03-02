@@ -1,0 +1,205 @@
+@import "../styles/mixins";
+
+.MainContainer {
+  min-width: 425px;
+  min-height: 575px;
+  background-color: var(--MainBackground);
+  display: grid;
+
+  @include box(100vw, 100vh);
+  @include make-flex();
+  @include respondAt(1200px) {
+    height: fit-content;
+  }
+
+  &__ContentWrapper {
+    z-index: 0;
+    display: grid;
+    position: relative;
+    align-self: center;
+    border-radius: 14px;
+    justify-self: center;
+    grid-template-columns: 1.2fr 480px;
+    grid-template-rows: 0.2fr 1fr;
+    grid-template-areas:
+      "pokeImage search"
+      "pokeImage details";
+    background-color: var(--ContainerBackground);
+    max-width: 1110px;
+    max-height: 650px;
+    @include box(85%, 76%);
+    @include respondAt(1200px) {
+      @include box(420px, 100%);
+      border-radius: 0px;
+      max-height: unset;
+
+      grid-template-columns: auto;
+      grid-template-rows: auto auto 1fr;
+      grid-template-areas:
+        "search"
+        "pokeImage"
+        "details";
+    }
+
+    @include respondAt(480px) {
+      @include box();
+    }
+  }
+
+  &__japaneseName {
+    position: absolute;
+
+    grid-area: pokeImage;
+    @include box();
+    @include make-flex();
+    p {
+      font-family: "Shippori Mincho B1", serif;
+      font-size: 6.5rem;
+      height: 90%;
+      color: #797979;
+      z-index: -1;
+      text-align: center;
+    }
+  }
+
+  &__backdrop {
+    z-index: -1;
+    position: absolute;
+    border-radius: 14px;
+    min-height: 480px;
+    @include box();
+
+    @include respondAt(1200px) {
+      // top: 50%;
+      // left: 50%;
+      overflow: hidden;
+      border-radius: unset;
+      @include box(420px, 100%);
+      transform: translateY(10px);
+      // transform: translate(-50%, -35%);
+      grid-area: pokeImage;
+      svg {
+        width: 520% !important;
+        transform: translateY(10%) translateX(-20%);
+      }
+    }
+  }
+
+  &__search,
+  &__image,
+  &__details {
+    @include respondAt(1200px) {
+      height: calc(100% - 10px);
+      width: 100.1%;
+      justify-self: center;
+      &::after {
+        box-shadow: unset;
+      }
+    }
+  }
+
+  &__search,
+  &__details {
+    justify-self: center;
+    position: relative;
+  }
+
+  &__pokeImage {
+    grid-area: pokeImage;
+
+    @include respondAt(1200px) {
+      height: 560px;
+    }
+  }
+
+  &__search {
+    grid-area: search;
+    align-self: flex-end;
+    border-radius: 15px 15px 0px 0px;
+    background-color: var(--DetailsBoxBackground);
+
+    @include box(90%, 70%);
+    @include respondAt(1200px) {
+      border-radius: 0px;
+      @include box(100%, 75px);
+    }
+
+    &::before {
+      top: 0px;
+      left: 0;
+      content: "";
+      z-index: -1;
+      @include box();
+      position: absolute;
+      border-radius: 15px 15px 0px 0px;
+      box-shadow: var(--DetailsBoxShadow);
+    }
+  }
+
+  &__details {
+    grid-area: details;
+    display: grid;
+    position: relative;
+    align-self: flex-start;
+    // @include make-flex();
+    border-radius: 0px 0px 15px 15px;
+
+    background-color: var(--DetailsBoxBackground);
+
+    @include box(90%, 95%);
+    max-height: 95%;
+    @include respondAt(1200px) {
+      border-radius: 15px 15px 0px 0px;
+      max-height: unset;
+      @include box(100%, auto);
+    }
+
+    &::after {
+      content: "";
+      z-index: -1;
+      @include box();
+      position: absolute;
+
+      border-radius: 0px 0px 15px 15px;
+      box-shadow: var(--DetailsBoxShadow);
+
+      // background-color: #00ffff80;
+      pointer-events: none;
+
+      @include respondAt(1200px) {
+        border-radius: 15px 15px 0px 0px;
+      }
+    }
+
+    &__contentWrapperParent {
+      height: 100%;
+      width: 100%;
+      overflow-y: scroll;
+      position: absolute;
+      @include make-flex($just: flex-start);
+      @include respondAt(1200px) {
+        overflow: hidden;
+        position: relative;
+      }
+
+      p {
+        width: 100%;
+        height: 100px;
+        @include make-flex();
+        box-shadow: var(--DetailsBoxShadow);
+        border-radius: 7px;
+      }
+    }
+
+    &__contentWrapper {
+      padding: 9px 18px 18px;
+      width: 100%;
+      @include make-flex();
+      gap: 18px;
+
+      @include respondAt(1200px) {
+        padding: 18px 18px;
+      }
+    }
+  }
+}

@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+html,
+body,
+#__next {
+  height: 100%;
+  width: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: lato;
+
+  &::-webkit-scrollbar {
+    background-color: #fff;
+    display: none;
+    width: 4px;
+    padding: 0px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #fff;
+  }
+  &::-webkit-scrollbar-track:hover {
+    background-color: #f4f4f4;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #babac0;
+    border-radius: 16px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #a0a0a5;
+  }
+
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+}
+
+#root {
+  min-width: 353px;
+}
+
+@media only screen and (max-width: 1200px) {
+  * {
+    outline: none;
+  }
+}
+
+// Light Mode colors
+.LightMode {
+  --MainBackground: #e2edff;
+  --ContainerBackground: #fff;
+  --DetailsBoxBackground: #fff;
+  --DetailsBoxShadow: 0 0 10px rgba(0, 0, 0, 0.13);
+
+  --InputBoxBorderColor: #cfcfcf;
+  --InputBoxBGColor: #fff;
+  --InputBoxTextColor: #464646;
+  --InputBoxSuggestionColor: #0000004d;
+  --InputBoxSearchIconColor: unset;
+
+  --BoxComponentBackground: #ffffff;
+  --BoxComponentParaColor: #4e4e4e;
+  --PokemonNameColor: #585858;
+  --BoxHeadingColor: #000;
+
+  --PNGImageInvertion: unset;
+
+  --DimensionsGenderTextColor: #585858;
+  --DimensionsGenderTabActive: #ffffff;
+  --DimensionsGenderTabNotActive: #00000015;
+
+  --AbilityBoxColor: #f0f0f0;
+
+  --ImageGalleryBG: #e8e8e8;
+  --ImageGalleryChevron: #cbcbcb;
+}
+// Dark Mode Colors
+.DarkMode {
+  --MainBackground: #383838;
+  --ContainerBackground: #242424;
+  --DetailsBoxBackground: #242424;
+  --DetailsBoxShadow: 0 0 10px rgb(0 0 0 / 53%);
+
+  --InputBoxBorderColor: #bebebe;
+  --InputBoxBGColor: #242424;
+  --InputBoxTextColor: #fff;
+  --InputBoxSuggestionColor: #ffffff4d;
+  --InputBoxSearchIconColor: #afafaf;
+
+  --BoxComponentBackground: #3c3c3c;
+  --BoxComponentParaColor: #dcdcdc;
+  --PokemonNameColor: #dcdcdc;
+  --BoxHeadingColor: #dcdcdc;
+
+  --PNGImageInvertion: grayscale(1) invert(1);
+
+  --DimensionsGenderTextColor: #ffffff;
+  --DimensionsGenderTabActive: #3c3c3c;
+  --DimensionsGenderTabNotActive: #00000048;
+
+  --AbilityBoxColor: #909090;
+  --ImageGalleryBG: #585858;
+  --ImageGalleryChevron: #b2b2b2;
+}

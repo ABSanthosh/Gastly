@@ -18,9 +18,9 @@ Peace ✌
 
 ### Netlify status
 
-| Main Branch | V3 Branch (Dev) |
+| Main Branch | V4 Branch (Dev)(NextJs) |
 | ----------- | --------------- |
-| [![Netlify Status](https://api.netlify.com/api/v1/badges/1fbc763f-d545-4021-8e46-a4c13bf3b797/deploy-status)](https://gastly.netlify.app) | [![Netlify Status](https://api.netlify.com/api/v1/badges/17de2cfc-41f2-4610-86e2-d871f9bf4d06/deploy-status)](https://gastly-v3.netlify.app) |
+| [![Netlify Status](https://api.netlify.com/api/v1/badges/1fbc763f-d545-4021-8e46-a4c13bf3b797/deploy-status)](https://gastly.netlify.app) | [![Netlify Status](https://api.netlify.com/api/v1/badges/8030ee45-274c-4ac0-b3dd-4d867c36d424/deploy-status)](https://app.netlify.com/sites/gastly-v4/deploys) |
 
 
 
