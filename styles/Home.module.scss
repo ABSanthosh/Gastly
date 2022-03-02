@@ -16,13 +16,13 @@
     align-self: center;
     border-radius: 14px;
     justify-self: center;
-    grid-template-columns: 1.2fr 1fr;
+    grid-template-columns: 1.2fr 480px;
     grid-template-rows: 0.2fr 1fr;
     grid-template-areas:
       "pokeImage search"
       "pokeImage details";
     background-color: var(--ContainerBackground);
-
+    max-width: 1045px;
     @include box(75%, 77%);
     @include respondAt(1200px) {
       @include box(420px, 100%);

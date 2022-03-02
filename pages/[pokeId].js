@@ -1,14 +1,18 @@
-import { useRouter } from "next/router";
 import Head from "next/head";
 import moduleStyle from "../styles/Home.module.scss";
+import { getPoke } from "../Operations/getPoke";
+import { CapitalizeChar } from "../Utils/Capitalize";
 
-export default function Home() {
-  const router = useRouter();
-  const { pokeId } = router.query;
+export default function Home({ props }) {
+  // console.log(props);
+  const { data: pokeData, pokeId } = props;
+
   return (
     <>
       <Head>
-        <title>Gastly | {pokeId}</title>
+        <title>
+          Gastly | {CapitalizeChar(pokeData.Name)} {pokeId}
+        </title>
       </Head>
       <div className={`${moduleStyle.MainContainer} LightMode`}>
         <div className={moduleStyle.MainContainer__ContentWrapper}>
@@ -23,3 +27,9 @@ export default function Home() {
     </>
   );
 }
+
+Home.getInitialProps = async ({ query }) => {
+  const { pokeId } = query;
+  const data = await getPoke(pokeId);
+  return { props: { pokeId, data } };
+};
