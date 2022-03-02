@@ -1,3 +1,144 @@
 @import "../styles/mixins";
 
-.homeWrapper{}
+.MainContainer {
+  min-width: 425px;
+  min-height: 575px;
+  background-color: var(--MainBackground);
+  display: grid;
+
+  @include box(100vw, 100vh);
+  @include make-flex();
+
+  &__ContentWrapper {
+    z-index: 0;
+    display: grid;
+    position: relative;
+    align-self: center;
+    border-radius: 14px;
+    justify-self: center;
+    grid-template-columns: 1.2fr 1fr;
+    grid-template-rows: 0.2fr 1fr;
+    grid-template-areas:
+      "pokeImage search"
+      "pokeImage details";
+    background-color: var(--ContainerBackground);
+
+    @include box(75%, 77%);
+    @include respondAt(1200px) {
+      @include box(420px, 100%);
+      border-radius: 0px;
+
+      grid-template-columns: auto;
+      grid-template-rows: auto auto 1fr;
+      grid-template-areas:
+        "search"
+        "pokeImage"
+        "details";
+    }
+
+    @include respondAt(480px) {
+      @include box();
+    }
+  }
+
+  &__japaneseName {
+    position: absolute;
+
+    grid-area: pokeImage;
+    @include box();
+    @include make-flex();
+    p {
+      font-family: "Shippori Mincho B1", serif;
+      font-size: 6.5rem;
+      height: 90%;
+      color: #797979;
+      z-index: -1;
+      text-align: center;
+    }
+  }
+
+  &__backdrop {
+    z-index: -1;
+    position: absolute;
+    border-radius: 14px;
+    min-height: 480px;
+    @include box();
+  }
+
+  &__search,
+  &__image,
+  &__details {
+    @include respondAt(1200px) {
+      height: calc(100% - 10px);
+      width: 100.1%;
+      justify-self: center;
+      &::after {
+        box-shadow: unset;
+      }
+    }
+  }
+
+  &__search,
+  &__details {
+    justify-self: center;
+    position: relative;
+  }
+
+  &__pokeImage {
+    grid-area: pokeImage;
+  }
+
+  &__search {
+    grid-area: search;
+    align-self: flex-end;
+    border-radius: 15px 15px 0px 0px;
+    background-color: var(--DetailsBoxBackground);
+
+    @include box(90%, 70%);
+    @include respondAt(1200px) {
+      border-radius: 0px;
+      @include box(100%, 75px);
+    }
+
+    &::before {
+      top: 0px;
+      left: 0;
+      content: "";
+      z-index: -1;
+      @include box();
+      position: absolute;
+      border-radius: 15px 15px 0px 0px;
+      box-shadow: var(--DetailsBoxShadow);
+    }
+  }
+
+  &__details {
+    grid-area: details;
+    align-self: flex-start;
+    border-radius: 0px 0px 15px 15px;
+    background-color: var(--DetailsBoxBackground);
+
+    // height: calc(93.5% - 12px);
+    @include box(90%, 95%);
+    @include respondAt(1200px) {
+      border-radius: 15px 15px 0px 0px;
+
+      @include box(100%, auto);
+    }
+
+    &::after {
+      top: 0;
+      left: 0;
+      content: "";
+      z-index: -1;
+      @include box();
+      position: absolute;
+      border-radius: 0px 0px 15px 15px;
+      box-shadow: var(--DetailsBoxShadow);
+
+      @include respondAt(1200px) {
+        border-radius: 15px 15px 0px 0px;
+      }
+    }
+  }
+}

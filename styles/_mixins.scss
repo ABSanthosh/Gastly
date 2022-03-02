@@ -4,7 +4,7 @@
   }
 }
 
-@mixin box($width, $height: $width) {
+@mixin box($width: 100%, $height: 100%) {
   width: $width;
   height: $height;
 }
