@@ -1,4 +1,4 @@
-import "./Types.scss";
+import style from "./Types.module.scss";
 
 import Bug from "./Asset/bug.svg";
 import Dark from "./Asset/dark.svg";
@@ -43,22 +43,27 @@ function Type({ type }) {
   };
 
   return (
-    <>
-      {type != "placeholder" ? (
-        <div
-          tabIndex={0}
-          data-tooltip={type.charAt(0).toUpperCase() + type.slice(1)}
-          className={"tooltip--bottom Type " + type.toLowerCase()}
-        >
-          <img
-            alt={pokeImportList[type.toLowerCase()]}
-            src={pokeImportList[type.toLowerCase()]}
-          />
-        </div>
-      ) : (
-        <div className={"Type " + type.toLowerCase()}></div>
-      )}
-    </>
+    console.log(pokeImportList[type.toLowerCase()]),
+    (
+      <>
+        {type != "placeholder" ? (
+          <div
+            tabIndex={0}
+            data-tooltip={type.charAt(0).toUpperCase() + type.slice(1)}
+            className={`${style.tooltip} ${style.Type} ${
+              style[type.toLowerCase()]
+            }`}
+          >
+            <img
+              alt={type.toLowerCase()}
+              src={pokeImportList[type.toLowerCase()].src}
+            />
+          </div>
+        ) : (
+          <div className={`${style.Type} ${style[type.toLowerCase()]}`}></div>
+        )}
+      </>
+    )
   );
 }
 

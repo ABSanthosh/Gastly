@@ -10,6 +10,7 @@ import { InitialConditions } from "../Utils/SpriteConditions";
 import SpriteVariation from "../Components/SpriteVariation/SpriteVariation";
 import Box from "../Components/Box/Box";
 import { SpriteVariationControlPanel } from "../Utils/SpriteVariationCP";
+import Type from "../Components/Types/Type";
 
 export default function Home({ props }) {
   const { data: pokeData, pokeId } = props;
@@ -83,7 +84,11 @@ export default function Home({ props }) {
                     "--boxWidth": "150px",
                     "--boxHeight": "80px",
                   }}
-                ></Box>
+                >
+                  {pokeData.Types.map((type, index) => (
+                    <Type key={index} type={type} />
+                  ))}
+                </Box>
                 <Box
                   style={{
                     "--boxHeight": "80px",
