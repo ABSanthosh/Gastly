@@ -1,0 +1,65 @@
+@import "../../styles/mixins";
+
+.Tab {
+  @include box();
+  @include make-flex($dir: row);
+
+  --activeRadius: 8px 3px 3px 3px;
+  --translate: 130%;
+
+  &__selector {
+    @include box(30%, 100%);
+    @include make-flex();
+    position: relative;
+
+    &--active {
+      background-color: var(--DimensionsGenderTabNotActive);
+      position: absolute;
+      top: 0;
+      transform: translateY(var(--translate));
+
+      z-index: 0;
+      margin: 5px 0;
+      border-radius: var(--activeRadius);
+      transition: all 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+      @include box(calc(100% - 10px), calc(50% - 10px));
+    }
+
+    &--tabTop {
+      border-radius: 12px 0 0 0;
+    }
+    &--tabBottom {
+      border-radius: 0 0 0 12px;
+    }
+
+    &--tab {
+      @include box();
+      @include make-flex();
+      cursor: pointer;
+      border: none;
+      background-color: #ffffff00;
+      img {
+        z-index: 1;
+        filter: var(--PNGImageInversion);
+        width: 25px;
+        user-select: none;
+      }
+    }
+  }
+
+  &__Content {
+    height: 100%;
+    flex: 1;
+    border-radius: 0 12px 12px 0;
+    @include make-flex($just: space-around);
+    padding: 10px;
+    &--top,
+    &--bottom {
+      width: 100%;
+      @include make-flex($dir: row, $just: space-between);
+      font-family: "Arvo", serif;
+      // font-size: 0.85rem;
+      color: var(--DimensionsGenderTextColor);
+    }
+  }
+}

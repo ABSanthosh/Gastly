@@ -1,6 +1,12 @@
 import Head from "next/head";
 import moduleStyle from "../styles/Home.module.scss";
-import { getGeneration, getJapaneseName, getPoke } from "../Operations/getPoke";
+import {
+  getDimensions,
+  getGenderRatio,
+  getGeneration,
+  getJapaneseName,
+  getPoke,
+} from "../Operations/getPoke";
 import { CapitalizeChar } from "../Utils/Capitalize";
 import { useEffect, useState } from "react";
 import Backdrop from "../Components/Backdrop/Backdrop";
@@ -15,8 +21,15 @@ import Cries from "../Components/Cries/Cries";
 import { forifier } from "../Utils/forifier";
 import FourOFour from "../Assets/Images/404.png";
 import EvalChainItem from "../Components/EvalChainItem/EvalChainItem";
+import useEmblaCarousel from "embla-carousel-react";
+import Tabs from "../Components/Tabs/Tabs";
+import BaseStats from "../Components/BaseStats/BaseStats";
+// import useLoading from "../hooks/useLoading";
 
 export default function Home({ props }) {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
+  // const { startLoading, stopLoading } = useLoading();
+
   const { data: pokeData, pokeId } = props;
   const [spritUrl, setSpritUrl] = useState(null);
   const [iconFocus, setIconFocus] = useState([
@@ -26,6 +39,20 @@ export default function Home({ props }) {
     "OffFocus",
   ]);
   const [backdropColor, setBackdropColor] = useState("white");
+  const [galleryPosition, setGalleryPosition] = useState(0);
+
+  useEffect(() => {
+    if (emblaApi) {
+      emblaApi.on("scroll", () => {
+        if (galleryPosition != emblaApi.selectedScrollSnap()) {
+          setGalleryPosition(emblaApi.selectedScrollSnap());
+        }
+        if (!emblaApi.canScrollPrev()) {
+          setGalleryPosition(0);
+        }
+      });
+    }
+  }, [emblaApi]);
 
   useEffect(() => {
     InitialConditions(setSpritUrl, setIconFocus, pokeData);
@@ -110,9 +137,16 @@ export default function Home({ props }) {
               <Box
                 style={{
                   justifyContent: "center",
+                  flexDirection: "column",
                 }}
               >
-                Stats(Coming soon)
+                {Object.keys(pokeData.Stats).map((stat, index) => (
+                  <BaseStats
+                    key={index}
+                    percent={pokeData.Stats[stat]}
+                    className={stat}
+                  />
+                ))}
               </Box>
               <div className={moduleStyle.MainContainer__detailsContentBox}>
                 <Box
@@ -201,7 +235,18 @@ export default function Home({ props }) {
                       />
                     </Box>
                   </div>
-                  <Box></Box>
+                  <Box
+                    style={{
+                      padding: "0px",
+                    }}
+                  >
+                    <Tabs
+                      height={pokeData.dimensions["Height"]}
+                      weight={pokeData.dimensions["Weight"]}
+                      male={pokeData.genderRatio["Male"]}
+                      female={pokeData.genderRatio["Female"]}
+                    />
+                  </Box>
                 </div>
               </div>
               <div className={moduleStyle.MainContainer__detailsContentBox}>
@@ -313,6 +358,7 @@ export default function Home({ props }) {
                       "--boxWidth": "100%",
                       "--boxHeight": "100%",
                       flexDirection: "column",
+                      gap: "15px",
                     }}
                   >
                     <h2
@@ -324,6 +370,56 @@ export default function Home({ props }) {
                     >
                       Misc. Gallery
                     </h2>
+                    <div className={moduleStyle.GallerySelector}>
+                      <div
+                        className={`${moduleStyle.GallerySelector__image} ${moduleStyle.embla__container}`}
+                      >
+                        <span
+                          className={`${moduleStyle.GallerySelector__counter}`}
+                        >
+                          {galleryPosition + 1}/{pokeData.Sprites.Misc.length}
+                        </span>
+
+                        <div className={moduleStyle.embla} ref={emblaRef}>
+                          <div className={moduleStyle.embla__container}>
+                            {pokeData.Sprites.Misc.map((image, index) => (
+                              <div
+                                key={index + 1}
+                                className={moduleStyle.embla__slide}
+                              >
+                                <img
+                                  className={
+                                    moduleStyle.GallerySelector__image__galleryItems
+                                  }
+                                  src={image}
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        className={moduleStyle.GallerySelector__dotsContainer}
+                      >
+                        <div
+                          className={
+                            moduleStyle.GallerySelector__dotsContainer__leftChevron
+                          }
+                          onClick={() => {
+                            emblaApi.scrollPrev();
+                          }}
+                        />
+
+                        <div
+                          className={
+                            moduleStyle.GallerySelector__dotsContainer__rightChevron
+                          }
+                          onClick={() => {
+                            emblaApi.scrollNext();
+                          }}
+                        />
+                      </div>
+                    </div>
                   </Box>
                 </div>
               </div>
@@ -344,10 +440,20 @@ Home.getInitialProps = async ({ query }) => {
   );
   const japaneseName = await getJapaneseName(pokeId);
   const generation = await getGeneration(pokeId);
+  const genderRatio = await getGenderRatio(pokeId);
+  const dimensions = await getDimensions(pokeId);
+
   return {
     props: {
       pokeId,
-      data: { ...data, japaneseName, EvolutionChainData, generation },
+      data: {
+        ...data,
+        japaneseName,
+        EvolutionChainData,
+        generation,
+        genderRatio,
+        dimensions,
+      },
     },
   };
 };
