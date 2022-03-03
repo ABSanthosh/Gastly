@@ -13,6 +13,7 @@ import { SpriteVariationControlPanel } from "../Utils/SpriteVariationCP";
 import Type from "../Components/Types/Type";
 import Cries from "../Components/Cries/Cries";
 import { forifier } from "../Utils/forifier";
+import FourOFour from "../Assets/Images/404.png";
 
 export default function Home({ props }) {
   const { data: pokeData, pokeId } = props;
@@ -169,7 +170,18 @@ export default function Home({ props }) {
                         justifyContent: "center",
                       }}
                     >
-                      j
+                      <img
+                        src={`https://absanthosh.github.io/PokedexData/PokemonFootprints/${forifier(
+                          pokeId
+                        )}.png`}
+                        style={{
+                          height: "80%",
+                        }}
+                        onError={({ currentTarget }) => {
+                          currentTarget.onerror = null;
+                          currentTarget.src = FourOFour.src;
+                        }}
+                      />
                     </Box>
                   </div>
                   <Box></Box>
