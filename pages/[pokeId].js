@@ -11,6 +11,8 @@ import SpriteVariation from "../Components/SpriteVariation/SpriteVariation";
 import Box from "../Components/Box/Box";
 import { SpriteVariationControlPanel } from "../Utils/SpriteVariationCP";
 import Type from "../Components/Types/Type";
+import Cries from "../Components/Cries/Cries";
+import { forifier } from "../Utils/forifier";
 
 export default function Home({ props }) {
   const { data: pokeData, pokeId } = props;
@@ -133,6 +135,45 @@ export default function Home({ props }) {
                     </div>
                   ))}
                 </Box>
+                <div
+                  className={moduleStyle.MainContainer__detailsContentBox}
+                  style={{
+                    width: "unset",
+                    flex: "1",
+                    height: "200px",
+                    flexDirection: "column",
+                  }}
+                >
+                  <div
+                    className={moduleStyle.MainContainer__detailsContentBox}
+                    style={{
+                      width: "unset",
+                      flex: "1",
+                      height: "100%",
+                    }}
+                  >
+                    <Box
+                      style={{
+                        "--boxWidth": "90px",
+                        "--boxHeight": "90px",
+                        justifyContent: "center",
+                        position: "relative",
+                      }}
+                    >
+                      <Cries pokeId={forifier(pokeId)} />
+                    </Box>
+                    <Box
+                      style={{
+                        "--boxWidth": "90px",
+                        "--boxHeight": "90px",
+                        justifyContent: "center",
+                      }}
+                    >
+                      j
+                    </Box>
+                  </div>
+                  <Box></Box>
+                </div>
               </div>
             </DetailsBox>
           </div>

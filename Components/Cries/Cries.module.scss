@@ -1,0 +1,37 @@
+.audioBoxImg {
+  height: 100%;
+  border: none;
+  background-color: white;
+  img {
+    height: 100%;
+    padding: 10px;
+  }
+  &:after {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    content: attr(data-tooltip);
+    padding: 1px 7px;
+    font-size: 13px;
+    text-align: center;
+    left: 0;
+    bottom: -0.5px;
+    background: grey;
+    color: white;
+    white-space: nowrap;
+    z-index: 3;
+    transform: translateY(15px);
+    border-radius: 0 0 7px 7px;
+    transition: opacity 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  &:hover,
+  &:focus {
+    &:after {
+      transform: translateY(0px);
+
+      display: block;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
