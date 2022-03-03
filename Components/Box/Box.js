@@ -11,12 +11,13 @@ function Box({ children, className, style }) {
 }
 
 Box.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   className: PropTypes.string,
 };
 
 Box.defaultProps = {
   className: "",
+  children: null, 
 };
 
 export default Box;
