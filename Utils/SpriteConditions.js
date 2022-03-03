@@ -12,10 +12,8 @@ function setDefaultFocus(focuslist) {
 }
 
 export function InitialConditions(
-  id,
   setUrl,
   setIconFocus,
-  iconFocus,
   NewSprites
 ) {
   setDefaultFocus([

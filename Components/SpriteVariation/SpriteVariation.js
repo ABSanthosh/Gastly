@@ -1,15 +1,16 @@
 import styles from "./SpriteVariation.module.scss";
 
-function SpriteVariation({ iconFocus, setIconFocus, id, NewSprites }) {
+function SpriteVariation({ iconFocus, setIconFocus, NewSprites }) {
   return (
     <>
       <span
         tabIndex={0}
-        className={`${styles.fa} ${styles.fa__star} ${
-          iconFocus[0] === "OnFocus"
+        title="Shiny"
+        className={`fa fa-star ${styles.fa} ${styles.fa__star} ${
+          iconFocus[0].includes("OnFocus")
             ? styles.fa__star__OnFocus
             : styles.fa__star__OffFocus
-        }`}
+        } ${iconFocus[0].includes("disabled") ? styles.disabled : ""}`}
         onClick={() => {
           if (!iconFocus[0].includes("disabled")) {
             if (iconFocus[0].includes("OffFocus")) {
@@ -30,16 +31,15 @@ function SpriteVariation({ iconFocus, setIconFocus, id, NewSprites }) {
           } else {
           }
         }}
-      >
-        Star
-      </span>
+      />
       <span
+        title="Male"
         tabIndex={0}
-        className={`${styles.fa} ${styles.fa__mars} ${
-          iconFocus[1] === "OnFocus"
+        className={`fa fa-mars ${styles.fa} ${styles.fa__mars} ${
+          iconFocus[1].includes("OnFocus")
             ? styles.fa__mars__OnFocus
             : styles.fa__mars__OffFocus
-        }`}
+        } ${iconFocus[1].includes("disabled") ? styles.disabled : ""}`}
         onClick={() => {
           if (!iconFocus[1].includes("disabled")) {
             if (iconFocus[1].includes("OffFocus")) {
@@ -96,16 +96,15 @@ function SpriteVariation({ iconFocus, setIconFocus, id, NewSprites }) {
           } else {
           }
         }}
-      >
-        Male
-      </span>
+      />
       <span
+        title="Female"
         tabIndex={0}
-        className={`${styles.fa} ${styles.fa__venus} ${
-          iconFocus[2] === "OnFocus"
+        className={`fa fa-venus ${styles.fa} ${styles.fa__venus} ${
+          iconFocus[2].includes("OnFocus")
             ? styles.fa__venus__OnFocus
             : styles.fa__venus__OffFocus
-        }`}
+        } ${iconFocus[2].includes("disabled") ? styles.disabled : ""}`}
         onClick={() => {
           if (!iconFocus[2].includes("disabled")) {
             if (iconFocus[2].includes("OffFocus")) {
@@ -155,16 +154,15 @@ function SpriteVariation({ iconFocus, setIconFocus, id, NewSprites }) {
           } else {
           }
         }}
-      >
-        Female
-      </span>
+      />
       <span
+        title="Giga"
         tabIndex={0}
         className={`${styles.fa} ${styles.fa__g} ${
-          iconFocus[3] === "OnFocus"
+          iconFocus[3].includes("OnFocus")
             ? styles.fa__g__OnFocus
             : styles.fa__g__OffFocus
-        }`}
+        } ${iconFocus[3].includes("disabled") ? styles.disabled : ""}`}
         onClick={() => {
           if (!iconFocus[3].includes("disabled")) {
             if (iconFocus[3].includes("OffFocus")) {
