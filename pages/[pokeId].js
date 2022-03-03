@@ -304,7 +304,28 @@ export default function Home({ props }) {
                 </div>
                 <div
                   className={moduleStyle.MainContainer__detailsContentBox}
-                ></div>
+                  style={{
+                    height: "100%",
+                  }}
+                >
+                  <Box
+                    style={{
+                      "--boxWidth": "100%",
+                      "--boxHeight": "100%",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <h2
+                      className={
+                        moduleStyle[
+                          "MainContainer__detailsContentBox--EvoChainTitle"
+                        ]
+                      }
+                    >
+                      Misc. Gallery
+                    </h2>
+                  </Box>
+                </div>
               </div>
             </DetailsBox>
           </div>
