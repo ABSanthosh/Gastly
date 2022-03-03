@@ -1,6 +1,6 @@
 import Head from "next/head";
 import moduleStyle from "../styles/Home.module.scss";
-import { getJapaneseName, getPoke } from "../Operations/getPoke";
+import { getGeneration, getJapaneseName, getPoke } from "../Operations/getPoke";
 import { CapitalizeChar } from "../Utils/Capitalize";
 import { useEffect, useState } from "react";
 import Backdrop from "../Components/Backdrop/Backdrop";
@@ -107,6 +107,13 @@ export default function Home({ props }) {
                   />
                 </Box>
               </div>
+              <Box
+                style={{
+                  justifyContent: "center",
+                }}
+              >
+                Stats(Coming soon)
+              </Box>
               <div className={moduleStyle.MainContainer__detailsContentBox}>
                 <Box
                   style={{
@@ -234,6 +241,71 @@ export default function Home({ props }) {
                   </div>
                 </Box>
               </div>
+              <div className={moduleStyle.MainContainer__detailsContentBox}>
+                <div
+                  className={moduleStyle.MainContainer__detailsContentBox}
+                  style={{
+                    width: "140px",
+                    flexDirection: "column",
+                  }}
+                >
+                  <Box
+                    style={{
+                      "--boxWidth": "140px",
+                      "--boxHeight": "140px",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <img
+                      alt="Egg Sprite"
+                      style={{ height: "65%" }}
+                      src={`https://absanthosh.github.io/PokedexData/PokemonEggSprites/${forifier(
+                        pokeId
+                      )}.png`}
+                    ></img>
+                  </Box>
+                  <Box
+                    style={{
+                      "--boxWidth": "140px",
+                      "--boxHeight": "140px",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <h2
+                      className={
+                        moduleStyle[
+                          "MainContainer__detailsContentBox--EvoChainTitle"
+                        ]
+                      }
+                    >
+                      Generation
+                    </h2>
+                    <div
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      <p
+                        style={{
+                          color: "var(--BoxComponentParaColor)",
+                          height: "100%",
+                          fontSize: "3.5rem",
+                        }}
+                      >
+                        {pokeData.generation}
+                      </p>
+                    </div>
+                  </Box>
+                </div>
+                <div
+                  className={moduleStyle.MainContainer__detailsContentBox}
+                ></div>
+              </div>
             </DetailsBox>
           </div>
         </div>
@@ -250,7 +322,11 @@ Home.getInitialProps = async ({ query }) => {
     data.EvolutionChain.map(async (evo) => [evo, await getPoke(parseInt(evo))])
   );
   const japaneseName = await getJapaneseName(pokeId);
+  const generation = await getGeneration(pokeId);
   return {
-    props: { pokeId, data: { ...data, japaneseName, EvolutionChainData } },
+    props: {
+      pokeId,
+      data: { ...data, japaneseName, EvolutionChainData, generation },
+    },
   };
 };
