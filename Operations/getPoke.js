@@ -18,3 +18,13 @@ export const getJapaneseName = async (pokeId) => {
 
   return json[forifier(pokeId)];
 };
+
+export const getGeneration = async (pokeId) => {
+  const url =
+    "https://absanthosh.github.io/PokedexData/PokemonGeneration.json";
+
+  const data = await fetch(url);
+  const json = await data.json();
+
+  return json[forifier(pokeId)];
+};

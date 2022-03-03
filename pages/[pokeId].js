@@ -1,6 +1,6 @@
 import Head from "next/head";
 import moduleStyle from "../styles/Home.module.scss";
-import { getJapaneseName, getPoke } from "../Operations/getPoke";
+import { getGeneration, getJapaneseName, getPoke } from "../Operations/getPoke";
 import { CapitalizeChar } from "../Utils/Capitalize";
 import { useEffect, useState } from "react";
 import Backdrop from "../Components/Backdrop/Backdrop";
@@ -14,6 +14,7 @@ import Type from "../Components/Types/Type";
 import Cries from "../Components/Cries/Cries";
 import { forifier } from "../Utils/forifier";
 import FourOFour from "../Assets/Images/404.png";
+import EvalChainItem from "../Components/EvalChainItem/EvalChainItem";
 
 export default function Home({ props }) {
   const { data: pokeData, pokeId } = props;
@@ -106,6 +107,13 @@ export default function Home({ props }) {
                   />
                 </Box>
               </div>
+              <Box
+                style={{
+                  justifyContent: "center",
+                }}
+              >
+                Stats(Coming soon)
+              </Box>
               <div className={moduleStyle.MainContainer__detailsContentBox}>
                 <Box
                   style={{
@@ -196,6 +204,129 @@ export default function Home({ props }) {
                   <Box></Box>
                 </div>
               </div>
+              <div className={moduleStyle.MainContainer__detailsContentBox}>
+                <Box
+                  style={{
+                    flexDirection: "column",
+                    "--boxHeight": "auto",
+                    minHeight: "130px",
+                    gap: "10px",
+                  }}
+                >
+                  <h2
+                    className={
+                      moduleStyle[
+                        "MainContainer__detailsContentBox--EvoChainTitle"
+                      ]
+                    }
+                  >
+                    Evolution Chain
+                  </h2>
+                  <div
+                    className={
+                      moduleStyle[
+                        "MainContainer__detailsContentBox--EvoChainItems"
+                      ]
+                    }
+                  >
+                    {Object.keys(pokeData.EvolutionChainData).map(
+                      (evo, index) => (
+                        <EvalChainItem
+                          key={index}
+                          pokeId={pokeData.EvolutionChainData[evo][0]}
+                          NewSprites={pokeData.EvolutionChainData[evo][1]}
+                        />
+                      )
+                    )}
+                  </div>
+                </Box>
+              </div>
+              <div className={moduleStyle.MainContainer__detailsContentBox}>
+                <div
+                  className={moduleStyle.MainContainer__detailsContentBox}
+                  style={{
+                    width: "140px",
+                    flexDirection: "column",
+                  }}
+                >
+                  <Box
+                    style={{
+                      "--boxWidth": "140px",
+                      "--boxHeight": "140px",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <img
+                      alt="Egg Sprite"
+                      style={{ height: "65%" }}
+                      src={`https://absanthosh.github.io/PokedexData/PokemonEggSprites/${forifier(
+                        pokeId
+                      )}.png`}
+                    ></img>
+                  </Box>
+                  <Box
+                    style={{
+                      "--boxWidth": "140px",
+                      "--boxHeight": "140px",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <h2
+                      className={
+                        moduleStyle[
+                          "MainContainer__detailsContentBox--EvoChainTitle"
+                        ]
+                      }
+                    >
+                      Generation
+                    </h2>
+                    <div
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      <p
+                        style={{
+                          color: "var(--BoxComponentParaColor)",
+                          height: "100%",
+                          fontSize: "3.5rem",
+                        }}
+                      >
+                        {pokeData.generation}
+                      </p>
+                    </div>
+                  </Box>
+                </div>
+                <div
+                  className={moduleStyle.MainContainer__detailsContentBox}
+                  style={{
+                    height: "100%",
+                  }}
+                >
+                  <Box
+                    style={{
+                      "--boxWidth": "100%",
+                      "--boxHeight": "100%",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <h2
+                      className={
+                        moduleStyle[
+                          "MainContainer__detailsContentBox--EvoChainTitle"
+                        ]
+                      }
+                    >
+                      Misc. Gallery
+                    </h2>
+                  </Box>
+                </div>
+              </div>
             </DetailsBox>
           </div>
         </div>
@@ -207,6 +338,16 @@ export default function Home({ props }) {
 Home.getInitialProps = async ({ query }) => {
   const { pokeId } = query;
   const data = await getPoke(pokeId);
+  // TODO: Update json to include Poke id in object
+  const EvolutionChainData = await Promise.all(
+    data.EvolutionChain.map(async (evo) => [evo, await getPoke(parseInt(evo))])
+  );
   const japaneseName = await getJapaneseName(pokeId);
-  return { props: { pokeId, data: { ...data, japaneseName } } };
+  const generation = await getGeneration(pokeId);
+  return {
+    props: {
+      pokeId,
+      data: { ...data, japaneseName, EvolutionChainData, generation },
+    },
+  };
 };
