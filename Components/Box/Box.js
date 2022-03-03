@@ -2,9 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import boxStyle from "./Box.module.scss";
 
-function Box({ children, className, style }) {
+function Box({ children, className, style, ...props }) {
   return (
-    <div className={`${boxStyle.BoxWrapper} ${className}`} style={style}>
+    <div
+      className={`${boxStyle.BoxWrapper} ${className}`}
+      {...props}
+      style={style}
+    >
       {children}
     </div>
   );
@@ -17,7 +21,7 @@ Box.propTypes = {
 
 Box.defaultProps = {
   className: "",
-  children: null, 
+  children: null,
 };
 
 export default Box;

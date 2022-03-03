@@ -112,6 +112,11 @@ export default function Home({ props }) {
                     "--boxWidth": "185px",
                     "--boxHeight": "200px",
                     flexDirection: "column",
+                    justifyContent:
+                      pokeData.Ability.length === 3
+                        ? "space-between"
+                        : "flex-start",
+                    gap: pokeData.Ability.length === 3 ? "0px" : "13px",
                   }}
                 >
                   <h2
@@ -169,6 +174,10 @@ export default function Home({ props }) {
                         "--boxHeight": "90px",
                         justifyContent: "center",
                       }}
+                      // position="relative"
+                      tabIndex="0"
+                      data-tooltip="Footprint"
+                      className={moduleStyle.Feet}
                     >
                       <img
                         src={`https://absanthosh.github.io/PokedexData/PokemonFootprints/${forifier(
