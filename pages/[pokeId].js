@@ -11,6 +11,9 @@ import SpriteVariation from "../Components/SpriteVariation/SpriteVariation";
 import Box from "../Components/Box/Box";
 import { SpriteVariationControlPanel } from "../Utils/SpriteVariationCP";
 import Type from "../Components/Types/Type";
+import Cries from "../Components/Cries/Cries";
+import { forifier } from "../Utils/forifier";
+import FourOFour from "../Assets/Images/404.png";
 
 export default function Home({ props }) {
   const { data: pokeData, pokeId } = props;
@@ -102,6 +105,96 @@ export default function Home({ props }) {
                     NewSprites={pokeData}
                   />
                 </Box>
+              </div>
+              <div className={moduleStyle.MainContainer__detailsContentBox}>
+                <Box
+                  style={{
+                    "--boxWidth": "185px",
+                    "--boxHeight": "200px",
+                    flexDirection: "column",
+                    justifyContent:
+                      pokeData.Ability.length === 3
+                        ? "space-between"
+                        : "flex-start",
+                    gap: pokeData.Ability.length === 3 ? "0px" : "13px",
+                  }}
+                >
+                  <h2
+                    className={
+                      moduleStyle[
+                        "MainContainer__detailsContentBox--abilitiesTitle"
+                      ]
+                    }
+                  >
+                    Abilities
+                  </h2>
+                  {pokeData.Ability.map((ability, index) => (
+                    <div
+                      className={
+                        moduleStyle[
+                          "MainContainer__detailsContentBox--abilitiesItem"
+                        ]
+                      }
+                      key={index}
+                    >
+                      {ability}
+                    </div>
+                  ))}
+                </Box>
+                <div
+                  className={moduleStyle.MainContainer__detailsContentBox}
+                  style={{
+                    width: "unset",
+                    flex: "1",
+                    height: "200px",
+                    flexDirection: "column",
+                  }}
+                >
+                  <div
+                    className={moduleStyle.MainContainer__detailsContentBox}
+                    style={{
+                      width: "unset",
+                      flex: "1",
+                      height: "100%",
+                    }}
+                  >
+                    <Box
+                      style={{
+                        "--boxWidth": "90px",
+                        "--boxHeight": "90px",
+                        justifyContent: "center",
+                        position: "relative",
+                      }}
+                    >
+                      <Cries pokeId={forifier(pokeId)} />
+                    </Box>
+                    <Box
+                      style={{
+                        "--boxWidth": "90px",
+                        "--boxHeight": "90px",
+                        justifyContent: "center",
+                      }}
+                      // position="relative"
+                      tabIndex="0"
+                      data-tooltip="Footprint"
+                      className={moduleStyle.Feet}
+                    >
+                      <img
+                        src={`https://absanthosh.github.io/PokedexData/PokemonFootprints/${forifier(
+                          pokeId
+                        )}.png`}
+                        style={{
+                          height: "80%",
+                        }}
+                        onError={({ currentTarget }) => {
+                          currentTarget.onerror = null;
+                          currentTarget.src = FourOFour.src;
+                        }}
+                      />
+                    </Box>
+                  </div>
+                  <Box></Box>
+                </div>
               </div>
             </DetailsBox>
           </div>

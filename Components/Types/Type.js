@@ -43,27 +43,24 @@ function Type({ type }) {
   };
 
   return (
-    console.log(pokeImportList[type.toLowerCase()]),
-    (
-      <>
-        {type != "placeholder" ? (
-          <div
-            tabIndex={0}
-            data-tooltip={type.charAt(0).toUpperCase() + type.slice(1)}
-            className={`${style.tooltip} ${style.Type} ${
-              style[type.toLowerCase()]
-            }`}
-          >
-            <img
-              alt={type.toLowerCase()}
-              src={pokeImportList[type.toLowerCase()].src}
-            />
-          </div>
-        ) : (
-          <div className={`${style.Type} ${style[type.toLowerCase()]}`}></div>
-        )}
-      </>
-    )
+    <>
+      {type != "placeholder" ? (
+        <div
+          tabIndex={0}
+          data-tooltip={type.charAt(0).toUpperCase() + type.slice(1)}
+          className={`${style.tooltip} ${style.Type} ${
+            style[type.toLowerCase()]
+          }`}
+        >
+          <img
+            alt={type.toLowerCase()}
+            src={pokeImportList[type.toLowerCase()].src}
+          />
+        </div>
+      ) : (
+        <div className={`${style.Type} ${style[type.toLowerCase()]}`}></div>
+      )}
+    </>
   );
 }
 

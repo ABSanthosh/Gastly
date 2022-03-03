@@ -3,7 +3,7 @@ import styles from "./SpriteVariation.module.scss";
 function SpriteVariation({ iconFocus, setIconFocus, NewSprites }) {
   return (
     <>
-      <span
+      <button
         tabIndex={0}
         title="Shiny"
         className={`fa fa-star ${styles.fa} ${styles.fa__star} ${
@@ -32,7 +32,7 @@ function SpriteVariation({ iconFocus, setIconFocus, NewSprites }) {
           }
         }}
       />
-      <span
+      <button
         title="Male"
         tabIndex={0}
         className={`fa fa-mars ${styles.fa} ${styles.fa__mars} ${
@@ -97,7 +97,7 @@ function SpriteVariation({ iconFocus, setIconFocus, NewSprites }) {
           }
         }}
       />
-      <span
+      <button
         title="Female"
         tabIndex={0}
         className={`fa fa-venus ${styles.fa} ${styles.fa__venus} ${
@@ -155,7 +155,7 @@ function SpriteVariation({ iconFocus, setIconFocus, NewSprites }) {
           }
         }}
       />
-      <span
+      <button
         title="Giga"
         tabIndex={0}
         className={`${styles.fa} ${styles.fa__g} ${
@@ -208,7 +208,7 @@ function SpriteVariation({ iconFocus, setIconFocus, NewSprites }) {
         }}
       >
         G
-      </span>
+      </button>
     </>
   );
 }

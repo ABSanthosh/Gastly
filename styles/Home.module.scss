@@ -296,5 +296,52 @@
     height: fit-content;
     gap: 18px;
     @include make-flex($just: flex-start, $dir: row);
+
+    &--abilitiesTitle {
+      font-weight: normal;
+      font-size: 22.5px;
+    }
+
+    &--abilitiesItem {
+      width: 100%;
+      text-align: center;
+      background-color: var(--AbilityBoxColor);
+      padding: 6px;
+      font-size: 1.1rem;
+      border-radius: 6px;
+    }
+  }
+}
+
+.Feet {
+  position: relative;
+  &:after {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    content: attr(data-tooltip);
+    padding: 1px 7px;
+    font-size: 13px;
+    text-align: center;
+    left: -1px;
+    bottom: -1px;
+    width: 78px;
+    background: grey;
+    color: white;
+    white-space: nowrap;
+    z-index: 3;
+    transform: translateY(16px);
+    border-radius: 0 0 7px 7px;
+    // transition: opacity 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  &:hover,
+  &:focus {
+    &:after {
+      transform: translateY(0px);
+
+      display: block;
+      opacity: 1;
+      visibility: visible;
+    }
   }
 }
