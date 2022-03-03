@@ -310,6 +310,17 @@
       font-size: 1.1rem;
       border-radius: 6px;
     }
+
+    &--EvoChainTitle {
+      font-weight: normal;
+      font-size: 22.5px;
+    }
+
+    &--EvoChainItems {
+      @include make-flex($dir: row);
+      @include box();
+      gap: 10px;
+    }
   }
 }
 
