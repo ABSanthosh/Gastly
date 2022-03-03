@@ -1,0 +1,148 @@
+@import "../../styles/mixins";
+$cubic: cubic-bezier(0.64, 0.09, 0.08, 1);
+
+.Type {
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  margin: auto 5px;
+  @include make-flex();
+  cursor: help;
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  img {
+    height: 70%;
+    width: 70%;
+  }
+  &:hover,
+  &:focus {
+    transform: translateY(-5px);
+  }
+}
+.tooltip {
+  position: relative;
+  &:after {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    content: attr(data-tooltip);
+    padding: 1px 10px;
+    font-size: 13px;
+    text-align: center;
+    top: 50%;
+    width: 100%;
+    // left: 50%;
+    // bottom: 0;
+    transform: translateY(27px);
+    background: grey;
+    color: white;
+    white-space: nowrap;
+    z-index: 3;
+    border-radius: 2px;
+    // transition: opacity 0.2s $cubic, transform 0.2s $cubic;
+    transition: opacity 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  &:hover,
+  &:focus {
+    &:after {
+      display: block;
+      opacity: 1;
+      visibility: visible;
+      // transform: translateX(-50%) translateY(-50%);
+    }
+  }
+}
+.bug {
+  background: #92bc2c;
+  box-shadow: 0 0 8px #92bc2c;
+}
+
+.dark {
+  background: #595761;
+  box-shadow: 0 0 8px #595761;
+}
+
+.dragon {
+  background: #0c69c8;
+  box-shadow: 0 0 8px #0c69c8;
+}
+
+.electric {
+  background: #f2d94e;
+  box-shadow: 0 0 8px #f2d94e;
+}
+
+.fire {
+  background: #fba54c;
+  box-shadow: 0 0 8px #fba54c;
+}
+
+.fairy {
+  background: #ee90e6;
+  box-shadow: 0 0 8px #ee90e6;
+}
+
+.fighting {
+  background: #d3425f;
+  box-shadow: 0 0 8px #d3425f;
+}
+
+.flying {
+  background: #a1bbec;
+  box-shadow: 0 0 8px #a1bbec;
+}
+
+.ghost {
+  background: #5f6dbc;
+  box-shadow: 0 0 8px #5f6dbc;
+}
+
+.grass {
+  background: #5fbd58;
+  box-shadow: 0 0 8px #5fbd58;
+}
+
+.ground {
+  background: #da7c4d;
+  box-shadow: 0 0 8px #da7c4d;
+}
+
+.ice {
+  background: #75d0c1;
+  box-shadow: 0 0 8px #75d0c1;
+}
+
+.normal {
+  background: #a0a29f;
+  box-shadow: 0 0 8px #a0a29f;
+}
+
+.poison {
+  background: #b763cf;
+  box-shadow: 0 0 8px #b763cf;
+}
+
+.psychic {
+  background: #fa8581;
+  box-shadow: 0 0 8px #fa8581;
+}
+
+.rock {
+  background: #c9bb8a;
+  box-shadow: 0 0 8px #c9bb8a;
+}
+
+.steel {
+  background: #5695a3;
+  box-shadow: 0 0 8px #5695a3;
+}
+
+.water {
+  background: #539ddf;
+  box-shadow: 0 0 8px #539ddf;
+}
+.placeholder {
+  background: #539edf00;
+  box-shadow: 0 0 13px #539edf00;
+  height: 50px;
+  width: 50px;
+}

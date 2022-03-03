@@ -1,5 +1,16 @@
 @import "../../styles/mixins";
 
-.PokeSpriteWrapper{
-    
+.PokeSpriteWrapper {
+  height: 75%;
+  align-self: center;
+  justify-self: center;
+
+  @include respondAt(1200px) {
+    height: 65%;
+  }
+
+  @include respondAt(480px) {
+    height: 90%;
+    grid-area: imagePNG;
+  }
 }

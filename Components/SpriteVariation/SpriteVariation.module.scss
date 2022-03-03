@@ -1,0 +1,88 @@
+@import "../..//styles/mixins";
+
+.fa {
+  &__g,
+  &__star,
+  &__mars,
+  &__venus {
+    height: 50px;
+    width: 30px;
+    @include make-flex();
+    flex: 1;
+  }
+
+  &__g {
+    color: #cacaca;
+    font-size: 2.5em;
+    margin: auto;
+    font-weight: 700;
+    padding: 0px 9px;
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
+    &__OnFocus {
+      color: #e45353;
+    }
+    &__OffFocus {
+      color: #cacaca;
+    }
+  }
+  &__star {
+    padding: 0px 9px;
+    color: #cacaca;
+    font-size: 2.5em;
+    margin: auto;
+    cursor: pointer;
+    font-size: 2.1em;
+    &__OnFocus {
+      color: #f0f051;
+    }
+
+    &__OffFocus {
+      color: #cacaca;
+    }
+  }
+  &__mars {
+    padding: 0px 9px;
+    color: #cacaca;
+    font-size: 2.5em;
+    margin: auto;
+    cursor: pointer;
+    &__OnFocus {
+      color: #53cee4;
+    }
+    &__OffFocus {
+      color: #cacaca;
+    }
+  }
+  &__venus {
+    padding: 0px 9px;
+    color: #cacaca;
+    font-size: 2.5em;
+    margin: auto;
+    cursor: pointer;
+    &__OnFocus {
+      color: #e453d1;
+    }
+    &__OffFocus {
+      color: #cacaca;
+    }
+  }
+}
+.disabled {
+  color: #525252;
+  &:hover {
+    color: #525252;
+    cursor: unset;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .fa {
+    &__g,
+    &__star,
+    &__mars,
+    &__venus {
+      font-size: 250%;
+    }
+  }
+}
