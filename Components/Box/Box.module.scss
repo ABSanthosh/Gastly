@@ -1,0 +1,20 @@
+@import "../../styles/mixins";
+
+.BoxWrapper {
+  --boxHeight: 130px;
+  --boxWidth: 100%;
+  width: var(--boxWidth);
+  height: var(--boxHeight);
+  @include make-flex($dir: row, $just: space-between);
+  box-shadow: var(--DetailsBoxShadow);
+  border-radius: 12px;
+  padding: 15px;
+
+  color: #3e3e3e;
+  font-size: 17px;
+
+  p {
+    height: 100%;
+    text-overflow: ellipsis;
+  }
+}
