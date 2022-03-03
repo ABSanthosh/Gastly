@@ -103,6 +103,37 @@ export default function Home({ props }) {
                   />
                 </Box>
               </div>
+              <div className={moduleStyle.MainContainer__detailsContentBox}>
+                <Box
+                  style={{
+                    "--boxWidth": "185px",
+                    "--boxHeight": "200px",
+                    flexDirection: "column",
+                  }}
+                >
+                  <h2
+                    className={
+                      moduleStyle[
+                        "MainContainer__detailsContentBox--abilitiesTitle"
+                      ]
+                    }
+                  >
+                    Abilities
+                  </h2>
+                  {pokeData.Ability.map((ability, index) => (
+                    <div
+                      className={
+                        moduleStyle[
+                          "MainContainer__detailsContentBox--abilitiesItem"
+                        ]
+                      }
+                      key={index}
+                    >
+                      {ability}
+                    </div>
+                  ))}
+                </Box>
+              </div>
             </DetailsBox>
           </div>
         </div>

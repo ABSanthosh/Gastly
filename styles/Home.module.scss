@@ -296,5 +296,19 @@
     height: fit-content;
     gap: 18px;
     @include make-flex($just: flex-start, $dir: row);
+
+    &--abilitiesTitle {
+      font-weight: normal;
+      font-size: 22.5px;
+    }
+
+    &--abilitiesItem {
+      width: 100%;
+      text-align: center;
+      background-color: var(--AbilityBoxColor);
+      padding: 6px;
+      font-size: 1.1rem;
+      border-radius: 6px;
+    }
   }
 }
