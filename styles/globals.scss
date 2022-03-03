@@ -1,3 +1,4 @@
+@import "./mixins";
 @import url("https://use.fontawesome.com/29d5099fb7.js");
 
 @import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
@@ -74,7 +75,7 @@ body,
   --PokemonNameColor: #585858;
   --BoxHeadingColor: #000;
 
-  --PNGImageInvertion: unset;
+  --PNGImageInversion: unset;
 
   --DimensionsGenderTextColor: #585858;
   --DimensionsGenderTabActive: #ffffff;
@@ -103,7 +104,7 @@ body,
   --PokemonNameColor: #dcdcdc;
   --BoxHeadingColor: #dcdcdc;
 
-  --PNGImageInvertion: grayscale(1) invert(1);
+  --PNGImageInversion: grayscale(1) invert(1);
 
   --DimensionsGenderTextColor: #ffffff;
   --DimensionsGenderTabActive: #3c3c3c;
@@ -112,4 +113,52 @@ body,
   --AbilityBoxColor: #909090;
   --ImageGalleryBG: #585858;
   --ImageGalleryChevron: #b2b2b2;
+}
+
+#loading-dock {
+  width: 75%;
+  height: 77%;
+  position: absolute;
+  z-index: 1000;
+  .loader {
+    height: 100%;
+    width: 100%;
+    @include make-flex();
+    border-radius: 15px;
+    img {
+      height: 47%;
+    }
+    background-color: #c5b6f2;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #loading-dock {
+    height: 100%;
+    width: 100%;
+    min-width: 390px;
+    top: 0px;
+    left: 0px;
+
+    .loader {
+      border-radius: unset;
+      img {
+        height: 39%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  #loading-dock {
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    .loader {
+      img {
+        height: 39%;
+      }
+    }
+  }
 }
