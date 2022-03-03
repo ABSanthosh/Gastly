@@ -1,6 +1,9 @@
 @import "../../styles/mixins";
 
 .fa {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+
   &__g,
   &__star,
   &__mars,
