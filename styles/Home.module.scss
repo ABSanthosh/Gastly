@@ -318,9 +318,82 @@
 
     &--EvoChainItems {
       @include make-flex($dir: row);
+      flex-wrap: wrap;
       @include box();
       gap: 10px;
     }
+  }
+}
+
+.GallerySelector {
+  align-items: center;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  position: relative;
+
+  &__dotsContainer {
+    position: absolute;
+    height: 26px;
+    padding: 0 15px 0 15px;
+    width: 100%;
+    bottom: 15px;
+    @include make-flex($dir: row, $just: space-between);
+
+    &__leftChevron,
+    &__rightChevron {
+      width: 15px;
+      height: 25px;
+      cursor: pointer;
+
+      align-self: center;
+      justify-self: center;
+
+      background-color: var(--ImageGalleryChevron);
+    }
+    &__leftChevron {
+      clip-path: polygon(100% 0, 0% 50%, 100% 100%);
+    }
+    &__rightChevron {
+      clip-path: polygon(0 0, 100% 50%, 0 100%);
+    }
+  }
+  &__counter {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+  &__image {
+    @include make-flex();
+    position: relative;
+    height: 205px;
+    width: 100%;
+
+    border-radius: 15px;
+    background-color: var(--ImageGalleryBG);
+    &__galleryItems {
+      // height: 80%;
+      width: 80%;
+      margin-bottom: 20px;
+    }
+  }
+}
+.embla {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  &__container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+  }
+  &__slide {
+    position: relative;
+    flex: 0 0 100%;
+    @include make-flex();
+    // height: 80%;
+    // width: 80%;
+    // margin-bottom: 20px;
   }
 }
 
