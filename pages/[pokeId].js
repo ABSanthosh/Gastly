@@ -8,6 +8,8 @@ import DetailsBox from "../Components/DetailsBox/DetailsBox";
 import PokeSprite from "../Components/PokeSprite/PokeSprite";
 import { InitialConditions } from "../Utils/SpriteConditions";
 import SpriteVariation from "../Components/SpriteVariation/SpriteVariation";
+import Box from "../Components/Box/Box";
+import { SpriteVariationControlPanel } from "../Utils/SpriteVariationCP";
 
 export default function Home({ props }) {
   const { data: pokeData, pokeId } = props;
@@ -21,8 +23,12 @@ export default function Home({ props }) {
   const [backdropColor, setBackdropColor] = useState("white");
 
   useEffect(() => {
-    InitialConditions(pokeId, setSpritUrl, setIconFocus, iconFocus, pokeData);
+    InitialConditions(setSpritUrl, setIconFocus, pokeData);
   }, [pokeData, pokeId]);
+
+  useEffect(() => {
+    SpriteVariationControlPanel(iconFocus, setSpritUrl, pokeData);
+  }, [iconFocus]);
 
   return (
     <>
@@ -63,18 +69,34 @@ export default function Home({ props }) {
               }
             />
           </div>
-          {/* <SpriteVariation
-                iconFocus={iconFocus}
-                setIconFocus={setIconFocus}
-                id={pokeId}
-                NewSprites={pokeData}
-              /> */}
+
           <div className={moduleStyle.MainContainer__details}>
             <DetailsBox>
               <div className={moduleStyle.MainContainer__detailsContentBox}>
-                <div className={moduleStyle.Box}>
+                <Box>
                   <p>{pokeData.Description}</p>
-                </div>
+                </Box>
+              </div>
+              <div className={moduleStyle.MainContainer__detailsContentBox}>
+                <Box
+                  style={{
+                    "--boxWidth": "150px",
+                    "--boxHeight": "80px",
+                  }}
+                ></Box>
+                <Box
+                  style={{
+                    "--boxHeight": "80px",
+                    flex: "1",
+                  }}
+                >
+                  <SpriteVariation
+                    iconFocus={iconFocus}
+                    setIconFocus={setIconFocus}
+                    id={pokeId}
+                    NewSprites={pokeData}
+                  />
+                </Box>
               </div>
             </DetailsBox>
           </div>
