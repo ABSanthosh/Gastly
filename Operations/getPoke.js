@@ -20,8 +20,26 @@ export const getJapaneseName = async (pokeId) => {
 };
 
 export const getGeneration = async (pokeId) => {
+  const url = "https://absanthosh.github.io/PokedexData/PokemonGeneration.json";
+
+  const data = await fetch(url);
+  const json = await data.json();
+
+  return json[forifier(pokeId)];
+};
+
+export const getDimensions = async (pokeId) => {
+  const url = "https://absanthosh.github.io/PokedexData/PokemonDimensions.json";
+
+  const data = await fetch(url);
+  const json = await data.json();
+
+  return json[forifier(pokeId)];
+};
+
+export const getGenderRatio = async (pokeId) => {
   const url =
-    "https://absanthosh.github.io/PokedexData/PokemonGeneration.json";
+    "https://absanthosh.github.io/PokedexData/PokemonGenderRatio.json";
 
   const data = await fetch(url);
   const json = await data.json();
