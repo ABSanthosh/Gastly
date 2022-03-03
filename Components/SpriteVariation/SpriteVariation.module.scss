@@ -1,4 +1,16 @@
+@import "../..//styles/mixins";
+
 .fa {
+  &__g,
+  &__star,
+  &__mars,
+  &__venus {
+    height: 50px;
+    width: 30px;
+    @include make-flex();
+    flex: 1;
+  }
+
   &__g {
     color: #cacaca;
     font-size: 2.5em;
@@ -55,7 +67,6 @@
       color: #cacaca;
     }
   }
-  
 }
 .disabled {
   color: #525252;
