@@ -1,0 +1,65 @@
+@import "../../styles/mixins";
+
+.AutoCompleteSearchWrapper {
+  border-radius: 7px;
+  position: relative;
+  background-color: transparent;
+  @include box(100%, 50px);
+  --suggestionBoxWidth: 50px;
+
+  &__icon {
+    font-size: large;
+    position: absolute;
+    @include make-flex();
+    z-index: 1;
+    pointer-events: none;
+    @include box(50px, 50px);
+    color: rgb(131, 131, 131);
+  }
+  &__input {
+    z-index: 3;
+    border: none;
+    font-size: 25px;
+    font-family: lato;
+    border-radius: 7px;
+    @include box(50px, 50px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    // @include box();
+    // padding-left: 50px;
+
+    text-transform: capitalize;
+    color: var(--InputBoxTextColor);
+    color: #333;
+    box-shadow: var(--DetailsBoxShadow);
+    background-color: transparent;
+    transition: width 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    &:focus,
+    &:active {
+      @include box();
+      padding-left: 50px;
+    }
+  }
+
+  &__typeAheadFocus {
+    --typeAheadHeight: 50px;
+    --typeAheadPadding: 0px;
+    // @include box(100%,50px);
+    padding-left: 50px;
+    padding-right: var(--typeAheadPadding);
+    padding-top: var(--typeAheadPadding);
+    font-size: 25px;
+    text-transform: capitalize;
+
+    font-family: lato;
+    color: #999;
+    border-radius: 7px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    @include make-flex($align: flex-start);
+    transition: width 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+}
