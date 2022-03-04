@@ -129,36 +129,15 @@ body,
       height: 47%;
     }
     background-color: #c5b6f2;
-  }
-}
 
-@media only screen and (max-width: 1200px) {
-  #loading-dock {
-    height: 100%;
-    width: 100%;
-    min-width: 390px;
-    top: 0px;
-    left: 0px;
-
-    .loader {
-      border-radius: unset;
-      img {
-        height: 39%;
-      }
+    @include respondAt(1200px) {
+      border-radius: 0;
     }
   }
-}
-
-@media only screen and (max-width: 480px) {
-  #loading-dock {
-    height: 100%;
-    width: 100%;
-    top: 0px;
-    left: 0px;
-    .loader {
-      img {
-        height: 39%;
-      }
-    }
+  @include respondAt(1200px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    @include box();
   }
 }
