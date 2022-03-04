@@ -46,3 +46,15 @@ export const getGenderRatio = async (pokeId) => {
 
   return json[forifier(pokeId)];
 };
+
+export const getSuggestionList = async () => {
+  const url = "https://absanthosh.github.io/PokedexData/PokemonData.json";
+
+  const data = await fetch(url);
+  const json = await data.json();
+  let list = [];
+  Object.keys(json).forEach((key) => {
+    list.push({ id: key, Name: json[key].Name });
+  });
+  return list;
+};

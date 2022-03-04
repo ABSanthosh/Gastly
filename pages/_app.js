@@ -1,4 +1,3 @@
-import Document from "next/document";
 import "../styles/globals.scss";
 
 function MyApp({ Component, pageProps }) {

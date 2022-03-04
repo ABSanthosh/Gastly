@@ -4,6 +4,7 @@
   min-width: 425px;
   min-height: 575px;
   background-color: var(--MainBackground);
+  position: relative;
   display: grid;
 
   @include box(100vw, 100vh);
@@ -163,6 +164,9 @@
       &:active {
         background-color: rgb(177, 236, 223);
       }
+      &:focus {
+        background-color: rgb(255, 0, 0);
+      }
     }
 
     &__leftChevron {
@@ -208,12 +212,16 @@
       // background-color: aquamarine;
       border-radius: 15px 15px 0px 0px;
       z-index: 1;
+      padding: 17px 18px 0px;
+      @include respondAt(1200px) {
+        padding: 12px 12px;
+      }
     }
 
     &__name {
       top: 0%;
       left: 0%;
-      padding: 10px 18px 0px;
+      padding: 13px 18px 0px 80px;
       @include box();
       z-index: 0;
       font-size: 2em;
@@ -227,7 +235,7 @@
       @include make-flex($dir: row, $just: flex-start);
 
       @include respondAt(1200px) {
-        padding: 10px 18px 10px;
+        padding: 0 75px;
       }
     }
   }

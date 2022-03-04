@@ -6,6 +6,7 @@ import {
   getGeneration,
   getJapaneseName,
   getPoke,
+  getSuggestionList,
 } from "../Operations/getPoke";
 import { CapitalizeChar } from "../Utils/Capitalize";
 import { useEffect, useState } from "react";
@@ -24,13 +25,13 @@ import EvalChainItem from "../Components/EvalChainItem/EvalChainItem";
 import useEmblaCarousel from "embla-carousel-react";
 import Tabs from "../Components/Tabs/Tabs";
 import BaseStats from "../Components/BaseStats/BaseStats";
-// import useLoading from "../hooks/useLoading";
+import AutoCompleteSearch from "../Components/AutoCompleteSearch/AutoCompleteSearch";
+import LoadingBoxes from "../Components/LoadingBoxes/LadingBoxes";
 
 export default function Home({ props }) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
-  // const { startLoading, stopLoading } = useLoading();
-
   const { data: pokeData, pokeId } = props;
+
   const [spritUrl, setSpritUrl] = useState(null);
   const [iconFocus, setIconFocus] = useState([
     "OffFocus disabled",
@@ -40,6 +41,7 @@ export default function Home({ props }) {
   ]);
   const [backdropColor, setBackdropColor] = useState("white");
   const [galleryPosition, setGalleryPosition] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (emblaApi) {
@@ -71,6 +73,11 @@ export default function Home({ props }) {
       </Head>
       <div className={`${moduleStyle.MainContainer} LightMode`}>
         <div className={moduleStyle.MainContainer__ContentWrapper}>
+          {isLoading && (
+            <div id="loading-dock">
+              <LoadingBoxes />
+            </div>
+          )}
           <div className={moduleStyle.MainContainer__japaneseName}>
             <p>{pokeData.japaneseName}</p>
           </div>
@@ -82,20 +89,30 @@ export default function Home({ props }) {
             <div className={moduleStyle.MainContainer__search__name}>
               {CapitalizeChar(pokeData.Name)}
             </div>
-            <div className={moduleStyle.MainContainer__search__input}></div>
+            <div className={moduleStyle.MainContainer__search__input}>
+              <AutoCompleteSearch suggestion={pokeData.suggestion} />
+            </div>
           </div>
           <div className={moduleStyle.MainContainer__pokeImage}>
             <a
               className={moduleStyle.MainContainer__pokeImage__leftChevron}
-              onClick={() => {}}
+              onClick={() => {
+                setIsLoading(true);
+              }}
               href={
                 parseInt(pokeId) - 1 > 0 ? `/${parseInt(pokeId) - 1}` : `/898`
               }
             />
-            <PokeSprite url={spritUrl} setBackdropColor={setBackdropColor} />
+            <PokeSprite
+              url={spritUrl}
+              setIsLoading={setIsLoading}
+              setBackdropColor={setBackdropColor}
+            />
             <a
               className={moduleStyle.MainContainer__pokeImage__rightChevron}
-              onClick={() => {}}
+              onClick={() => {
+                setIsLoading(true);
+              }}
               href={
                 parseInt(pokeId) + 1 < 899 ? `/${parseInt(pokeId) + 1}` : `/1`
               }
@@ -442,6 +459,7 @@ Home.getInitialProps = async ({ query }) => {
   const generation = await getGeneration(pokeId);
   const genderRatio = await getGenderRatio(pokeId);
   const dimensions = await getDimensions(pokeId);
+  const suggestion = await getSuggestionList();
 
   return {
     props: {
@@ -453,6 +471,7 @@ Home.getInitialProps = async ({ query }) => {
         generation,
         genderRatio,
         dimensions,
+        suggestion,
       },
     },
   };
