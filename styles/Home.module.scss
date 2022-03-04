@@ -4,6 +4,7 @@
   min-width: 425px;
   min-height: 575px;
   background-color: var(--MainBackground);
+  position: relative;
   display: grid;
 
   @include box(100vw, 100vh);

@@ -5,7 +5,7 @@ import ColorThief from "colorthief";
 import { useRef } from "react";
 import { rgbToHex } from "../../Utils/rgbToHex";
 
-function PokeSprite({ url, setBackdropColor }) {
+function PokeSprite({ url, setBackdropColor, setIsLoading }) {
   const imgRef = useRef();
   return (
     <>
@@ -34,11 +34,9 @@ function PokeSprite({ url, setBackdropColor }) {
 }
 
 PokeSprite.propTypes = {
-  // bla: PropTypes.string,
-};
-
-PokeSprite.defaultProps = {
-  // bla: 'test',
+  url: PropTypes.string,
+  setBackdropColor: PropTypes.func.isRequired,
+  setIsLoading: PropTypes.func.isRequired,
 };
 
 export default PokeSprite;
