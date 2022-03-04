@@ -71,6 +71,23 @@ export default function Home({ props }) {
         <title>
           Gastly | {CapitalizeChar(pokeData.Name)} {pokeId}
         </title>
+        <meta
+          name="google-site-verification"
+          content="Sj05G57ypBRld01GRCgJAq47Z7WByCH7hnIEub7Nzos"
+        />
+
+        <meta
+          property="og:title"
+          content={`Gastly | ${CapitalizeChar(pokeData.Name)} ${pokeId}`}
+        />
+        <meta property="og:site_name" content="Gastly" />
+        <meta
+          property="og:url"
+          content={`https://gastly-v4.netlify.app/${pokeId}`}
+        />
+        <meta property="og:description" content={pokeData.Description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={spritUrl} />
       </Head>
       <div className={`${moduleStyle.MainContainer} LightMode`}>
         <div className={moduleStyle.MainContainer__ContentWrapper}>
