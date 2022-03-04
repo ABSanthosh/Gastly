@@ -5,7 +5,7 @@ import ColorThief from "colorthief";
 import { useRef } from "react";
 import { rgbToHex } from "../../Utils/rgbToHex";
 
-function PokeSprite({ url, setBackdropColor, setIsLoading }) {
+function PokeSprite({ url, setBackdropColor, setIsCover }) {
   const imgRef = useRef();
   return (
     <>
@@ -25,6 +25,7 @@ function PokeSprite({ url, setBackdropColor, setIsLoading }) {
               colorThief.getColor(img)[2]
             )
           );
+          setIsCover(false);
         }}
         className={style.PokeSpriteWrapper}
         src={url}

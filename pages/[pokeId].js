@@ -42,6 +42,7 @@ export default function Home({ props }) {
   const [backdropColor, setBackdropColor] = useState("white");
   const [galleryPosition, setGalleryPosition] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [isCover, setIsCover] = useState(true);
 
   useEffect(() => {
     if (emblaApi) {
@@ -78,6 +79,11 @@ export default function Home({ props }) {
               <LoadingBoxes />
             </div>
           )}
+          {isCover && (
+            <div id="loading-dock">
+              <div className="loader"></div>
+            </div>
+          )}
           <div className={moduleStyle.MainContainer__japaneseName}>
             <p>{pokeData.japaneseName}</p>
           </div>
@@ -105,7 +111,7 @@ export default function Home({ props }) {
             />
             <PokeSprite
               url={spritUrl}
-              setIsLoading={setIsLoading}
+              setIsCover={setIsCover}
               setBackdropColor={setBackdropColor}
             />
             <a
@@ -122,7 +128,12 @@ export default function Home({ props }) {
           <div className={moduleStyle.MainContainer__details}>
             <DetailsBox>
               <div className={moduleStyle.MainContainer__detailsContentBox}>
-                <Box>
+                <Box
+                  style={{
+                    "--boxHeight": "auto",
+                    minHeight: "130px",
+                  }}
+                >
                   <p>{pokeData.Description}</p>
                 </Box>
               </div>
@@ -255,6 +266,7 @@ export default function Home({ props }) {
                   <Box
                     style={{
                       padding: "0px",
+                      "--boxHeight": "90px",
                     }}
                   >
                     <Tabs
