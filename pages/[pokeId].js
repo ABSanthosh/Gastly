@@ -6,6 +6,7 @@ import {
   getGeneration,
   getJapaneseName,
   getPoke,
+  getSuggestionList,
 } from "../Operations/getPoke";
 import { CapitalizeChar } from "../Utils/Capitalize";
 import { useEffect, useState } from "react";
@@ -24,6 +25,7 @@ import EvalChainItem from "../Components/EvalChainItem/EvalChainItem";
 import useEmblaCarousel from "embla-carousel-react";
 import Tabs from "../Components/Tabs/Tabs";
 import BaseStats from "../Components/BaseStats/BaseStats";
+import AutoCompleteSearch from "../Components/AutoCompleteSearch/AutoCompleteSearch";
 // import useLoading from "../hooks/useLoading";
 
 export default function Home({ props }) {
@@ -82,7 +84,9 @@ export default function Home({ props }) {
             <div className={moduleStyle.MainContainer__search__name}>
               {CapitalizeChar(pokeData.Name)}
             </div>
-            <div className={moduleStyle.MainContainer__search__input}></div>
+            <div className={moduleStyle.MainContainer__search__input}>
+              <AutoCompleteSearch suggestion={pokeData.suggestion} />
+            </div>
           </div>
           <div className={moduleStyle.MainContainer__pokeImage}>
             <a
@@ -93,7 +97,7 @@ export default function Home({ props }) {
               }
             />
             <PokeSprite url={spritUrl} setBackdropColor={setBackdropColor} />
-            <a
+            <a 
               className={moduleStyle.MainContainer__pokeImage__rightChevron}
               onClick={() => {}}
               href={
@@ -442,6 +446,7 @@ Home.getInitialProps = async ({ query }) => {
   const generation = await getGeneration(pokeId);
   const genderRatio = await getGenderRatio(pokeId);
   const dimensions = await getDimensions(pokeId);
+  const suggestion = await getSuggestionList();
 
   return {
     props: {
@@ -453,6 +458,7 @@ Home.getInitialProps = async ({ query }) => {
         generation,
         genderRatio,
         dimensions,
+        suggestion,
       },
     },
   };
