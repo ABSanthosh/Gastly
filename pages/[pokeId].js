@@ -67,6 +67,8 @@ export default function Home({ props }) {
 
   return (
     <>
+    {/* Hello there. If you came here from github heat map of my profile then what are the odds! */}
+    {/*  This one was only to fill up today's git push so I can maintain the streak */}
       <Head>
         <meta
           name="google-site-verification"
