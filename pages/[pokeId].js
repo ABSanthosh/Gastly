@@ -70,6 +70,7 @@ export default function Home({ props }) {
       {/* Hello there. If you came here from github heat map of my profile then what are the odds! */}
       {/*  This one was only to fill up today's git push so I can maintain the streak */}
       {/* Hello there. THis is the second day I spent without writing any useful code(it was nice. Try sometime) */}
+      {/* Shit no code today as well */}
 
       <Head>
         <meta
