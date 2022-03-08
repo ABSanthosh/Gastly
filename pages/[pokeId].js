@@ -71,6 +71,7 @@ export default function Home({ props }) {
       {/*  This one was only to fill up today's git push so I can maintain the streak */}
       {/* Hello there. THis is the second day I spent without writing any useful code(it was nice. Try sometime) */}
       {/* Shit no code today as well */}
+      {/* Again, no code today */}
 
       <Head>
         <meta
