@@ -72,6 +72,7 @@ export default function Home({ props }) {
       {/* Hello there. THis is the second day I spent without writing any useful code(it was nice. Try sometime) */}
       {/* Shit no code today as well */}
       {/* Again, no code today */}
+      {/* Probably today, Ill do more commits */}
 
       <Head>
         <meta
