@@ -67,8 +67,6 @@ export default function Home({ props }) {
 
   return (
     <>
-    {/* There */}
-    {/* hello */}
       <Head>
         <meta
           name="google-site-verification"
