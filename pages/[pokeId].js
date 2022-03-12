@@ -67,9 +67,6 @@ export default function Home({ props }) {
 
   return (
     <>
-    {/* There */}
-    {/* hello */}
-    {/* Man, I gotta maintain this streak */}
       <Head>
         <meta
           name="google-site-verification"
