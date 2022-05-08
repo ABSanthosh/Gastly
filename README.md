@@ -4,7 +4,7 @@ A simple pokedex webapp. Nothing more. Nothing less.
 
 This project is Complete.
 
-The app is hosted on https://gastly.netlify.app 
+The app is hosted on https://gastly-v4.netlify.app/
 
 
 I might make some small fixes in the V3 branch before rolling it out to the main branch.
